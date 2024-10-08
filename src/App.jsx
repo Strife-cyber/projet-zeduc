@@ -1,11 +1,13 @@
-import './App.css'
-import CircleLogoComponent from './components/circle_logo/circle_logo'
+import React from 'react';
+import 'C:/Users/RASTOM/Desktop/zeduc/projet-zeduc/src/App.css'; // Chemin relatif pour App.css
+import ImageSlider from 'C:/Users/RASTOM/Desktop/zeduc/projet-zeduc/src/components/images_slider/images_slider.jsx'; // Chemin relatif pour ImageSlider
 
 function App() {
-
   return (
-    <CircleLogoComponent/>
-  )
+    <div className="App">
+      <ImageSlider/>
+    </div>
+  );
 }
 
-export default App
+export default App;
