@@ -62,7 +62,7 @@ INSERT INTO menu (id_plat, date_menu) VALUES
 ('plat003', '2024-10-02');
 
 -- Insérer des réclamations
-INSERT INTO Réclamation (id_réclamation, id_client, description, date_reclamation, statut) VALUES
+INSERT INTO Reclamation (id_reclamation, id_client, description, date_reclamation, statut) VALUES
 ('rec001', 'user001', 'Problème avec la commande', '2024-09-03', FALSE),
 ('rec002', 'user002', 'Plat froid', '2024-09-04', TRUE);
 

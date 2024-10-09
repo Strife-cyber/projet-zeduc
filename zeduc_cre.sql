@@ -96,12 +96,12 @@ CREATE TABLE menu (
     CONSTRAINT menu_primaire PRIMARY KEY (id_plat, date_menu)
 );
 
-CREATE TABLE Réclamation (
+CREATE TABLE Reclamation (
 /*
 -- La reclamation "id_reclamation" faite par le client "id_client"
 -- le "date_reclamation" concernant "description" avec pour statut "statut"
 */
-    id_réclamation VARCHAR(255) PRIMARY KEY NOT NULL,
+    id_reclamation VARCHAR(255) PRIMARY KEY NOT NULL,
     id_client VARCHAR(255) REFERENCES client(id_client) NOT NULL,
     description TEXT NOT NULL ,
     date_reclamation DATE NOT NULL,

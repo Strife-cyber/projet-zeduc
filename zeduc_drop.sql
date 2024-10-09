@@ -41,7 +41,7 @@ DROP TABLE menu cascade ;
 
 DROP TABLE promotion cascade ;
 
-DROP TABLE réclamation cascade ;
+DROP TABLE reclamation cascade ;
 
 DROP TABLE password_resets cascade ;
 
