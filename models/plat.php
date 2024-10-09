@@ -90,8 +90,9 @@ class ModelPlat {
 
 function testCreatePlat() {
     $modelPlat = new ModelPlat();
-    $imagePath = 'C:/Users/Strife-Cyber/Desktop/Zeduc/zeduc-space/src/assets/IMG-20240919-WA0006.jpg'; // Replace with the actual path to your image
-    $result = $modelPlat->createPlat(1, $imagePath, "Plat Test", 1000);
+    // Chemin complet vers l'image, y compris le nom du fichier et l'extension
+    $imagePath = 'C:/Users/Strife-Cyber/Desktop/Zeduc/zeduc-space/src/assets/IMG-20240919-WA0006.jpg';
+    $result = $modelPlat->createPlat(1, $imagePath, "IMG-20240919-WA0006.jpg", 1000);
     echo $result ? "Plat ajouté avec succès.<br>" : "Échec de l'ajout du plat.<br>";
 }
 
@@ -115,8 +116,9 @@ function testGetAllPlats() {
 
 function testUpdatePlat() {
     $modelPlat = new ModelPlat();
-    $imagePath = 'C:/Users/Strife-Cyber/Desktop/Zeduc/zeduc-space/src/assets/IMG-20240919-WA0006.jpg'; // Replace with a valid image path
-    $result = $modelPlat->updatePlat(1, $imagePath, "Plat Mis à Jour", 1200); // Replace 1 with a valid ID
+    // Chemin complet vers l'image, y compris le nom du fichier et l'extension
+    $imagePath = 'C:/Users/Strife-Cyber/Desktop/Zeduc/zeduc-space/src/assets/IMG-20240919-WA0006.jpg';
+    $result = $modelPlat->updatePlat(1, $imagePath, "IMG-20240919-WA0006.jpg", 1200);
     echo $result ? "Plat mis à jour avec succès.<br>" : "Échec de la mise à jour du plat.<br>";
 }
 
@@ -127,7 +129,7 @@ function testDeletePlat() {
 }
 
 // Execute test functions
-/*
+
 if (php_sapi_name() == 'cli') {
     testCreatePlat();
     testGetPlatById();
@@ -135,4 +137,4 @@ if (php_sapi_name() == 'cli') {
     testUpdatePlat();
     testDeletePlat();
 }
- */
+
