@@ -1,0 +1,75 @@
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 600px;
+  width: 75%; /* Utilisez une variable pour la largeur */
+  animation: slideIn 4s forwards; /* Animation d'entrée */
+}
+
+@keyframes slideIn {
+  from {
+      opacity: 0; /* Début de l'opacité à 0 */
+      transform: translateY(20px); /* Déplace légèrement vers le bas */
+  }
+  to {
+      opacity: 1; /* Fin de l'opacité à 1 */
+      transform: translateY(0); /* Retour à la position d'origine */
+  }
+}
+
+.image-container {
+  width: var(--image-width, 300px); /* Utilisez une variable pour la largeur de l'image */
+  height: var(--image-height, 200px); /* Utilisez une variable pour la hauteur de l'image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 4s ease; /* Transition pour les transformations */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 4s ease; /* Ajout d'une transition pour l'image */
+}
+
+.image-container:hover img {
+  transform: scale(1.05); /* Légèrement agrandir l'image au survol */
+}
+
+.left-arrow, .right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #cfbd97; /* Couleur de fond pour les chevrons */
+  color: white;
+  border: none;
+  font-size: 1.5rem; /* Ajustez la taille de la police si nécessaire */
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%; /* Coins arrondis pour créer un cercle */
+  z-index: 10;
+  width: 40px; /* Largeur du bouton */
+  height: 40px; /* Hauteur du bouton */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centrer le contenu dans le bouton */
+  transition: background 4s ease, transform 4s ease; /* Transition pour les effets au survol */
+}
+
+.left-arrow {
+  left: 20px;
+}
+
+.right-arrow {
+  right: 20px; /* Corrigé pour être cohérent avec le bouton de gauche */
+}
+
+.left-arrow:hover, .right-arrow:hover {
+  background: white; /* Couleur de fond au survol */
+  color: #cfbd97; /* Couleur du texte au survol */
+  transform: scale(1.1); /* Légèrement agrandir le bouton au survol */
+}

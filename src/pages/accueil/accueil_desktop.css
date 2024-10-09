@@ -1,0 +1,92 @@
+body {
+    background: linear-gradient(to bottom, black, #cfbd97);
+    justify-content: center;
+    align-items: center;
+}
+
+#white-part {
+    min-height: 100vh;
+    width: 80%;
+    margin: 10% auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s, transform 0.3s; /* Ajoutez une transition pour la transformation */
+    border: 3px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    opacity: 0; /* Définissez l'opacité initialement à 0 */
+    transform: translateY(20px); /* Déplacez légèrement vers le bas pour l'effet d'entrée */
+    animation: fadeIn 4s forwards; /* Appliquez l'animation fadeIn */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Terminer avec une opacité de 1 */
+        transform: translateY(0); /* Revenir à la position d'origine */
+    }
+}
+
+#row {
+    position: absolute;
+    top: -5%;
+    left: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-con {
+    background-color: white;
+    border: none;
+    margin-top: 80px;
+    margin-right: 10%;
+    padding: 10px 20px; /* Ajoutez du padding */
+    font-family: 'Montaga, serif';
+    cursor: pointer; /* Pour changer le curseur lors du survol */
+    border-radius: 5px; /* Coins arrondis pour les boutons */
+    transition: background-color 0.3s, transform 0.3s; /* Ajoutez une transition pour le survol */
+}
+
+.button-con:hover {
+    background-color: #cfbd97; /* Changez la couleur de fond au survol */
+    color: white; /* Changez la couleur du texte au survol */
+    transform: scale(1.05); /* Légèrement agrandir le bouton au survol */
+}
+
+.white-content {
+    margin-left: 10px;
+    width: 60%;
+}
+
+.contents {
+    margin-top: 30%;
+}
+
+.miam {
+    font-family: 'Montaga, serif';
+    color: #cfbd97;
+    margin-left: 30px;
+    animation: slideIn 4s forwards; /* Appliquez l'animation slideIn */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px); /* Déplacer légèrement vers la gauche */
+        opacity: 0; /* Opacité initiale */
+    }
+    to {
+        transform: translateX(0); /* Retour à la position d'origine */
+        opacity: 1; /* Opacité finale */
+    }
+}
+
+.catch {
+    margin-top: 60px;
+    font-family: 'Montaga, serif';
+    font-size: 18px;
+    margin-left: 50px;
+    margin-bottom: 20%;
+}

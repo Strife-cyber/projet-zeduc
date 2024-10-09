@@ -1,12 +1,10 @@
 import React from 'react';
-import 'C:/Users/RASTOM/Desktop/zeduc/projet-zeduc/src/App.css'; // Chemin relatif pour App.css
-import ImageSlider from 'C:/Users/RASTOM/Desktop/zeduc/projet-zeduc/src/components/images_slider/images_slider.jsx'; // Chemin relatif pour ImageSlider
+import AccueilDesktopPage from './pages/accueil/accueil_desktop';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <ImageSlider/>
-    </div>
+    <AccueilDesktopPage/>
   );
 }
 

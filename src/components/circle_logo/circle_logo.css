@@ -1,0 +1,31 @@
+@keyframes slideIn {
+    from {
+        transform: translateX(100%); /* Starts outside the screen to the right */
+        opacity: 0; /* Starts transparent */
+    }
+    to {
+        transform: translateX(0); /* Moves to its original position */
+        opacity: 1; /* Becomes fully opaque */
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg); /* Start position */
+    }
+    100% {
+        transform: rotateY(180deg); /* Flip halfway (180 degrees) */
+    }
+}
+
+.logo-circle {
+    perspective: 1000px; /* Add perspective for 3D effect */
+}
+
+.logo-image {
+    transition: transform 4s ease; /* Smooth transition for the rotation */
+}
+
+.logo-image:hover {
+    transform: rotateY(180deg); /* Apply the Y-axis rotation on hover */
+}

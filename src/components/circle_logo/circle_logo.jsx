@@ -1,7 +1,8 @@
 import React from "react";
 import zeduc from '../../assets/zeduc.jpg';
+import './circle_logo.css';
 
-const CircleLogoComponent = ({ size = '500px', bgColor = 'black', top = '0px', left = '0px', direction = 'top' }) => {
+const CircleLogoComponent = ({ size = '750px', bgColor = 'black', direction = 'left' }) => {
     // Définir la largeur et la hauteur en fonction de la direction
     const isLeft = direction === 'left';
     const width = isLeft ? `${parseInt(size) / 2}px` : size; // Largeur pour direction 'left'
@@ -22,19 +23,25 @@ const CircleLogoComponent = ({ size = '500px', bgColor = 'black', top = '0px', l
             borderRadius: borderRadius,
             backgroundColor: bgColor,
             overflow: 'hidden',
-            position: 'absolute',
-            top: top,
-            left: left,
+            position: 'relative',
+            animation: 'slideIn 4s forwards', // Animation pour faire apparaître le cercle
         },
         image: {
             width: imgWidth,
             height: 'auto',
+            animation: 'spin 2s linear infinite', // Animation de rotation pour l'image
+            transition: 'transform 0.3s ease', // Transition pour l'animation de l'image
         },
     };
 
     return (
-        <div style={styles.semiCircle}>
-            <img src={zeduc} alt="Logo Zeduc" style={styles.image} />
+        <div className="logo-circle" style={styles.semiCircle}>
+            <img 
+                src={zeduc} 
+                alt="Logo Zeduc" 
+                style={styles.image} 
+                className="logo-image" // Ajoutez une classe pour le ciblage CSS
+            />
         </div>
     );
 }
