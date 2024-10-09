@@ -27,6 +27,8 @@ DROP TABLE utilisateur cascade ;
 
 DROP TABLE client cascade ;
 
+DROP TABLE gerant cascade ;
+
 Drop TABLE  admin cascade ;
 
 DROP TABLE employer cascade ;
@@ -41,5 +43,5 @@ DROP TABLE promotion cascade ;
 
 DROP TABLE réclamation cascade ;
 
-
+DROP TABLE password_resets cascade ;
 

@@ -78,12 +78,13 @@ CREATE TABLE plat (
 CREATE TABLE commande (
 /*
 -- La commande "id_commande" placer par le client "id_client" pour le plat "id_plat"
--- le "date_commande"
+-- le "date_commande" qui a pour status de livraison "status"
 */
     id_commande VARCHAR(255) PRIMARY KEY NOT NULL,
     id_client VARCHAR(255) REFERENCES client(id_client) NOT NULL,
     id_plat VARCHAR(255) REFERENCES plat(id_plat) NOT NULL ,
-    date_commande DATE NOT NULL
+    date_commande DATE NOT NULL,
+    status BOOLEAN NOT NULL
 );
 
 CREATE TABLE menu (

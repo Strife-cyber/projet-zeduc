@@ -50,10 +50,10 @@ INSERT INTO plat (id_plat, image, nom, prix) VALUES
 ('plat003', 'image3.jpg', 'Salade César', 900);
 
 -- Insérer des commandes
-INSERT INTO commande (id_commande, id_client, id_plat, date_commande) VALUES
-('cmd001', 'user001', 'plat001', '2024-09-01'),
-('cmd002', 'user002', 'plat002', '2024-09-02'),
-('cmd003', 'user001', 'plat003', '2024-09-03');
+INSERT INTO commande (id_commande, id_client, id_plat, date_commande, status) VALUES
+('cmd001', 'user001', 'plat001', '2024-09-01', true),
+('cmd002', 'user002', 'plat002', '2024-09-02', true),
+('cmd003', 'user001', 'plat003', '2024-09-03', false);
 
 -- Insérer des menus
 INSERT INTO menu (id_plat, date_menu) VALUES
