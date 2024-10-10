@@ -1,0 +1,21 @@
+.connect-body{
+    background-color: white;
+    min-height: 100vh;
+}
+
+#connect{
+    color: #cfbd97;
+    font-size: 20px;
+    font-family: 'Montaga, sans-serif';
+    padding-top: 20%;
+    margin-left: 26px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 15vh;
+    margin-top: 25%;
+}

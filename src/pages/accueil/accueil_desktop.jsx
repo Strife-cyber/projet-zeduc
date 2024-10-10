@@ -2,12 +2,19 @@ import React from 'react';
 import './accueil_desktop.css';
 import ImageSlider from '../../components/images_slider/images_slider';
 import CircleLogoComponent from '../../components/circle_logo/circle_logo';
+import { useNavigate } from 'react-router';
 
 const AccueilDesktopPage = () => {
+    const navigate = useNavigate();
+
+    const toConnecter = () => {
+        navigate('/login');
+    }
+
     return (
         <div className='container-fluid' id="white-part">
             <div id='row'>
-                <input type="submit" value="Se Connecter" className='button-con' />
+                <input type="submit" value="Se Connecter" className='button-con' onClick={toConnecter}/>
                 <input type="submit" value="S'inscrire" className='button-con' />
             </div>
             <div className='white-content'>

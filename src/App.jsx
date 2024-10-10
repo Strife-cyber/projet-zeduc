@@ -1,12 +1,19 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ConnexionDesktopPage from './pages/connexion/connexion_desktop';
 import { UserProvider } from './contexts/user_context';
+import ConnexionPage from './pages/connexion/connexion';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AccueilPage from './pages/accueil/accueil';
 
 function App() {
   return (
     <UserProvider>
-      <ConnexionDesktopPage/>
+      <Router>
+        <Routes>
+          <Route path='/' element={<AccueilPage/>}/>
+          <Route path='/login' element={<ConnexionPage/>} />
+        </Routes>
+      </Router>
     </UserProvider>
   );
 }

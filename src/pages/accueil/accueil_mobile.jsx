@@ -8,8 +8,11 @@ import image3 from '../../assets/img-3.jpg';
 import image4 from '../../assets/img-4.jpg';
 import image5 from '../../assets/img-5.jpg';
 import image6 from '../../assets/img-6.jpg';
+import { useNavigate } from "react-router";
 
 const AccueilMobilePage = () => {
+    const navigate = useNavigate();
+
     const images = [
         { src: image1, alt: "Éru savoureux", description: "Un plat traditionnel débordant de saveurs, l’Éru est accompagné de waterleaf, de viande tendre et bien épicée, avec du foufou à côté." },
         { src: image2, alt: "Pilé bien garnie", description: "Du foufou pilé moelleux, servi avec une sauce généreuse, pleine de viande fumée et de poissons bien assaisonnés, un régal pour les papilles." },
@@ -19,12 +22,16 @@ const AccueilMobilePage = () => {
         { src: image6, alt: "Bolognaise et boulettes", description: "Des pâtes bolognaises servies avec de délicieuses boulettes de viande, nappées d'une sauce tomate parfumée aux herbes fraîches." }
     ];
 
+    const toConnecter = () => {
+        navigate('/login');
+    }
+
     return (
         <>
             <div className="display-mobile">
                 <CircleLogoComponent size="150px" direction="top" />
                 <div id='row-mobile'>
-                    <input type="submit" value="Se Connecter" className='button-mob' />
+                    <input type="submit" value="Se Connecter" className='button-mob' onClick={toConnecter}/>
                     <input type="submit" value="S'inscrire" className='button-mob' />
                 </div>
             </div>
