@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AccueilMobilePage from "./accueil_mobile";
 import AccueilDesktopPage from "./accueil_desktop";
+import FooterComponent from "../../components/footer/footer";
 
 const AccueilPage = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -30,6 +31,7 @@ const AccueilPage = () => {
     return (
         <>
             {isMobile ? <AccueilMobilePage /> : <AccueilDesktopPage />}
+            <FooterComponent/>
         </>
     );
 };

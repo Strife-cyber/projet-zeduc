@@ -1,10 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AccueilPage from './pages/accueil/accueil';
+import ConnexionDesktopPage from './pages/connexion/connexion_desktop';
+import { UserProvider } from './contexts/user_context';
 
 function App() {
   return (
-    <AccueilPage/>
+    <UserProvider>
+      <ConnexionDesktopPage/>
+    </UserProvider>
   );
 }
 
