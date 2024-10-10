@@ -65,6 +65,15 @@ CREATE TABLE employer(
     admin VARCHAR(255) REFERENCES admin(id_admin) NOT NULL
 );
 
+CREATE TABLE parrainage(
+/*
+-- Le parrain "parrain" du fiole "fiole"
+*/
+    parrain VARCHAR(255) REFERENCES client(id_client) NOT NULL ,
+    fiole VARCHAR(255) REFERENCES client(id_client) NOT NULL ,
+    constraint parrainage_key PRIMARY KEY (parrain, fiole)
+);
+
 CREATE TABLE plat (
 /*
 -- Le plat "id_plat" avec image "image" et nom "nom" a pour prix "prix"
@@ -126,6 +135,12 @@ CREATE TABLE password_resets (
     expiry TIMESTAMP NOT NULL,
     PRIMARY KEY (user_id, token)
 );
+
+CREATE TABLE parametres (
+    rate DECIMAL NOT NULL ,
+    ouverture DATE NOT NULL ,
+    fermeture DATE NOT NULL
+)
 
 
 

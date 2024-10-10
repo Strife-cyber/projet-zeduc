@@ -45,3 +45,7 @@ DROP TABLE reclamation cascade ;
 
 DROP TABLE password_resets cascade ;
 
+DROP TABLE parrainage cascade ;
+
+DROP TABLE parametres cascade ;
+
