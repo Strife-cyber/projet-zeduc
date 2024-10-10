@@ -11,6 +11,7 @@ function routeRequest() {
     // Split the URI to get the last part (after the last '/')
     $uriParts = explode('/', trim($uri, '/')); // Trim slashes and split
     $lastPart = end($uriParts); // Get the last part of the URI
+    $datePart = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null; // Get the second last part for date
 
     // Simple routing logic
     switch ($lastPart) {
@@ -37,6 +38,23 @@ function routeRequest() {
                 $response = $controller->signup($id, $name, $email, $password);
 
                 echo json_encode($response);
+            } else {
+                http_response_code(405); // Method Not Allowed
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
+        case 'menu':
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                // Vérifiez si la date est fournie dans l'URL
+                if ($datePart) {
+                    // Appelez la méthode du contrôleur avec la date
+                    $response = $controller->getMenu($datePart);
+                    echo json_encode($response);
+                } else {
+                    http_response_code(400); // Bad Request
+                    echo json_encode(['error' => 'Date is required']);
+                }
             } else {
                 http_response_code(405); // Method Not Allowed
                 echo json_encode(['error' => 'Method Not Allowed']);

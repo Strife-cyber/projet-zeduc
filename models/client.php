@@ -48,4 +48,16 @@ class ModelClient {
         }
         return null;
     }
+
+    public function viewMenu($date){
+        $sql = "SELECT menu_du_jour(:date)";
+
+        $stmt = $this->connexion->prepare($sql);
+
+        $stmt->bindParam(':date', $date);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -16,4 +16,8 @@ class ClientController{
     public function signup($id, $name, $email, $password){
         return $this->client->createClient($id, $name, $email, $password);
     }
+
+    public function getMenu($date){
+        return $this->client->viewMenu($date);
+    }
 }
