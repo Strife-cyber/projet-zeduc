@@ -27,10 +27,21 @@ function routeRequest() {
             }
             break;
 
-        // You can add more cases here for other routes
-        // case 'register':
-        //     // Handle registration
-        //     break;
+        case 'signup':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $id = isset($_POST['id']) ? $_POST['id'] : '';
+                $name = isset($_POST['name']) ? $_POST['name'] : '';
+                $email = isset($_POST['email']) ? $_POST['email'] : '';
+                $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+                $response = $controller->signup($id, $name, $email, $password);
+
+                echo json_encode($response);
+            } else {
+                http_response_code(405); // Method Not Allowed
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
 
         default:
             http_response_code(404);

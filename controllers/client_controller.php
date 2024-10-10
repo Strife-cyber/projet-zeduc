@@ -12,4 +12,8 @@ class ClientController{
     public function login($email, $password){
         return $this->client->connexion($email, $password);
     }
+
+    public function signup($id, $name, $email, $password){
+        return $this->client->createClient($id, $name, $email, $password);
+    }
 }
