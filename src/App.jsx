@@ -1,10 +1,10 @@
 import React from 'react';
-import AccueilDesktopPage from './pages/accueil/accueil_desktop';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AccueilPage from './pages/accueil/accueil';
 
 function App() {
   return (
-    <AccueilDesktopPage/>
+    <AccueilPage/>
   );
 }
 
