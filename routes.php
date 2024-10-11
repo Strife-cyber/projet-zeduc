@@ -108,6 +108,22 @@ function routeRequest() {
             }
             break;
 
+        case 'historique':
+            $id = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null;
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                if($id){
+                    $response = $controller->historique($id);
+                    echo json_encode($response);
+                } else {
+                    http_response_code(400); // Bad Request
+                    echo json_encode(['error' => 'Id is required']);
+                }
+            } else {
+                http_response_code(405); // Method Not Allowed
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
         default:
             http_response_code(404);
             echo json_encode(['error' => 'Not Found']);

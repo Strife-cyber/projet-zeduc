@@ -32,4 +32,8 @@ class ClientController{
     public function fiole($id){
         return $this->client->fiole($id);
     }
+
+    public function historique($id){
+        return $this->client->historique($id);
+    }
 }

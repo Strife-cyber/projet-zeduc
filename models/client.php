@@ -103,4 +103,14 @@ class ModelClient {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function historique($id){
+        $sql = "SELECT * FROM historique(:id)";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
