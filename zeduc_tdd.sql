@@ -56,7 +56,33 @@ RETURNS TABLE(nom VARCHAR, prix INTEGER, status BOOLEAN) AS $$
     END ;
 $$ LANGUAGE plpgsql;
 
--- 5. mot de passe oublier
+-- 5. parrainage
+CREATE OR REPLACE FUNCTION ajouter_parrain(code_parrain code_domain, id VARCHAR, points_ajouter INT)
+RETURNS TEXT AS $$
+    DECLARE
+        id_parrain VARCHAR;
+    BEGIN
+        -- Récupérer l'ID du parrain
+        SELECT id_client INTO id_parrain FROM client WHERE code = code_parrain;
+
+        -- Vérifier si le parrain existe
+        IF id_parrain IS NOT NULL THEN
+            -- Insérer le parrainage
+            INSERT INTO parrainage(parrain, fiole) VALUES (id_parrain, id);
+
+            -- Mettre à jour les points du parrain
+            UPDATE client
+            SET points = points + points_ajouter
+            WHERE id_client = id_parrain;
+
+            RETURN 'Insertion et mise à jour des points réussies';
+        ELSE
+            RETURN 'Parrain non trouvé';
+        END IF;
+    END;
+$$ LANGUAGE plpgsql;
+
+-- 6. mot de passe oublier
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 CREATE OR REPLACE FUNCTION request_password_reset(user_email VARCHAR)
