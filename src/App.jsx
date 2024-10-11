@@ -4,6 +4,7 @@ import { UserProvider } from './contexts/user_context';
 import ConnexionPage from './pages/connexion/connexion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AccueilPage from './pages/accueil/accueil';
+import InscriptionPage from './pages/inscription/inscription';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
           <Route path='/login' element={<ConnexionPage/>} />
+          <Route path='/signup' element={<InscriptionPage/>}/>
         </Routes>
       </Router>
     </UserProvider>

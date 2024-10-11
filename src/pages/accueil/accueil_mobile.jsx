@@ -26,13 +26,17 @@ const AccueilMobilePage = () => {
         navigate('/login');
     }
 
+    const toInscription = () => {
+        navigate('/signup');
+    }
+
     return (
         <>
             <div className="display-mobile">
                 <CircleLogoComponent size="150px" direction="top" />
                 <div id='row-mobile'>
                     <input type="submit" value="Se Connecter" className='button-mob' onClick={toConnecter}/>
-                    <input type="submit" value="S'inscrire" className='button-mob' />
+                    <input type="submit" value="S'inscrire" className='button-mob' onClick={toInscription}/>
                 </div>
             </div>
             <div className="mobile-content">

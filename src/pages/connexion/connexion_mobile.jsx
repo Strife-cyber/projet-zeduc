@@ -2,16 +2,22 @@ import React, { useState } from 'react';
 import CircleLogoComponent from '../../components/circle_logo/circle_logo';
 import TextFieldComponent from '../../components/text_field/text_field';
 import ButtonComponent from '../../components/button/button';
-import useLogin from './login_function'; // Import the login hook
+import useLogin from '../../utilities/login_function'; // Import the login hook
 import MessageComponent from '../../components/message/message'; // Import the message component for feedback
 import '../accueil/accueil_mobile.css';
 import './connexion_mobile.css';
 import './connexion_desktop.css';
+import { useNavigate } from 'react-router';
 
 const ConnexionMobilePage = () => {
     const { login, message } = useLogin(); // Extract the login function and message
     const [email, setEmail] = useState(''); // State for the email
     const [password, setPassword] = useState(''); // State for the password
+    const navigate = useNavigate();
+
+    const toInscription = () => {
+        navigate('/signup');
+    }
 
     const handleLogin = async () => {
         try {
@@ -49,6 +55,7 @@ const ConnexionMobilePage = () => {
                 </div>
             </div>
             {message && <MessageComponent message={message} type={message.includes('successful') ? 'success' : 'error'} />} {/* Display feedback message */}
+            <p className="text-center" onClick={toInscription}>Vous n'avez pas de compte ? Inscrivez-vous dès maintenant</p>
         </>
     );
 }

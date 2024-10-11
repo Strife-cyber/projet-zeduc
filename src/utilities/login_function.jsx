@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useUser } from "../../contexts/user_context";
+import { useUser } from "../contexts/user_context";
 import { useState } from "react"; // Import useState for managing messages
+import hashString from "./hash";
 
 const useLogin = () => {
     const { setUser } = useUser();
@@ -11,13 +12,16 @@ const useLogin = () => {
 
     const login = async (email, password) => {
         try {
+            // hash the password first
+            const hashedPassword = await hashString(password);
+
             // Créez un objet FormData
             const formData = new FormData();
             formData.append('email', email);
-            formData.append('password', password);
+            formData.append('password', hashedPassword);
 
-            // Attendez 1,5 seconde
-            await delay(1500);
+            // Attendez 1 seconde
+            await delay(1000);
 
             // Envoyez la requête avec FormData
             const response = await axios.post('http://localhost/projet-zeduc/index.php/login', formData, {
@@ -25,8 +29,6 @@ const useLogin = () => {
                     'Content-Type': 'multipart/form-data' // Assurez-vous d'indiquer le type de contenu
                 }
             });
-
-            console.log(response);
 
             if (response.data && response.data !== null) {
                 setUser(response.data);

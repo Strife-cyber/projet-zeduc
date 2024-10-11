@@ -11,11 +11,15 @@ const AccueilDesktopPage = () => {
         navigate('/login');
     }
 
+    const toInscription = () => {
+        navigate('/signup');
+    }
+
     return (
         <div className='container-fluid' id="white-part">
             <div id='row'>
                 <input type="submit" value="Se Connecter" className='button-con' onClick={toConnecter}/>
-                <input type="submit" value="S'inscrire" className='button-con' />
+                <input type="submit" value="S'inscrire" className='button-con' onClick={toInscription}/>
             </div>
             <div className='white-content'>
                 <div className='contents'>
