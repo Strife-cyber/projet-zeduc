@@ -82,6 +82,7 @@ RETURNS TEXT AS $$
     END;
 $$ LANGUAGE plpgsql;
 
+-- 6. fonction pour avoir les fioles
 CREATE OR REPLACE FUNCTION get_fiole(id_parrain VARCHAR)
 RETURNS TABLE(nom VARCHAR) AS $$
     BEGIN
@@ -91,7 +92,18 @@ RETURNS TABLE(nom VARCHAR) AS $$
     END ;
 $$ LANGUAGE plpgsql;
 
--- 7. mot de passe oublier
+-- 7. fonction pour l'historique utilisateur
+CREATE OR REPLACE FUNCTION historique(id VARCHAR)
+RETURNS TABLE(nom VARCHAR, prix INTEGER, status BOOLEAN) AS $$
+    BEGIN
+        RETURN QUERY
+        SELECT p.nom, p.prix, c.status
+        FROM commande c JOIN plat p ON c.id_plat = p.id_plat
+        WHERE c.id_client = id ORDER BY c.date_commande;
+    END ;
+$$ LANGUAGE plpgsql;
+
+-- 8. mot de passe oublier
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 CREATE OR REPLACE FUNCTION request_password_reset(user_email VARCHAR)
