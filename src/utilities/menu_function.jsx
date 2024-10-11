@@ -2,11 +2,12 @@ import axios from "axios";
 
 const useMenu = () => {
 
-    const menu = async () => {
+    const fetchMenu = async () => {
         try {
-            const today = new Date().toLocaleDateString();  // Current date as a string
+            const today = '2024-10-01'; //new Date().toLocaleDateString('en-CA');  // Current date with - instead of /// Current date as a string
             const request = `http://localhost/projet-zeduc/index.php/${today}/menu`;
             const response = await axios.get(request);
+            console.log(response.data);
 
             return response.data;  // Return the response data
         } catch (e) {
@@ -15,7 +16,7 @@ const useMenu = () => {
         }
     }
 
-    return { menu };  // Return the menu function from the hook
+    return { fetchMenu };  // Return the menu function from the hook
 };
 
 export default useMenu;

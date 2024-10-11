@@ -23,6 +23,7 @@ const ConnexionDesktopPage = () => {
             await login(email, password); // Call the login function from the hook
             setEmail(''); // Clear email input
             setPassword(''); // Clear password input
+            navigate('/home');
         } catch (error) {
             console.error("Login error:", error); // Optional: Log the error for debugging
         }

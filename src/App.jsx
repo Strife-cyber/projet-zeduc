@@ -5,21 +5,22 @@ import ConnexionPage from './pages/connexion/connexion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AccueilPage from './pages/accueil/accueil';
 import InscriptionPage from './pages/inscription/inscription';
-import './App.css';
 import NavBarComponent from './components/nav_bar/nav_bar';
+import AllCardsComponent from './components/meal_card/all_cards';
+import './App.css';
+import HomePage from './pages/home/home';
 
 function App() {
   return (
     <UserProvider>
-      {/*
       <Router>
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
           <Route path='/login' element={<ConnexionPage/>} />
           <Route path='/signup' element={<InscriptionPage/>}/>
+          <Route path='/home' element={<HomePage/>}/>
         </Routes>
-      </Router>*/}
-      <NavBarComponent/>
+      </Router>
     </UserProvider>
   );
 }

@@ -22,6 +22,7 @@ const ConnexionMobilePage = () => {
     const handleLogin = async () => {
         try {
             await login(email, password); // Call the login function with email and password
+            navigate('/home');
         } catch (error) {
             console.error('Login failed:', error);
         }

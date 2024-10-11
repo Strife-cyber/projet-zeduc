@@ -1,5 +1,5 @@
 .custom-card {
-    border: 2px solid #ccc;
+    border: 2px solid #cfbd97;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 20px 0 20px 0;
@@ -8,6 +8,7 @@
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
     animation: card-entry 0.8s ease-out; /* Card entry animation */
+    height: 70vh;
 }
 
 /* Ajuster pour que la superposition ne couvre que la carte repas */

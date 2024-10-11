@@ -1,34 +1,71 @@
-.nav-bar{
-    background-color: whitesmoke;
-    max-width: 250px;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
+/* Keyframes pour le glissement */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%); /* Commence à l'extérieur à gauche */
+        opacity: 0; /* Commence invisible */
+    }
+    to {
+        transform: translateX(0); /* Se déplace à la position d'origine */
+        opacity: 1; /* Devient visible */
+    }
 }
 
-.info-container{
+@keyframes slideOut {
+    from {
+        transform: translateX(0); /* Commence à la position d'origine */
+        opacity: 1; /* Est visible */
+    }
+    to {
+        transform: translateX(100%); /* Se déplace à l'extérieur à droite */
+        opacity: 0; /* Devient invisible */
+    }
+}
+
+/* Appliquer l'animation de glissement aux conteneurs */
+.nav-bar {
+    background-color: #3D3D3D;
+    min-width: 250px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.5s ease forwards; /* Animation au chargement */
+    transition: background-color 0.3s ease; /* Ajout de transition pour un changement de couleur */
+}
+
+.nav-bar:hover {
+    background-color: #2D2D2D; /* Légère assombrissement au survol */
+}
+
+.info-container, .fiole-container, .parrain-container, .history-container {
     background-color: white;
     margin: 20px;
     padding: 10px;
     border-radius: 5px;
     border: 2px solid #cfbd97;
+    animation: slideIn 0.5s ease forwards; /* Animation au chargement */
+    transition: transform 0.3s ease; /* Animation de transformation */
 }
 
-.bar-label{
+.info-container:hover, .parrain-container:hover {
+    transform: scale(1.02); /* Légère augmentation de la taille au survol */
+}
+
+.bar-label {
     display: flex;
     background-color: white;
     margin: 20px;
     padding-left: 10px;
     border-radius: 5px;
     border: 2px solid #cfbd97;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Ajout de transition */
 }
 
-.bar-label:hover{
+.bar-label:hover {
     color: white;
     background-color: #cfbd97;
 }
 
-.cart-items{
+.cart-items {
     background-color: white;
     margin: 20px;
     padding-left: 10px;
@@ -36,9 +73,14 @@
     border: 2px solid #cfbd97;
     height: 200px;
     overflow: scroll;
+    transition: box-shadow 0.3s ease; /* Ajout de transition pour l'ombre */
 }
 
-.heading{
+.cart-items:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+}
+
+.heading {
     display: flex;
     flex-direction: row;
 }
@@ -62,6 +104,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Ajout de transition */
+}
+
+.circle:hover {
+    background-color: #cfbd97; /* Changement de couleur au survol */
+    transform: scale(1.1); /* Légère augmentation de la taille au survol */
 }
 
 .circle.active {
@@ -69,38 +117,7 @@
     color: white;
 }
 
-.fiole-container{
-    background-color: white;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #cfbd97;
-    overflow: scroll;
-}
-
-.parrain-container{
-    background-color: white;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #cfbd97;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 25vh;
-}
-
-.history-container{
-    background-color: white;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #cfbd97;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 35vh;
+.history-container {
+    height: 35vh; /* Hauteur spécifique pour l'historique */
     overflow: scroll;
 }

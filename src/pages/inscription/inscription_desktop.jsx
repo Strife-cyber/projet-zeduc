@@ -31,6 +31,7 @@ const InscriptionDesktopPage = () => {
             setEmail(''); // Clear email input
             setPassword(''); // Clear password input
             setReenterPassword(''); // Clear re-enter password input
+            navigate('/home');
         } catch (error) {
             console.error("Signup error:", error); // Optional: Log the error for debugging
         }

@@ -1,0 +1,27 @@
+.home{
+    display: flex;
+}
+
+.cards{
+    width: 80%;
+}
+
+.text-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    padding-top: 5vh;
+}
+
+h3{
+    margin-bottom: 0;
+    font-family: 'Pacifico';
+    color: #cfbd97;
+    font-size: 40px;
+}
+
+.navs{
+    width: 20%;
+}

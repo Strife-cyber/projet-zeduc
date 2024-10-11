@@ -34,6 +34,7 @@ const InscriptionMobilePage = () => {
             setEmail('');
             setPassword('');
             setReenterPassword('');
+            navigate('/home');
         } catch (error) {
             console.error('Signup failed:', error);
         }
