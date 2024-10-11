@@ -5,22 +5,22 @@ import ConnexionPage from './pages/connexion/connexion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AccueilPage from './pages/accueil/accueil';
 import InscriptionPage from './pages/inscription/inscription';
-import PaymentSheetComponent from './components/payment_sheet/payment_sheet';
 import './App.css';
-import MealCardComponent from './components/meal_card/meal_card';
+import NavBarComponent from './components/nav_bar/nav_bar';
 
 function App() {
   return (
-    /*<UserProvider>
+    <UserProvider>
+      {/*
       <Router>
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
           <Route path='/login' element={<ConnexionPage/>} />
           <Route path='/signup' element={<InscriptionPage/>}/>
         </Routes>
-      </Router>
-    </UserProvider>*/
-    <MealCardComponent/>
+      </Router>*/}
+      <NavBarComponent/>
+    </UserProvider>
   );
 }
 

@@ -1,0 +1,44 @@
+.nav-bar{
+    background-color: whitesmoke;
+    max-width: 250px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-container{
+    background-color: white;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #cfbd97;
+}
+
+.bar-label{
+    display: flex;
+    background-color: white;
+    margin: 20px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 2px solid #cfbd97;
+}
+
+.bar-label:hover{
+    color: white;
+    background-color: #cfbd97;
+}
+
+.cart-items{
+    background-color: white;
+    margin: 20px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 2px solid #cfbd97;
+    height: 200px;
+    overflow: scroll;
+}
+
+.heading{
+    display: flex;
+    flex-direction: row;
+}
