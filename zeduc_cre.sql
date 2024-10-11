@@ -124,7 +124,7 @@ CREATE TABLE promotion (
 */
     id_promotion VARCHAR(255) PRIMARY KEY NOT NULL,
     id_admin VARCHAR(255) REFERENCES admin(id_admin) NOT NULL,
-    date_début DATE NOT NULL ,
+    date_debut DATE NOT NULL ,
     date_fin DATE NOT NULL ,
     description TEXT NOT NULL
 );

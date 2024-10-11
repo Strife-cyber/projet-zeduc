@@ -68,6 +68,6 @@ INSERT INTO Reclamation (id_reclamation, id_client, description, date_reclamatio
 ('rec002', 'user002', 'Plat froid', '2024-09-04', TRUE);
 
 -- Insérer des promotions
-INSERT INTO promotion (id_promotion, id_admin, date_début, date_fin, description) VALUES
+INSERT INTO promotion (id_promotion, id_admin, date_debut, date_fin, description) VALUES
 ('promo001', 'user003', '2024-09-01', '2024-09-30', 'Promotion de rentrée 10% de réduction'),
 ('promo002', 'user003', '2024-10-01', '2024-10-31', 'Offre spéciale pour les nouvelles commandes');
