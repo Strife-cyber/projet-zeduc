@@ -45,7 +45,18 @@ BEGIN
 END;
 $$;
 
--- 4. mot de passe oublier
+-- 4. commande du jour
+CREATE OR REPLACE FUNCTION commande_utilisateur_jour(id_du_client VARCHAR, date DATE)
+RETURNS TABLE(nom VARCHAR, prix INTEGER, status BOOLEAN) AS $$
+    BEGIN
+        RETURN QUERY
+        SELECT p.nom, p.prix, c.status
+        FROM commande c JOIN plat p ON c.id_plat = p.id_plat
+        WHERE c.id_client = id_du_client AND c.date_commande = date;
+    END ;
+$$ LANGUAGE plpgsql;
+
+-- 5. mot de passe oublier
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 CREATE OR REPLACE FUNCTION request_password_reset(user_email VARCHAR)
