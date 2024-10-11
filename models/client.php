@@ -60,4 +60,16 @@ class ModelClient {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getCommads($id, $date){
+        $sql = "SELECT commande_utilisateur_jour(:id_du_client, :date)";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':id_du_client', $id);
+        $stmt->bindParam(':date', $date);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

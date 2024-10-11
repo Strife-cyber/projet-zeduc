@@ -20,4 +20,8 @@ class ClientController{
     public function getMenu($date){
         return $this->client->viewMenu($date);
     }
+
+    public function getCommandes($id, $date){
+        return $this->client->getCommads($id, $date);
+    }
 }

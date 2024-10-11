@@ -11,7 +11,6 @@ function routeRequest() {
     // Split the URI to get the last part (after the last '/')
     $uriParts = explode('/', trim($uri, '/')); // Trim slashes and split
     $lastPart = end($uriParts); // Get the last part of the URI
-    $datePart = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null; // Get the second last part for date
 
     // Simple routing logic
     switch ($lastPart) {
@@ -46,6 +45,7 @@ function routeRequest() {
             break;
 
         case 'menu':
+            $datePart = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null; // Get the second last part for date
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 // Vérifiez si la date est fournie dans l'URL
                 if ($datePart) {
@@ -55,6 +55,23 @@ function routeRequest() {
                 } else {
                     http_response_code(400); // Bad Request
                     echo json_encode(['error' => 'Date is required']);
+                }
+            } else {
+                http_response_code(405); // Method Not Allowed
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
+        case 'commande':
+            $id = isset($uriParts[count($uriParts) - 3]) ? $uriParts[count($uriParts) - 3] : null;
+            $datePart = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null;
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                if($id and $datePart){
+                    $response = $controller->getCommandes($id, $datePart);
+                    echo json_encode($response);
+                } else {
+                    http_response_code(400); // Bad Request
+                    echo json_encode(['error' => 'Date or Id is required']);
                 }
             } else {
                 http_response_code(405); // Method Not Allowed
