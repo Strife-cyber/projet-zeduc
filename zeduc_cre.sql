@@ -79,7 +79,7 @@ CREATE TABLE plat (
 -- Le plat "id_plat" avec image "image" et nom "nom" a pour prix "prix"
 */
     id_plat VARCHAR(255) PRIMARY KEY NOT NULL,
-    image VARCHAR(255) NOT NULL ,
+    image bytea NOT NULL ,
     nom VARCHAR(60) NOT NULL ,
     prix INTEGER NOT NULL
 );
