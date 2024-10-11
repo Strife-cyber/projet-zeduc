@@ -42,3 +42,65 @@
     display: flex;
     flex-direction: row;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    color: #cfbd97;
+    border: none;
+    margin: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle.active {
+    background-color: black;
+    color: white;
+}
+
+.fiole-container{
+    background-color: white;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #cfbd97;
+    overflow: scroll;
+}
+
+.parrain-container{
+    background-color: white;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #cfbd97;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 25vh;
+}
+
+.history-container{
+    background-color: white;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #cfbd97;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 35vh;
+    overflow: scroll;
+}

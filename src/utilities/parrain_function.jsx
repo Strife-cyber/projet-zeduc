@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { useUser } from "../contexts/user_context"
+import { useUser } from "../contexts/user_context";
 import axios from "axios";
 
 const useParrain = () => {
     const { user } = useUser();
-    const {message, setMessage} = useState('');
+    const [message, setMessage] = useState(''); // Correction : utiliser des crochets pour useState
 
-    const parrainage = async(code) => {
-        try{
+    const parrainage = async (code) => {
+        try {
+            const userId = user?.id || 'user002';
+
             const formData = new FormData();
-            formData.append('id', user.id);
-            formData.apppend('code', code);
+            formData.append('id', userId);
+            formData.append('code', code); // Correction : `append` au lieu de `apppend`
 
             const response = await axios.post('http://localhost/projet-zeduc/index.php/parrain', formData, {
                 headers: {
@@ -18,17 +20,18 @@ const useParrain = () => {
                 }
             });
 
-            if(response.data = 'Parraine is added'){
-                setMessage('Parraine is added')
+            if (response.data === 'Parraine is added') { // Correction : utiliser `===` pour la comparaison
+                setMessage('Parraine is added');
             } else {
-                setMessage('Code Taken into consideration')
+                setMessage('Code Taken into consideration');
             }
-        } catch(error) {
-            console.error('An error occured in parrain: That is all we know')
+        } catch (error) {
+            console.error('An error occurred in parrain:', error); // Ajout d'une journalisation d'erreur plus précise
+            setMessage('An error occurred while processing your request.'); // Ajout d'un message d'erreur à l'utilisateur
         }
     };
 
-    return {parrainage, message};
+    return { parrainage, message };
 };
 
 export default useParrain;

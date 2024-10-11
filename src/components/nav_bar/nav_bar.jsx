@@ -1,72 +1,92 @@
+// NavBarComponent.jsx
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../contexts/user_context";
 import './nav_bar.css';
 import useCommand from "../../utilities/command_function";
+import useFiole from "../../utilities/fiole_function";
+import useParrain from "../../utilities/parrain_function";
+import Page1 from "./page_content_1";
+import Page2 from "./page_content_2";
+import useHistory from "../../utilities/history_function";
 
 const NavBarComponent = () => {
     const { user } = useUser();
     const { fetchCommand } = useCommand();
+    const { parrainage } = useParrain();
     const [command, setCommand] = useState([]);
+    const { fetchFiole } = useFiole();
+    const [fiole, setFiole] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [code, setCode] = useState('');
+    const { fetchHistory } = useHistory();
+    const [history, setHistory] = useState([]);
+
+    const parrainer = async () => {
+        if (code) {
+            await parrainage(code);
+        }
+    }
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await fetchCommand();
+            const fioleData = await fetchFiole();
+            const historyData = await fetchHistory();
+
             if (Array.isArray(data)) {
                 const parsedCommand = data.map(c => {
                     const rawString = c.commande_utilisateur_jour;
-                    const cleanedString = rawString.slice(1, -1); // Enlève les parenthèses extérieures
-                    const elements = cleanedString.split(',').map(item => item.trim().replace(/['"]/g, '')); // Sépare les éléments et nettoie
-                    return elements; // Retourne un tableau avec les éléments extraits
+                    const cleanedString = rawString.slice(1, -1);
+                    const elements = cleanedString.split(',').map(item => item.trim().replace(/['"]/g, ''));
+                    return elements;
                 });
-                setCommand(parsedCommand); // Mettez à jour avec les données parsées
+                setCommand(parsedCommand);
+            }
+
+            if (Array.isArray(fioleData)) {
+                setFiole(fioleData);
+            }
+
+            if (Array.isArray(historyData)){
+                setHistory(historyData);
             }
         };
 
         fetchData();
     }, []);
 
+    // Sélection du contenu selon la page actuelle
+    const renderPageContent = () => {
+        switch (currentPage) {
+            case 1:
+                return <Page1 user={user} command={command} />;
+            case 2:
+                return <Page2 fiole={fiole} code={code} setCode={setCode} parrainer={parrainer} history={history}/>;
+            default:
+                return <Page1 user={user} command={command} />;
+        }
+    };
+
     return (
         <div className="nav-bar">
-            <div className="info-container">
-                <p>Nom: {user?.nom || "Invité"}</p>
-                <p>Code: {user?.code || "N/A"}</p>
-                <p>Points: {user?.points || "0"}</p>
-            </div>
-
-            <div className="bar-label home">
-                <i className="fas fa-chevron-left text-center"></i>
-                <p className="text-center">Home</p>
-            </div>
-            <div className="bar-label promotion">
-                <i className="fas fa-chevron-left text-center"></i>
-                <p className="text-center">Promotion</p>
-            </div>
-            <div className="bar-label evenements">
-                <i className="fas fa-chevron-left text-center"></i>
-                <p className="text-center">Evenements</p>
-            </div>
-
-            <div className="cart-items">
-                <div className="heading">
-                    <i className="fas fa-shopping-cart text-center"></i>
-                    <p className="text-center">Mes Commandes</p>
-                </div>
-                <ul>
-                    {command.length > 0 ? (
-                        command.map((c, index) => (
-                            <li key={index}>
-                                <p>{c[0]}</p> {/* Affiche le nom de la commande */}
-                                <p>{c[1]} FCFA</p> {/* Affiche le prix */}
-                                {c[2] ? <p>Arrive</p> : <p>En route</p> }
-                            </li>
-                        ))
-                    ) : (
-                        <li>Aucune commande aujourd'hui</li>
-                    )}
-                </ul>
+            {renderPageContent()}
+            {/* Pagination circulaire */}
+            <div className="pagination">
+                <button
+                    className={`circle ${currentPage === 1 ? 'active' : ''}`}
+                    onClick={() => setCurrentPage(1)}
+                >
+                    1
+                </button>
+                <button
+                    className={`circle ${currentPage === 2 ? 'active' : ''}`}
+                    onClick={() => setCurrentPage(2)}
+                >
+                    2
+                </button>
             </div>
         </div>
     );
-}
+};
 
 export default NavBarComponent;
