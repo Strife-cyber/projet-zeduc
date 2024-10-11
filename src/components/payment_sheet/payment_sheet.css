@@ -1,0 +1,43 @@
+.payment-container{
+    width: 18rem;
+    min-height: 50vh;
+    background-color: white;
+    border: 2px solid #cfbd97;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.nav-link {
+    color: black !important; /* Inactive tab color */
+    font-weight: bold;
+    font-family: 'Josefina Slab, sans-serif';
+}
+
+.nav-link.active {
+    color: #cfbd97 !important; /* Active tab color */
+    border-color: #cfbd97 !important; /* Optional: change border color for active */
+}
+
+.close-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    cursor: pointer;
+}
+
+#close:hover{
+    color: #cfbd97;
+}
+
+h4{
+    font-size: 25px;
+    font-family: 'Montaga, sans-serif';
+}
+
+#orange{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 30vh;
+}

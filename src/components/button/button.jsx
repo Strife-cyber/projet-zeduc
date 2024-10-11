@@ -53,6 +53,7 @@ const styles = {
     button: {
         color: '#fff',
         fontSize: '1rem',
+        fontFamily: 'Montaga, sans-serif',
         cursor: 'pointer',
         outline: 'none',
         border: 'none',

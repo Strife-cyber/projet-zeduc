@@ -5,10 +5,13 @@ import ConnexionPage from './pages/connexion/connexion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AccueilPage from './pages/accueil/accueil';
 import InscriptionPage from './pages/inscription/inscription';
+import PaymentSheetComponent from './components/payment_sheet/payment_sheet';
+import './App.css';
+import MealCardComponent from './components/meal_card/meal_card';
 
 function App() {
   return (
-    <UserProvider>
+    /*<UserProvider>
       <Router>
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
@@ -16,7 +19,8 @@ function App() {
           <Route path='/signup' element={<InscriptionPage/>}/>
         </Routes>
       </Router>
-    </UserProvider>
+    </UserProvider>*/
+    <MealCardComponent/>
   );
 }
 

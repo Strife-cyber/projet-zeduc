@@ -1,0 +1,125 @@
+.custom-card {
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px 0 20px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
+    animation: card-entry 0.8s ease-out; /* Card entry animation */
+}
+
+/* Ajuster pour que la superposition ne couvre que la carte repas */
+.payment-sheet-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Superposition au-dessus de la carte */
+    border-radius: 0.5rem;
+}
+
+.payment-sheet {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* S'assurer qu'il est au-dessus */
+}
+
+.custom-card {
+    position: relative; /* Permettre la superposition sur la carte uniquement */
+    overflow: hidden; /* Empêcher les débordements */
+}
+
+
+/* Initial image animation (small to large) */
+.card-img-top {
+    width: 0;
+    opacity: 0;
+    animation: image-grow 0.8s forwards ease-in-out;
+}
+
+/* Image animation keyframes */
+@keyframes image-grow {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 80%;
+        opacity: 1;
+    }
+}
+
+/* Card hover effect */
+.custom-card:hover {
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Larger shadow */
+}
+
+.card-body {
+    border: 2px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    border-radius: 10px;
+    margin-top: 10px;
+    opacity: 0;
+    animation: body-fade-in 1s 0.5s forwards ease-in-out; /* Delayed fade-in */
+}
+
+@keyframes body-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-label {
+    font-family: 'Josefina Slab, sans-serif';
+}
+
+.card-text {
+    padding-top: 4px;
+}
+
+.button-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    animation: button-fade-in 1s 1s forwards ease-in-out; /* Delayed button fade-in */
+}
+
+@keyframes button-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card entry animation keyframes */
+@keyframes card-entry {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
