@@ -82,7 +82,16 @@ RETURNS TEXT AS $$
     END;
 $$ LANGUAGE plpgsql;
 
--- 6. mot de passe oublier
+CREATE OR REPLACE FUNCTION get_fiole(id_parrain VARCHAR)
+RETURNS TABLE(nom VARCHAR) AS $$
+    BEGIN
+        RETURN QUERY
+        SELECT u.nom FROM parrainage p JOIN utilisateur u ON p.fiole = u.id
+        WHERE p.parrain = id_parrain;
+    END ;
+$$ LANGUAGE plpgsql;
+
+-- 7. mot de passe oublier
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 CREATE OR REPLACE FUNCTION request_password_reset(user_email VARCHAR)
