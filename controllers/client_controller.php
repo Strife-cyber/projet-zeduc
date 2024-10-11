@@ -36,4 +36,8 @@ class ClientController{
     public function historique($id){
         return $this->client->historique($id);
     }
+
+    public function promotion(){
+        return $this->client->promotion();
+    }
 }

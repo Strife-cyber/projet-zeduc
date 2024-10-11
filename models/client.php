@@ -71,16 +71,31 @@ class ModelClient {
     }
 
     public function viewMenu($date){
-        $sql = "SELECT menu_du_jour(:date)";
+        // Accédez directement aux colonnes retournées par la fonction
+        $sql = "SELECT * FROM menu_du_jour(:date)";
 
         $stmt = $this->connexion->prepare($sql);
-
         $stmt->bindParam(':date', $date);
-
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Parcourir les résultats et encoder chaque image à partir du chemin d'accès
+        foreach ($results as &$row) {
+            $imagePath = $row['image'];
+            if (file_exists($imagePath)) {
+                // Lire le fichier et encoder en base64
+                $imageData = file_get_contents($imagePath);
+                $row['image'] = 'data:image/jpeg;base64,' . base64_encode($imageData);
+            } else {
+                // Gérer l'absence de fichier d'image
+                $row['image'] = null;
+            }
+        }
+
+        return $results;
     }
+
 
     public function getCommads($id, $date){
         $sql = "SELECT commande_utilisateur_jour(:id_du_client, :date)";
@@ -109,6 +124,15 @@ class ModelClient {
 
         $stmt = $this->connexion->prepare($sql);
         $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function promotion(){
+        $sql = "SELECT * FROM promotion ORDER BY date_debut DESC";
+
+        $stmt = $this->connexion->prepare($sql);
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
