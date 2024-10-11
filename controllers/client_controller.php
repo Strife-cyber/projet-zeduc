@@ -24,4 +24,12 @@ class ClientController{
     public function getCommandes($id, $date){
         return $this->client->getCommads($id, $date);
     }
+
+    public function parrainage($code, $id){
+        $this->client->parrainage($code, $id);
+    }
+
+    public function fiole($id){
+        return $this->client->fiole($id);
+    }
 }

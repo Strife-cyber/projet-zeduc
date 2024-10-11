@@ -1,6 +1,7 @@
 <?php
 
 include_once 'config.php';
+include_once './parameters/parameters.php';
 
 class ModelClient {
     private $connexion;
@@ -10,6 +11,13 @@ class ModelClient {
     }
 
     public function createClient($id, $nom, $email, $secret){
+        $users = $this->getAllClients();
+
+        foreach($users as $user){
+            if($user['email'] == $email){
+                return null;
+            }
+        }
         $sql = "SELECT inscrire_client(:id_client, :nom_client, :email_client, :secret_client)";
 
         $stmt = $this->connexion->prepare($sql);
@@ -37,6 +45,19 @@ class ModelClient {
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+// code_parrain code_domain, id VARCHAR, points_ajouter INT
+
+    public function parrainage($code, $id){
+        $parrain = getParametre()->getParrain();
+        $sql = "SELECT ajouter_parrain(:id_client, :code, :points_parrain)";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':code', $code);
+        $stmt->bindParam(':id_client', $id);
+        $stmt->bindParam(':points_parrain', $parrain);
+
+        $stmt->execute();
     }
 
     public function connexion($email, $password){
@@ -70,6 +91,16 @@ class ModelClient {
 
         $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function fiole($id){
+        $sql = "SELECT * FROM get_fiole(:id)";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
