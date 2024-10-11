@@ -35,7 +35,8 @@ function routeRequest() {
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
                 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-                $response = $controller->signup($id, $name, $email, $password);
+                $controller->signup($id, $name, $email, $password);
+                $response = $controller->login($email, $password);
 
                 echo json_encode($response);
             } else {

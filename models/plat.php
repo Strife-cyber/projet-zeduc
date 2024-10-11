@@ -9,32 +9,29 @@ class ModelPlat {
         $this->connection = Database::getInstance()->getConnection();
     }
 
-    private function insererPlat($id, $path, $nom, $prix){
+    // Method to insert a dish into the database with image as byte array
+    private function insererPlat($id, $imageData, $nom, $prix){
         $sql = "INSERT INTO plat(id_plat, image, nom, prix) VALUES (:id, :image, :nom, :prix)";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':image', $path);
+        $stmt->bindParam(':image', $imageData, PDO::PARAM_LOB); // Use PDO::PARAM_LOB to handle binary data
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prix', $prix);
         return $stmt->execute();
     }
 
-    private function saveImage($imagePath, $path, $nom){
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-        $targetFile = $path . '/' . basename($nom);
-        return copy($imagePath, $targetFile); // Use copy to handle the image
+    // Method to read the image file as a byte array
+    private function getImageAsByteArray($imagePath) {
+        return file_get_contents($imagePath); // Reads the file as binary data
     }
 
+    // Creates a new dish entry with the image stored as byte array
     public function createPlat($id, $imagePath, $nom, $prix){
-        $path = 'uploads/images/' . basename($nom);
-        if ($this->saveImage($imagePath, 'uploads/images', $nom)) {
-            return $this->insererPlat($id, $path, $nom, $prix);
-        }
-        return false;
+        $imageData = $this->getImageAsByteArray($imagePath);
+        return $this->insererPlat($id, $imageData, $nom, $prix);
     }
 
+    // Retrieve a dish by its ID
     public function getPlatById($id){
         $sql = "SELECT * FROM plat WHERE id_plat = :id";
         $stmt = $this->connection->prepare($sql);
@@ -43,6 +40,7 @@ class ModelPlat {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Retrieve all dishes
     public function getAllPlats(){
         $sql = "SELECT * FROM plat";
         $stmt = $this->connection->prepare($sql);
@@ -50,6 +48,7 @@ class ModelPlat {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Update a dish with a new image (optional) and new details
     public function updatePlat($id, $imagePath, $nom, $prix){
         $sql = "UPDATE plat SET nom = :nom, prix = :prix WHERE id_plat = :id";
         $stmt = $this->connection->prepare($sql);
@@ -60,24 +59,24 @@ class ModelPlat {
         if ($stmt->execute()) {
             // If a new image is provided, update the image
             if ($imagePath) {
-                $path = 'uploads/images/' . basename($nom);
-                $this->saveImage($imagePath, 'uploads/images', $nom);
-                // Update the image path in the database
-                $this->updateImagePath($id, $path);
+                $imageData = $this->getImageAsByteArray($imagePath);
+                $this->updateImageData($id, $imageData);
             }
             return true;
         }
         return false;
     }
 
-    private function updateImagePath($id, $path){
+    // Update the image data in the database
+    private function updateImageData($id, $imageData){
         $sql = "UPDATE plat SET image = :image WHERE id_plat = :id";
         $stmt = $this->connection->prepare($sql);
-        $stmt->bindParam(':image', $path);
+        $stmt->bindParam(':image', $imageData, PDO::PARAM_LOB); // Use PDO::PARAM_LOB for binary data
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
 
+    // Delete a dish by its ID
     public function deletePlat($id){
         $sql = "DELETE FROM plat WHERE id_plat = :id";
         $stmt = $this->connection->prepare($sql);
@@ -90,9 +89,9 @@ class ModelPlat {
 
 function testCreatePlat() {
     $modelPlat = new ModelPlat();
-    // Chemin complet vers l'image, y compris le nom du fichier et l'extension
+    // Chemin complet vers l'image
     $imagePath = 'C:/Users/Strife-Cyber/Desktop/Zeduc/zeduc-space/src/assets/IMG-20240919-WA0006.jpg';
-    $result = $modelPlat->createPlat(1, $imagePath, "IMG-20240919-WA0006.jpg", 1000);
+    $result = $modelPlat->createPlat(1, $imagePath, "Pizza Margherita", 1000);
     echo $result ? "Plat ajouté avec succès.<br>" : "Échec de l'ajout du plat.<br>";
 }
 
@@ -116,9 +115,8 @@ function testGetAllPlats() {
 
 function testUpdatePlat() {
     $modelPlat = new ModelPlat();
-    // Chemin complet vers l'image, y compris le nom du fichier et l'extension
     $imagePath = 'C:/Users/Strife-Cyber/Desktop/Zeduc/zeduc-space/src/assets/IMG-20240919-WA0006.jpg';
-    $result = $modelPlat->updatePlat(1, $imagePath, "IMG-20240919-WA0006.jpg", 1200);
+    $result = $modelPlat->updatePlat(1, $imagePath, "Pizza Margherita", 1200);
     echo $result ? "Plat mis à jour avec succès.<br>" : "Échec de la mise à jour du plat.<br>";
 }
 
@@ -137,4 +135,3 @@ if (php_sapi_name() == 'cli') {
     testUpdatePlat();
     testDeletePlat();
 }
-
