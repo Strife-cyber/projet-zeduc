@@ -33,7 +33,7 @@ $$ LANGUAGE plpgsql;
 
 -- 3. Menu du jour
 CREATE OR REPLACE FUNCTION menu_du_jour(jour DATE)
-    RETURNS TABLE(id_plat VARCHAR, image bytea, nom VARCHAR, prix INTEGER)
+    RETURNS TABLE(id_plat VARCHAR, image VARCHAR, nom VARCHAR, prix INTEGER)
     LANGUAGE plpgsql
 AS $$
 BEGIN

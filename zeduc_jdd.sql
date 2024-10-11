@@ -45,9 +45,9 @@ INSERT INTO employer (id_employer, admin) VALUES
 
 -- Insérer des plats
 INSERT INTO plat (id_plat, image, nom, prix) VALUES
-('plat001', decode('89504e470d0a1a0a0000000d4948445200000010000000100806000000ffb2000000000049454e44ae426082', 'hex'), 'Pizza Margherita', 1200),
-('plat002', decode('ffd8ffe000104a46494600010101004800480000ffdb00430008060607060508070707090a100a0a0909', 'hex'), 'Burger Classique', 1000),
-('plat003', decode('4749463839610a000e00b30000000000ffffff7f7f7f00ff000000ffff00ffffff002c000000000a000e00', 'hex'), 'Salade César', 900);
+('plat001', 'uploads/image/default.jpg', 'Pizza Margherita', 1200),
+('plat002', 'uploads/image/default.jpg', 'Burger Classique', 1000),
+('plat003', 'uploads/image/default.jpg', 'Salade César', 900);
 
 
 -- Insérer des commandes
