@@ -94,10 +94,10 @@ $$ LANGUAGE plpgsql;
 
 -- 7. fonction pour l'historique utilisateur
 CREATE OR REPLACE FUNCTION historique(id VARCHAR)
-RETURNS TABLE(nom VARCHAR, prix INTEGER, status BOOLEAN) AS $$
+RETURNS TABLE(nom VARCHAR, prix INTEGER, status BOOLEAN, date DATE) AS $$
     BEGIN
         RETURN QUERY
-        SELECT p.nom, p.prix, c.status
+        SELECT p.nom, p.prix, c.status, c.date_commande
         FROM commande c JOIN plat p ON c.id_plat = p.id_plat
         WHERE c.id_client = id ORDER BY c.date_commande;
     END ;
