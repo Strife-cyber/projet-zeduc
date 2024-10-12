@@ -4,7 +4,7 @@ const useMenu = () => {
 
     const fetchMenu = async () => {
         try {
-            const today = '2024-10-01'; //new Date().toLocaleDateString('en-CA');  // Current date with - instead of /// Current date as a string
+            const today = new Date().toLocaleDateString('en-CA');  // Current date with - instead of /// Current date as a string
             const request = `http://localhost/projet-zeduc/index.php/${today}/menu`;
             const response = await axios.get(request);
             console.log(response.data);

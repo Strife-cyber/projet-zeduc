@@ -12,7 +12,7 @@ import useHistory from "../../utilities/history_function";
 const NavBarComponent = ({switchPage}) => {
     const { user } = useUser();
     const { fetchCommand } = useCommand();
-    const { parrainage } = useParrain();
+    const { parrainage, message } = useParrain();
     const [command, setCommand] = useState([]);
     const { fetchFiole } = useFiole();
     const [fiole, setFiole] = useState([]);
@@ -24,6 +24,7 @@ const NavBarComponent = ({switchPage}) => {
     const parrainer = async () => {
         if (code) {
             await parrainage(code);
+            alert(message);
         }
     }
 
