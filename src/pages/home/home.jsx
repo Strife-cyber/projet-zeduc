@@ -1,20 +1,34 @@
-import AllCardsComponent from "../../components/meal_card/all_cards"
-import NavBarComponent from "../../components/nav_bar/nav_bar"
-import './home.css';
+import { useEffect, useState } from "react"
+import HomeMobilePage from "./home_mobile";
+import HomeDesktopPage from "./home_desktop";
+import FooterComponent from "../../components/footer/footer";
 
 const HomePage = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    const checkScreenSize = () => {
+        if(window.innerWidth <= 1000){
+            setIsMobile(true);
+        } else {
+            setIsMobile(false);
+        }
+    }
+
+    useEffect(() => {
+        checkScreenSize();
+
+        window.addEventListener("resize", checkScreenSize);
+
+        return () => {
+            window.removeEventListener("resize", checkScreenSize)
+        }
+    }, []);
+
     return (
-        <div className="home">
-            <div className="cards">
-                <div className="text-box">
-                    <h3>Menu du Jour</h3>
-                </div>
-                <AllCardsComponent/>
-            </div>
-            <div className="navs">
-                <NavBarComponent/>
-            </div>
-        </div>
+        <>
+            {isMobile? <HomeMobilePage/> : <HomeDesktopPage/>}
+            <FooterComponent/>
+        </>
     )
 }
 

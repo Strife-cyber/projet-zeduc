@@ -8,19 +8,22 @@ import InscriptionPage from './pages/inscription/inscription';
 import NavBarComponent from './components/nav_bar/nav_bar';
 import AllCardsComponent from './components/meal_card/all_cards';
 import './App.css';
+import HomeMobilePage from './pages/home/home_mobile';
 import HomePage from './pages/home/home';
+
 
 function App() {
   return (
     <UserProvider>
-      <Router>
+      {/*<Router>
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
           <Route path='/login' element={<ConnexionPage/>} />
           <Route path='/signup' element={<InscriptionPage/>}/>
           <Route path='/home' element={<HomePage/>}/>
         </Routes>
-      </Router>
+      </Router>*/}
+      <HomePage/>
     </UserProvider>
   );
 }

@@ -50,6 +50,14 @@
     transform: scale(1.02); /* Légère augmentation de la taille au survol */
 }
 
+.parrain-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 30vh;
+}
+
 .bar-label {
     display: flex;
     background-color: white;
