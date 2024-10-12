@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useUser } from "../contexts/user_context"
 import { v4 } from "uuid";
-import { axios } from "axios";
+import axios from "axios";
 
 const useReclamation = () => {
     const { user } = useUser();
@@ -9,6 +9,7 @@ const useReclamation = () => {
 
     const reclamation = async (description) => {
         const id = v4();
+        const userId = user.id || 'user001'
         const today = new Date().toLocaleDateString('en-CA');
 
         try{

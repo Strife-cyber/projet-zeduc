@@ -66,7 +66,17 @@ const FooterComponent = () => {
                             {mesReclamation.length > 0 ? (
                                 mesReclamation.map((rec, index) => (
                                     <p key={index} className="reclamation-text">
-                                        {rec}
+                                        <div className='row'>
+                                            <div className='col'>
+                                                {index}
+                                            </div>
+                                            <div className='col'>
+                                                {rec.description}
+                                            </div>
+                                            <div className='col'>
+                                                {rec.date_reclamation}
+                                            </div>
+                                        </div>
                                     </p>
                                 ))
                             ) : (

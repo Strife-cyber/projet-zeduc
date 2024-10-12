@@ -34,7 +34,7 @@ const AllCardsComponent = () => {
                     <MealCardComponent key={index} nom={m.nom} image={m.image} prix={m.prix} />
                 ))
             ) : (
-                <li style={{fontSize: '40px', listStyle: "none", color: 'white'}}>Aucun élément</li>
+                <li style={{fontSize: '40px', listStyle: "none", color: 'white', fontFamily: 'pacifico'}}>Aucun élément</li>
             )}
         </div>
     );

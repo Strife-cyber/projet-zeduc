@@ -53,7 +53,9 @@ const HomePage = () => {
                 ) : page === "promotion" ? (
                     <PromotionPage onOpen={onOpen} />
                 ) : (
-                    <div>Evenement page content here</div> // Add your "Evenement" content here
+                    <div style={{ minWidth: '100vh', minHeight: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{color: '#cfbd97', fontFamily: 'pacifico', fontSize: '30px'}}>Evenement page content here</div> // Add your "Evenement" content here
+                    </div>
                 )}
 
                 {/* Display modal navigation sheet when not closed */}
