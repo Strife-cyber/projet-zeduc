@@ -137,4 +137,39 @@ class ModelClient {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function insertreclamation($reclamation, $client, $description, $date_reclamation) {
+        // Statut de réclamation : initialisé à 'false' (reclamation non traitée)
+        $status = false;
+
+        $sql = "INSERT INTO Reclamation (id_reclamation, id_client, description, date_reclamation, statut)
+            VALUES (:reclamation, :client, :description, :date_reclamation, :statut)";
+
+        $stmt = $this->connexion->prepare($sql);
+
+        // Lier les paramètres avec leurs valeurs correspondantes
+        $stmt->bindParam(':reclamation', $reclamation);
+        $stmt->bindParam(':client', $client);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':date_reclamation', $date_reclamation);
+
+        // Utilisation explicite du type boolean pour le paramètre 'statut'
+        $stmt->bindParam(':statut', $status, PDO::PARAM_BOOL);
+
+        // Exécution de la requête
+        $stmt->execute();
+
+        return 'Reclamation deposée avec succès';
+    }
+
+
+    public function getReclamation($id){
+        $sql = "SELECT * FROM Reclamation WHERE id_client = :id";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

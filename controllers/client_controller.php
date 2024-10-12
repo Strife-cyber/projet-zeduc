@@ -40,4 +40,12 @@ class ClientController{
     public function promotion(){
         return $this->client->promotion();
     }
+
+    public function reclamation($reclamation, $client, $description, $date){
+        return $this->client->insertreclamation($reclamation, $client, $description, $date);
+    }
+
+    public function getReclamation($id){
+        return $this->client->getreclamation($id);
+    }
 }

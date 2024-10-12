@@ -134,6 +134,33 @@ function routeRequest() {
             }
             break;
 
+        case 'reclamation':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $id_reclamation = isset($_POST['id_reclamation']) ? $_POST['id_reclamation'] : '';
+                $id_client = isset($_POST['id_client']) ? $_POST['id_client'] : '';
+                $description = isset($_POST['description']) ? $_POST['description'] : '';
+                $date = isset($_POST['date']) ? $_POST['date'] : '';
+
+                $response = $controller->reclamation($id_reclamation, $id_client, $description, $date);
+                echo json_encode($response);
+            } else {
+                http_response_code(405); // Method Not Allowed
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
+        case 'mes_reclamation':
+            $id = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null;
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $response = $controller->getReclamation($id);
+                echo json_encode($response);
+            } else {
+                http_response_code(405);
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
+
         default:
             http_response_code(404);
             echo json_encode(['error' => 'Not Found']);
