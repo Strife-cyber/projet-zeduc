@@ -9,7 +9,7 @@ import Page1 from "./page_content_1";
 import Page2 from "./page_content_2";
 import useHistory from "../../utilities/history_function";
 
-const NavBarComponent = () => {
+const NavBarComponent = ({switchPage}) => {
     const { user } = useUser();
     const { fetchCommand } = useCommand();
     const { parrainage } = useParrain();
@@ -59,7 +59,7 @@ const NavBarComponent = () => {
     const renderPageContent = () => {
         switch (currentPage) {
             case 1:
-                return <Page1 user={user} command={command} />;
+                return <Page1 user={user} command={command} switchPage={switchPage}/>;
             case 2:
                 return <Page2 fiole={fiole} code={code} setCode={setCode} parrainer={parrainer} history={history}/>;
             default:

@@ -1,0 +1,25 @@
+.quiz-container{
+    max-width: 450px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.size{
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.quiz-options {
+    list-style-type: none; /* Supprime les puces */
+    padding: 0; /* Supprime le remplissage par défaut */
+    margin: 0; /* Supprime la marge par défaut */
+}
+
+.quiz-options li {
+    display: inline-block; /* Affiche les options en ligne */
+    margin: 5px; /* Espace entre les boutons */
+}

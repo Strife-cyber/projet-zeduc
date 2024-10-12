@@ -1,0 +1,32 @@
+[
+    {
+        "question": "Quelle est la capitale de la France?",
+        "options": ["Paris", "Londres", "Berlin", "Madrid"],
+        "answer": "Paris"
+    },
+    {
+        "question": "Qui a écrit 'Roméo et Juliette'?",
+        "options": ["Charles Dickens", "William Shakespeare", "Mark Twain", "J.K. Rowling"],
+        "answer": "William Shakespeare"
+    },
+    {
+        "question": "Quelle est la plus grande planète du système solaire?",
+        "options": ["Terre", "Mars", "Jupiter", "Saturne"],
+        "answer": "Jupiter"
+    },
+    {
+        "question": "En quelle année l'homme a-t-il marché sur la lune?",
+        "options": ["1965", "1969", "1972", "1980"],
+        "answer": "1969"
+    },
+    {
+        "question": "Quel est le langage de programmation utilisé pour développer React?",
+        "options": ["Java", "C#", "JavaScript", "Python"],
+        "answer": "JavaScript"
+    },
+    {
+        "question": "Quelle est la monnaie du Japon?",
+        "options": ["Yen", "Dollar", "Euro", "Won"],
+        "answer": "Yen"
+    }
+]

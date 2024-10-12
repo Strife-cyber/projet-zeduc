@@ -10,6 +10,9 @@ import AllCardsComponent from './components/meal_card/all_cards';
 import './App.css';
 import HomeMobilePage from './pages/home/home_mobile';
 import HomePage from './pages/home/home';
+import PromotionPage from './pages/home/promotion';
+import MemoryGame from './jeux/memory_match/component/memory_game';
+import Quiz from './jeux/quiz/quiz_game';
 
 
 function App() {
@@ -23,7 +26,6 @@ function App() {
           <Route path='/home' element={<HomePage/>}/>
         </Routes>
       </Router>*/}
-      <HomePage/>
     </UserProvider>
   );
 }

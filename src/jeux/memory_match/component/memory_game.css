@@ -1,0 +1,176 @@
+.game-board {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #cfbd97;
+    max-width: 100vh;
+    transition: background-color 0.5s ease; /* Smooth background color transition */
+}
+
+.game-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    max-width: 100vh;
+}
+
+.memory-game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Default for larger screens */
+    grid-template-rows: repeat(3, 1fr); /* Default for larger screens */
+    gap: 10px; /* Adds space between cards */
+    margin: auto;
+    min-height: 70vh;
+}
+
+/* For small screens, 2 columns and 6 rows */
+@media (max-width: 600px) {
+    .memory-game {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        grid-template-rows: repeat(6, 1fr); /* 6 rows */
+    }
+}
+
+
+.win-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: green;
+    opacity: 0;
+    animation: fadeIn 2s forwards ease-in-out; /* Win message fades in */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: modalFadeIn 1s forwards ease-in-out; /* Modal fade-in animation */
+}
+
+@keyframes modalFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    animation: scaleUp 0.5s forwards ease-in-out; /* Modal zoom-in animation */
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {body {
+        font-family: 'Aguafina Script', cursive; /* If you prefer similar fonts */
+        background-color: #f7f3e9;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .game-container {
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .game-header {
+        margin-bottom: 20px;
+    }
+    
+    .game-header h1 {
+        font-size: 2.5rem;
+        color: #cfbd97;
+    }
+    
+    .game-header p {
+        font-size: 1.2rem;
+        color: #6c757d;
+    }
+    
+    .game-board {
+        background-color: white;
+        border: 2px solid #cfbd97;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .memory-game {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 columns */
+        grid-template-rows: repeat(3, 1fr); /* 3 rows */
+        gap: 10px; /* Adds space between cards */
+        margin: auto;
+    }
+    
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: #cfbd97;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    
+    button:hover {
+        background-color: #b9a07c;
+    }
+    
+        transform: scale(1);
+    }
+}
