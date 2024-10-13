@@ -1,0 +1,102 @@
+.food-adder-component{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.add-meal-card{
+    background-color: white;
+    width: 40vh;
+    height: 70vh;
+    border: 2px dashed black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-container{
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #cfbd97;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meal-card{
+    width: 40vh;
+    height: 70vh;
+    background-color: white;
+}
+
+#modal-meal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.children{
+    width: 80%;
+}
+
+.meal-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.meal-list-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Smooth scrolling effect */
+}
+
+.meal-list {
+    display: flex;
+    gap: 20px; /* Space between meal cards */
+    width: max-content;
+}
+
+.meal-card {
+    flex-shrink: 0; /* Prevent shrinking */
+    width: 200px; /* Adjust based on your design */
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.add-new-meal {
+    flex-shrink: 0;
+    width: 200px;
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.slide-left, .slide-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #cfbd97; /* Customize button color */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.slide-left {
+    left: 10px;
+}
+
+.slide-right {
+    right: 10px;
+}

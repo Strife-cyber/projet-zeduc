@@ -18,6 +18,7 @@ import './App.css';
 import EmployerTableComponent from './components/table/employer_table';
 import NavEmployerComponent from './components/nav_bar/nav_employer';
 import HomeEmployerPage from './pages/employer/home_employer';
+import FoodAdderComponent from './components/food_adder/food_adder';
 
 function App() {
   return (
