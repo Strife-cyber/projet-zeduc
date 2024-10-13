@@ -2,14 +2,9 @@
 
 include_once 'controllers/client_controller.php';
 
-function routeRequest() {
+function routeRequest($uriParts) {
     $controller = new ClientController();
 
-    // Get the requested URI
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
-    // Split the URI to get the last part (after the last '/')
-    $uriParts = explode('/', trim($uri, '/')); // Trim slashes and split
     $lastPart = end($uriParts); // Get the last part of the URI
 
     // Simple routing logic

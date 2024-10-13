@@ -74,6 +74,30 @@ class ModelEmployer {
 
         return "Employer supprimé";
     }
+
+    public function getCommande($date){
+        $sql = "SELECT c.id_commande, u.nom, p.nom as plat, c.status, p.prix FROM commande c 
+                JOIN utilisateur u ON c.id_client = u.id
+                JOIN plat p ON c.id_plat = p.id_plat
+                WHERE date_commande = :date";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':date', $date);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateCommade($id){
+        $sql = "UPDATE commande SET status = true WHERE id_commande = :id";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+
+        return 'complete';
+    }
 }
 
 // Fonctions de test
