@@ -8,12 +8,14 @@ import '../accueil/accueil_mobile.css';
 import './connexion_mobile.css';
 import './connexion_desktop.css';
 import { useNavigate } from 'react-router';
+import { useUser } from '../../../contexts/user_context';
 
 const ConnexionMobilePage = () => {
     const { login, message } = useLogin(); // Extract the login function and message
     const [email, setEmail] = useState(''); // State for the email
     const [password, setPassword] = useState(''); // State for the password
     const navigate = useNavigate();
+    const { user } = useUser();
 
     const toInscription = () => {
         navigate('/signup');
@@ -22,7 +24,9 @@ const ConnexionMobilePage = () => {
     const handleLogin = async () => {
         try {
             await login(email, password); // Call the login function with email and password
-            navigate('/manager');
+            if (user){
+                navigate('/manager');
+            }
         } catch (error) {
             console.error('Login failed:', error);
         }

@@ -13,12 +13,16 @@ import PromotionPage from './pages/client/home/promotion';
 import MemoryGame from './jeux/memory_match/component/memory_game';
 import Quiz from './jeux/quiz/quiz_game';
 import Manager from './pages/manager/manager';
-
+import TableComponent from './components/table/table';
+import './App.css';
+import EmployerTableComponent from './components/table/employer_table';
+import NavEmployerComponent from './components/nav_bar/nav_employer';
+import HomeEmployerPage from './pages/employer/home_employer';
 
 function App() {
   return (
     <UserProvider>
-      <Router>
+      {/*<Router>
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
           <Route path='/login' element={<ConnexionPage/>} />
@@ -26,7 +30,8 @@ function App() {
           <Route path='/home' element={<HomePage/>}/>
           <Route path='/manager' element={<Manager/>}/>
         </Routes>
-      </Router>
+      </Router>*/}
+      <HomeEmployerPage/>
     </UserProvider>
   );
 }

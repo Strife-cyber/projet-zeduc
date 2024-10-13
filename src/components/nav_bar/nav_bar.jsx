@@ -65,6 +65,7 @@ const NavBarComponent = ({switchPage}) => {
                 return <Page2 fiole={fiole} code={code} setCode={setCode} parrainer={parrainer} history={history}/>;
             default:
                 return <Page1 user={user} command={command} />;
+                
         }
     };
 

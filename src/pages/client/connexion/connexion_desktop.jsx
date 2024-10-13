@@ -7,12 +7,14 @@ import useLogin from '../../../utilities/login_function'; // Adjust the path to 
 import '../accueil/accueil_desktop.css';
 import './connexion_desktop.css';
 import { useNavigate } from 'react-router';
+import { useUser } from '../../../contexts/user_context';
 
 const ConnexionDesktopPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { login, message } = useLogin(); // Using the useLogin hook
     const navigate = useNavigate();
+    const { user } = useUser();
 
     const toInscription = () => {
         navigate('/signup');
@@ -23,7 +25,9 @@ const ConnexionDesktopPage = () => {
             await login(email, password); // Call the login function from the hook
             setEmail(''); // Clear email input
             setPassword(''); // Clear password input
-            navigate('/manager');
+            if(user){
+                navigate('/manager');
+            }
         } catch (error) {
             console.error("Login error:", error); // Optional: Log the error for debugging
         }

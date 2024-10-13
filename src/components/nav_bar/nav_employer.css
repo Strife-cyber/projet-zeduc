@@ -1,0 +1,133 @@
+/* Global Styles for the Navbar */
+.nav-employer {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 12vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    width: 100%;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.zeduc-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-left: 10px;
+}
+
+/* Menu Toggle for Mobile */
+.menu-toggle {
+    font-size: 30px;
+    margin-right: 15px;
+    margin-top: 10px;
+    color: #cfbd97;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* Hidden on desktop */
+}
+
+.spacer{
+    height: 1px;
+    width: 50%;
+}
+
+/* Desktop Menu */
+.desktop-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.men-item {
+    margin-right: 20px;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #cfbd97;
+    font-size: 16px;
+    font-family: 'Montaga';
+}
+
+.menu-link:hover {
+    color: white;
+}
+
+/* Modal Menu for Mobile */
+.menu-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.menu-modal.open {
+    display: flex;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.mobile-menu {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.men-item {
+    margin: 20px 0;
+}
+
+.menu-link {
+    color: #cfbd97;
+    font-size: 14px;
+    margin-right: 20px;
+}
+
+.menu-link:hover {
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-container{
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .spacer{
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+}
