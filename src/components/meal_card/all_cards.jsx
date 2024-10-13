@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useMenu from "../../utilities/menu_function";
+import useMenu from "../../utilities/client/menu_function";
 import MealCardComponent from "./meal_card";
 
 const AllCardsComponent = () => {

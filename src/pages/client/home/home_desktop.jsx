@@ -1,5 +1,5 @@
-import AllCardsComponent from "../../components/meal_card/all_cards"
-import NavBarComponent from "../../components/nav_bar/nav_bar"
+import AllCardsComponent from "../../../components/meal_card/all_cards"
+import NavBarComponent from "../../../components/nav_bar/nav_bar"
 import './home_desktop.css';
 
 const HomeDesktopPage = ({ switchPage }) => {

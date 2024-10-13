@@ -1,7 +1,7 @@
 import React from 'react';
 import './accueil_desktop.css';
-import ImageSlider from '../../components/images_slider/images_slider';
-import CircleLogoComponent from '../../components/circle_logo/circle_logo';
+import ImageSlider from '../../../components/images_slider/images_slider';
+import CircleLogoComponent from '../../../components/circle_logo/circle_logo';
 import { useNavigate } from 'react-router';
 
 const AccueilDesktopPage = () => {

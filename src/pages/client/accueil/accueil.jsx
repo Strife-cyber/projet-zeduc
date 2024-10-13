@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-import InscriptionMobilePage from "./inscription_mobile";
-import InscriptionDesktopPage from "./inscription_desktop";
-import FooterComponent from "../../components/footer/footer";
+import React, { useState, useEffect } from "react";
+import AccueilMobilePage from "./accueil_mobile";
+import AccueilDesktopPage from "./accueil_desktop";
+import FooterComponent from "../../../components/footer/footer";
 
-const InscriptionPage = () => {
+const AccueilPage = () => {
     const [isMobile, setIsMobile] = useState(false);
 
+    // Fonction pour vérifier la taille de l'écran
     const checkScreenSize = () => {
         if (window.innerWidth <= 1000) {
             setIsMobile(true);
@@ -29,10 +30,10 @@ const InscriptionPage = () => {
 
     return (
         <>
-            {isMobile ? <InscriptionMobilePage /> : <InscriptionDesktopPage />}
-            <FooterComponent />
+            {isMobile ? <AccueilMobilePage /> : <AccueilDesktopPage />}
+            <FooterComponent/>
         </>
     );
 };
 
-export default InscriptionPage;
+export default AccueilPage;

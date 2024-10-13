@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 400px;
+    min-width: 350px;
     background-color: black;
     animation: fadeInMobile 1s ease-in-out forwards;
 }

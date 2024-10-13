@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import HomeMobilePage from "./home_mobile";
 import HomeDesktopPage from "./home_desktop";
-import FooterComponent from "../../components/footer/footer";
+import FooterComponent from "../../../components/footer/footer";
 import PromotionPage from "./promotion";
-import NavBarComponent from "../../components/nav_bar/nav_bar";
+import NavBarComponent from "../../../components/nav_bar/nav_bar";
 import './home_desktop.css';
 
 const HomePage = () => {

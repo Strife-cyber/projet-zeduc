@@ -16,9 +16,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    opacity: 0; /* Définissez l'opacité initialement à 0 */
     transform: translateY(20px); /* Déplacez légèrement vers le bas pour l'effet d'entrée */
-    animation: fadeIn 4s forwards; /* Appliquez l'animation fadeIn */
 }
 
 @keyframes fadeIn {

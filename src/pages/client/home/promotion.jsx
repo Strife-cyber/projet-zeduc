@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import usePromotion from "../../utilities/promotion";
+import usePromotion from "../../../utilities/client/promotion";
 import './home_mobile.css';
 import './home_desktop.css';
 import './promotion.css';

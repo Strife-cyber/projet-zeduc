@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import CircleLogoComponent from '../../components/circle_logo/circle_logo';
-import TextFieldComponent from '../../components/text_field/text_field';
-import ButtonComponent from '../../components/button/button';
-import useSignUp from '../../utilities/signup_function'; // Import the signup hook
-import MessageComponent from '../../components/message/message'; // Import the message component for feedback
+import CircleLogoComponent from '../../../components/circle_logo/circle_logo';
+import TextFieldComponent from '../../../components/text_field/text_field';
+import ButtonComponent from '../../../components/button/button';
+import useSignUp from '../../../utilities/client/signup_function'; // Import the signup hook
+import MessageComponent from '../../../components/message/message'; // Import the message component for feedback
 import '../accueil/accueil_mobile.css';
 import '../connexion/connexion_desktop.css';
 import '../connexion/connexion_mobile.css';
@@ -35,6 +35,7 @@ const InscriptionMobilePage = () => {
             setPassword('');
             setReenterPassword('');
             navigate('/home');
+            alert(message)
         } catch (error) {
             console.error('Signup failed:', error);
         }
@@ -62,6 +63,7 @@ const InscriptionMobilePage = () => {
                     />
                     <TextFieldComponent
                         width='70%'
+                        inputType='password'
                         placeholder='Entrez votre mot de passe'
                         type='password'
                         value={password} // Bind the password state
@@ -69,6 +71,7 @@ const InscriptionMobilePage = () => {
                     />
                     <TextFieldComponent
                         width='70%'
+                        inputType='password'
                         placeholder='Confirmez votre mot de passe'
                         type='password'
                         value={reenterPassword} // Bind the reenterPassword state
@@ -76,7 +79,7 @@ const InscriptionMobilePage = () => {
                     />
                 </div>
                 <div className="button-contain">
-                    <ButtonComponent height='40px' placeholder="Inscription" onClick={handleSignUp} />
+                    <ButtonComponent height='40px' placeholder="Inscription" onClickFunction={handleSignUp} />
                 </div>
             </div>
             {message && <MessageComponent message={message} type={message.includes('successful') ? 'success' : 'error'} />} {/* Display feedback message */}

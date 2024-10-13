@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useUser } from "../contexts/user_context"
+import { useUser } from "../../contexts/user_context"
 
 const useHistory = () => {
     const { user } = useUser();

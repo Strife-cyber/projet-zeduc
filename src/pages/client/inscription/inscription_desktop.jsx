@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import ButtonComponent from "../../components/button/button";
-import CircleLogoComponent from "../../components/circle_logo/circle_logo";
-import TextFieldComponent from "../../components/text_field/text_field";
-import MessageComponent from "../../components/message/message"; // Import your message component
-import useSignUp from '../../utilities/signup_function'; // Import the signup hook
+import ButtonComponent from "../../../components/button/button";
+import CircleLogoComponent from "../../../components/circle_logo/circle_logo";
+import TextFieldComponent from "../../../components/text_field/text_field";
+import MessageComponent from "../../../components/message/message"; // Import your message component
+import useSignUp from '../../../utilities/client/signup_function'; // Import the signup hook
 import '../connexion/connexion_desktop.css';
 import { useNavigate } from 'react-router';
 
@@ -32,6 +32,7 @@ const InscriptionDesktopPage = () => {
             setPassword(''); // Clear password input
             setReenterPassword(''); // Clear re-enter password input
             navigate('/home');
+            alert(message)
         } catch (error) {
             console.error("Signup error:", error); // Optional: Log the error for debugging
         }

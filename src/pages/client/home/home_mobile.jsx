@@ -1,4 +1,4 @@
-import AllCardsComponent from "../../components/meal_card/all_cards";
+import AllCardsComponent from "../../../components/meal_card/all_cards";
 import './home_mobile.css';
 
 const HomeMobilePage = ({ onOpen }) => {  // Destructuring the prop here

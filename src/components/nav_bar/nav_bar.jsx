@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../contexts/user_context";
 import './nav_bar.css';
-import useCommand from "../../utilities/command_function";
-import useFiole from "../../utilities/fiole_function";
-import useParrain from "../../utilities/parrain_function";
+import useCommand from "../../utilities/client/command_function";
+import useFiole from "../../utilities/client/fiole_function";
+import useParrain from "../../utilities/client/parrain_function";
 import Page1 from "./page_content_1";
 import Page2 from "./page_content_2";
-import useHistory from "../../utilities/history_function";
+import useHistory from "../../utilities/client/history_function";
 
 const NavBarComponent = ({switchPage}) => {
     const { user } = useUser();

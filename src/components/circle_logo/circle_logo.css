@@ -1,31 +1,29 @@
 @keyframes slideIn {
     from {
-        transform: translateX(100%); /* Starts outside the screen to the right */
-        opacity: 0; /* Starts transparent */
+        transform: translateX(100%);
+        opacity: 0;
     }
     to {
-        transform: translateX(0); /* Moves to its original position */
-        opacity: 1; /* Becomes fully opaque */
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
-@keyframes spin {
+@keyframes spin-me {
     0% {
         transform: rotateY(0deg); /* Start position */
     }
     100% {
-        transform: rotateY(180deg); /* Flip halfway (180 degrees) */
+        transform: rotateY(360deg); /* Full 360-degree spin around the Y-axis */
     }
 }
 
 .logo-circle {
-    perspective: 1000px; /* Add perspective for 3D effect */
+    perspective: 1000px; /* Adds 3D perspective */
 }
 
 .logo-image {
     transition: transform 4s ease; /* Smooth transition for the rotation */
-}
-
-.logo-image:hover {
-    transform: rotateY(180deg); /* Apply the Y-axis rotation on hover */
+    transform-style: preserve-3d; /* Ensures the image transforms in 3D */
+    animation: spin-me 4s linear infinite; /* Continuous spinning animation */
 }

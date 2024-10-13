@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useUser } from "../contexts/user_context";
+import { useUser } from "../../contexts/user_context";
 import { v4 as uuidv4 } from "uuid";
-import hashString from "./hash";
+import hashString from "../hash";
 import axios from "axios";
 
 const useSignUp = () => {
@@ -30,13 +30,10 @@ const useSignUp = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
+            console.log(response.data)
 
-            if (response.data == true){
-                setUser({'id': id, 'name': username, 'email': email});
-                setMessage('Connection Successful');
-            } else {
-                setMessage('An error occured. That is all we know')
-            }
+            setUser(response.data);
+            setMessage('Connection Successful');
         } catch(error) {
             console.error('Login failed:', error.response ? error.response.data : error.message);
             setMessage('Login failed! Please check your credentials.'); // Set error message

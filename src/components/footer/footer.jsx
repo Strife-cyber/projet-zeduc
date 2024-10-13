@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ButtonComponent from '../button/button';
-import useReclamation from '../../utilities/reclamation';
-import useMesReclamation from '../../utilities/mes_reclamation';
+import useReclamation from '../../utilities/client/reclamation';
+import useMesReclamation from '../../utilities/client/mes_reclamation';
 
 const FooterComponent = () => {
     const { reclamation, message } = useReclamation();
@@ -65,7 +65,7 @@ const FooterComponent = () => {
                         <div className="overflow-auto reclamation-history" style={{ maxHeight: '150px' }}>
                             {mesReclamation.length > 0 ? (
                                 mesReclamation.map((rec, index) => (
-                                    <p key={index} className="reclamation-text">
+                                    <div key={index} className="reclamation-text">
                                         <div className='row'>
                                             <div className='col'>
                                                 {index}
@@ -77,7 +77,7 @@ const FooterComponent = () => {
                                                 {rec.date_reclamation}
                                             </div>
                                         </div>
-                                    </p>
+                                    </div>
                                 ))
                             ) : (
                                 <p className="reclamation-text">Aucune réclamation pour l'instant.</p>

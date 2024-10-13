@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import CircleLogoComponent from '../../components/circle_logo/circle_logo';
-import TextFieldComponent from '../../components/text_field/text_field';
-import ButtonComponent from '../../components/button/button';
-import useLogin from '../../utilities/login_function'; // Import the login hook
-import MessageComponent from '../../components/message/message'; // Import the message component for feedback
+import CircleLogoComponent from '../../../components/circle_logo/circle_logo';
+import TextFieldComponent from '../../../components/text_field/text_field';
+import ButtonComponent from '../../../components/button/button';
+import useLogin from '../../../utilities/login_function'; // Import the login hook
+import MessageComponent from '../../../components/message/message'; // Import the message component for feedback
 import '../accueil/accueil_mobile.css';
 import './connexion_mobile.css';
 import './connexion_desktop.css';
@@ -22,7 +22,7 @@ const ConnexionMobilePage = () => {
     const handleLogin = async () => {
         try {
             await login(email, password); // Call the login function with email and password
-            navigate('/home');
+            navigate('/manager');
         } catch (error) {
             console.error('Login failed:', error);
         }
@@ -44,6 +44,7 @@ const ConnexionMobilePage = () => {
                     />
                     <TextFieldComponent
                         width='70%'
+                        inputType='password'
                         placeholder='Entrez votre mot de passe'
                         type='password'
                         value={password} // Bind the password state
@@ -52,7 +53,7 @@ const ConnexionMobilePage = () => {
                 </div>
                 <p className="text-end">Mot de passe oublié ?</p>
                 <div className="button-contain">
-                    <ButtonComponent height='40px' placeholder="Connexion" onClick={handleLogin} />
+                    <ButtonComponent height='40px' placeholder="Connexion" onClickFunction={handleLogin} />
                 </div>
             </div>
             {message && <MessageComponent message={message} type={message.includes('successful') ? 'success' : 'error'} />} {/* Display feedback message */}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useUser } from "../contexts/user_context"
+import { useUser } from "../../contexts/user_context"
 import { v4 } from "uuid";
 import axios from "axios";
 

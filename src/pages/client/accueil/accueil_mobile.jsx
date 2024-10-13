@@ -1,13 +1,13 @@
 import React from "react";
-import CircleLogoComponent from "../../components/circle_logo/circle_logo";
+import CircleLogoComponent from "../../../components/circle_logo/circle_logo";
 import './accueil_mobile.css';
 
-import image1 from '../../assets/img-1.jpg';
-import image2 from '../../assets/img-2.jpg';
-import image3 from '../../assets/img-3.jpg';
-import image4 from '../../assets/img-4.jpg';
-import image5 from '../../assets/img-5.jpg';
-import image6 from '../../assets/img-6.jpg';
+import image1 from '../../../assets/img-1.jpg';
+import image2 from '../../../assets/img-2.jpg';
+import image3 from '../../../assets/img-3.jpg';
+import image4 from '../../../assets/img-4.jpg';
+import image5 from '../../../assets/img-5.jpg';
+import image6 from '../../../assets/img-6.jpg';
 import { useNavigate } from "react-router";
 
 const AccueilMobilePage = () => {

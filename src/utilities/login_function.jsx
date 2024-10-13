@@ -13,18 +13,18 @@ const useLogin = () => {
     const login = async (email, password) => {
         try {
             // hash the password first
-            const hashedPassword = await hashString(password);
+            //const hashedPassword = await hashString(password);
 
             // Créez un objet FormData
             const formData = new FormData();
             formData.append('email', email);
-            formData.append('password', hashedPassword);
+            formData.append('password', password);
 
             // Attendez 1 seconde
             await delay(1000);
-
+            
             // Envoyez la requête avec FormData
-            const response = await axios.post('http://localhost/projet-zeduc/index.php/login', formData, {
+            const response = await axios.post(`http://localhost/projet-zeduc/index.php/login`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data' // Assurez-vous d'indiquer le type de contenu
                 }
@@ -40,7 +40,7 @@ const useLogin = () => {
 
         } catch (error) {
             console.error('Login failed:', error.response ? error.response.data : error.message);
-            setMessage('Login failed! Please check your credentials.'); // Set error message
+            setMessage(`Login failed! ${error.response}`); // Set error message
             throw error;
         }
     };

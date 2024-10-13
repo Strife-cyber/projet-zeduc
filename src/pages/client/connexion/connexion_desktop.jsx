@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import ButtonComponent from "../../components/button/button";
-import CircleLogoComponent from "../../components/circle_logo/circle_logo";
-import TextFieldComponent from "../../components/text_field/text_field";
-import MessageComponent from "../../components/message/message"; // Import your message component
-import useLogin from '../../utilities/login_function'; // Adjust the path to your useLogin hook
+import ButtonComponent from "../../../components/button/button";
+import CircleLogoComponent from "../../../components/circle_logo/circle_logo";
+import TextFieldComponent from "../../../components/text_field/text_field";
+import MessageComponent from "../../../components/message/message"; // Import your message component
+import useLogin from '../../../utilities/login_function'; // Adjust the path to your useLogin hook
 import '../accueil/accueil_desktop.css';
 import './connexion_desktop.css';
 import { useNavigate } from 'react-router';
@@ -23,7 +23,7 @@ const ConnexionDesktopPage = () => {
             await login(email, password); // Call the login function from the hook
             setEmail(''); // Clear email input
             setPassword(''); // Clear password input
-            navigate('/home');
+            navigate('/manager');
         } catch (error) {
             console.error("Login error:", error); // Optional: Log the error for debugging
         }

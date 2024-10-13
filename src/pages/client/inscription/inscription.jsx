@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react"
-import ConnexionMobilePage from "./connexion_mobile";
-import ConnexionDesktopPage from "./connexion_desktop";
-import FooterComponent from "../../components/footer/footer";
+import { useState, useEffect } from "react";
+import InscriptionMobilePage from "./inscription_mobile";
+import InscriptionDesktopPage from "./inscription_desktop";
+import FooterComponent from "../../../components/footer/footer";
 
-const ConnexionPage = () => {
+const InscriptionPage = () => {
     const [isMobile, setIsMobile] = useState(false);
 
     const checkScreenSize = () => {
-        if(window.innerWidth <= 1000){
+        if (window.innerWidth <= 1000) {
             setIsMobile(true);
         } else {
             setIsMobile(false);
         }
-    }
+    };
 
     // Vérification de la taille de l'écran lors du chargement et redimensionnement de la fenêtre
     useEffect(() => {
@@ -29,10 +29,10 @@ const ConnexionPage = () => {
 
     return (
         <>
-            {isMobile? <ConnexionMobilePage/> : <ConnexionDesktopPage/>}
-            <FooterComponent/>
+            {isMobile ? <InscriptionMobilePage /> : <InscriptionDesktopPage />}
+            <FooterComponent />
         </>
     );
-}
+};
 
-export default ConnexionPage;
+export default InscriptionPage;

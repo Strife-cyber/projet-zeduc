@@ -1,11 +1,24 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Créer le contexte
+// Create the context
 const UserContext = createContext();
 
-// Créer un fournisseur de contexte
+// Create a context provider
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null); // État pour l'utilisateur
+    const [user, setUser] = useState(() => {
+        // Retrieve user data from session storage if available
+        const storedUser = sessionStorage.getItem('user');
+        return storedUser ? JSON.parse(storedUser) : null; // Parse JSON if it exists
+    });
+
+    // Update session storage whenever user changes
+    useEffect(() => {
+        if (user) {
+            sessionStorage.setItem('user', JSON.stringify(user)); // Store user in session storage
+        } else {
+            sessionStorage.removeItem('user'); // Remove user from session storage if null
+        }
+    }, [user]);
 
     return (
         <UserContext.Provider value={{ user, setUser }}>
@@ -14,7 +27,7 @@ export const UserProvider = ({ children }) => {
     );
 };
 
-// Hook personnalisé pour utiliser le contexte
+// Custom hook to use the context
 export const useUser = () => {
     return useContext(UserContext);
 };
