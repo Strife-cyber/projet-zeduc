@@ -14,6 +14,26 @@ class EmployeeController{
     }
 
     public function updateCommands($id){
-        return $this->employee->updateCommade($id);
+        return $this->employee->updateCommande($id);
+    }
+
+    public function getPlat(){
+        return $this->employee->getPlat();
+    }
+
+    public function insererPlat($id, $image, $nom, $prix){
+        return $this->employee->insererPlat($id, $image, $nom, $prix);
+    }
+
+    public function insererMenu($id, $date){
+        return $this->employee->insererMenu($id, $date);
+    }
+
+    public function deleteMenu($id, $date){
+        return $this->employee->delMenu($id, $date);
+    }
+
+    public function getMenu($date){
+        return $this->employee->getMenu($date);
     }
 }
