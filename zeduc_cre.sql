@@ -96,6 +96,15 @@ CREATE TABLE commande (
     status BOOLEAN NOT NULL
 );
 
+CREATE TABLE livreur (
+/*
+L'employee "id_employer" livreur de la commande "id_commande"
+*/
+    id_commande VARCHAR(255) REFERENCES commande(id_commande) NOT NULL ,
+    id_employer VARCHAR(255) REFERENCES employer(id_employer) NOT NULL ,
+    CONSTRAINT livreur_primary PRIMARY KEY (id_commande, id_employer)
+);
+
 CREATE TABLE menu (
 /*
 -- Le menu contenant un plat "id_plat" mis au menu le "date_menu"

@@ -49,3 +49,5 @@ DROP TABLE parrainage cascade ;
 
 DROP TABLE parametres cascade ;
 
+DROP TABLE livreur cascade ;
+

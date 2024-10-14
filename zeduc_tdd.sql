@@ -1,4 +1,5 @@
 -- fonctions importante pour le client
+
 -- 1. Code Parrainage
 -- Cette fonction génère un code unique pour chaque nouveau client. Elle récupère le plus grand code existant dans la table client
 --l'incremente et renvoie un nouveau code de 5 caractère, rempli avec des zéros à gauche si nécessaire.
@@ -154,6 +155,72 @@ BEGIN
     RETURN reset_token;
 END;
 $$;
+
+-- fonction importante pour les employer
+-- fonction de statistique
+-- 1. Plat populaire
+CREATE OR REPLACE FUNCTION plats_populaires()
+RETURNS TABLE(nom_plat VARCHAR, total_commande BIGINT) AS $$
+BEGIN
+    RETURN QUERY (
+        SELECT p.nom, COUNT(c.id_plat) AS total_commande
+        FROM plat p
+        JOIN commande c ON p.id_plat = c.id_plat
+        GROUP BY p.nom
+        ORDER BY total_commande DESC
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION reclamations_resolues()
+RETURNS INTEGER AS $$
+BEGIN
+    RETURN (
+        SELECT COUNT(*)
+        FROM Reclamation r
+        WHERE r.statut = TRUE
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION temps_moyen_traitement_reclamations()
+RETURNS INTERVAL AS $$
+BEGIN
+    RETURN (
+        SELECT AVG(r.date_reclamation - c.date_commande)
+        FROM Reclamation r
+        JOIN commande c ON r.id_client = c.id_client
+        WHERE r.statut = TRUE
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION details_temps_traitement_reclamations()
+RETURNS TABLE(id_reclamation VARCHAR, id_client VARCHAR, temps_traitement INTERVAL) AS $$
+BEGIN
+    RETURN QUERY (
+        SELECT
+            r.id_reclamation,
+            r.id_client,
+            (r.date_reclamation - c.date_commande) * INTERVAL '1 day' AS temps_traitement
+        FROM Reclamation r
+        JOIN commande c ON r.id_client = c.id_client
+        WHERE r.statut = TRUE
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION total_commandes_tous_employes()
+RETURNS TABLE(id_employer VARCHAR, total_commandes BIGINT) AS $$
+BEGIN
+    RETURN QUERY (
+        SELECT e.id_employer, COUNT(l.id_commande) AS total_commandes
+        FROM livreur l
+        JOIN employer e ON e.id_employer = l.id_employer
+        GROUP BY e.id_employer
+    );
+END;
+$$ LANGUAGE plpgsql;
 
 --Réinitialisation de mot de passe
 -- Cette fonction permet à un utilisateur de réinitialiser son mot de passe à l'aide d'un token valide et non expiré.
