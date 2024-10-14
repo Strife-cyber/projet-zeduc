@@ -13,8 +13,8 @@ class EmployeeController{
         return $this->employee->getCommande($date);
     }
 
-    public function updateCommands($id){
-        return $this->employee->updateCommande($id);
+    public function updateCommands($id, $livreur){
+        return $this->employee->updateCommande($id, $livreur);
     }
 
     public function getPlat(){
@@ -35,5 +35,21 @@ class EmployeeController{
 
     public function getMenu($date){
         return $this->employee->getMenu($date);
+    }
+
+    public function statisticPlat(){
+        return $this->employee->statisticPlat();
+    }
+
+    public function tempMoyen(){
+        return $this->employee->tempMoyen();
+    }
+
+    public function detailsTemp(){
+        return $this->employee->detailsTemp();
+    }
+
+    public function commandeLivrer(){
+        return $this->employee->commandeLivrer();
     }
 }

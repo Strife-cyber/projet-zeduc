@@ -30,15 +30,6 @@ class ModelClient {
         return $stmt->execute();
     }
 
-    public function getClientById($id){
-        $sql = "SELECT * FROM client c LEFT JOIN utilisateur u  ON c.id_client == u.id WHERE u.id = :id";
-
-        $stmt = $this->connexion->prepare($sql);
-        $stmt->bindParam(':id', $id);
-
-        return $stmt->execute();
-    }
-
     public function getAllClients(){
         $sql = "SELECT * FROM client c LEFT JOIN utilisateur u  ON c.id_client = u.id";
         $stmt = $this->connexion->prepare($sql);
@@ -65,6 +56,17 @@ class ModelClient {
         foreach($users as $user){
             if($user['email'] == $email && $user['secret'] == $password){
                 return $user;
+            }
+        }
+
+        $sql = "SELECT * FROM employer e LEFT JOIN utilisateur u ON e.id_employer = u.id";
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->execute();
+        $employers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($employers as $employer) {
+            if($employer['email'] == $email && $employer['secret'] == $password){
+                return $employer;
             }
         }
         return null;

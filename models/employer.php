@@ -25,12 +25,19 @@ class ModelEmployer {
     }
 
     // Mettre à jour le statut d'une commande
-    public function updateCommande($id) {
+    public function updateCommande($id, $livreur) {
         $sql = "UPDATE commande SET status = true WHERE id_commande = :id";
+        $sql2 = "INSERT INTO livreur(id_commande, id_employer) VALUES(:id_commande, :livreur)";
 
         $stmt = $this->connection->prepare($sql);
+        $stmt2 = $this->connection->prepare($sql2);
+
         $stmt->bindParam(':id', $id);
+        $stmt2->bindParam(':id_commande', $id);
+        $stmt2->bindParam(':livreur', $livreur);
+
         $stmt->execute();
+        $stmt2->execute();
 
         return 'Commande complétée';
     }
@@ -45,9 +52,6 @@ class ModelEmployer {
             return ['message' => 'true'];
         } catch (PDOException $e) {
             // Gérer l'erreur ici
-            if ($e->getCode() == 23505) { // Code d'erreur pour violation de clé unique
-                return ['message' => 'false'];
-            }
             return ['message' => 'false'];
         }
     }
@@ -140,5 +144,41 @@ class ModelEmployer {
         } else {
             return ['message' => 'false'];
         }
+    }
+
+    public function statisticPlat(){
+        $sql = "SELECT * FROM plats_populaires()";
+
+        $stmt = $this->connection->prepare($sql);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function tempMoyen(){
+        $sql = "SELECT * FROM temps_moyen_traitement_reclamations()";
+
+        $stmt = $this->connection->prepare($sql);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function detailsTemp(){
+        $sql = "SELECT * FROM details_temps_traitement_reclamations()";
+
+        $stmt = $this->connection->prepare($sql);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function commandeLivrer(){
+        $sql = "SELECT * FROM total_commandes_tous_employes()";
+
+        $stmt = $this->connection->prepare($sql);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

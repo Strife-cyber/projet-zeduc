@@ -56,7 +56,6 @@ function routeEmployerRequest($uriParts){
             }
             break;
 
-
         case 'inserer_menu':
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $id = isset($_POST['id']) ? $_POST['id'] : '';
@@ -64,6 +63,24 @@ function routeEmployerRequest($uriParts){
 
                 $response = $controller->insererMenu($id, $date);
                 echo json_encode($response);
+            } else {
+                http_response_code(405);
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
+        case 'statistique':
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $statistiques = [];  // Harmoniser avec l'utilisation ci-dessous
+
+                // Appelle chaque fonction et stocke les résultats
+                $statistiques['statisticPlat'] = $controller->statisticPlat();
+                $statistiques['tempMoyen'] = $controller->tempMoyen();
+                $statistiques['detailsTemp'] = $controller->detailsTemp();
+                $statistiques['commandeLivrer'] = $controller->commandeLivrer();
+
+                // Retourne toutes les données sous forme de réponse JSON
+                echo json_encode($statistiques);
             } else {
                 http_response_code(405);
                 echo json_encode(['error' => 'Method Not Allowed']);
@@ -105,9 +122,10 @@ function routeEmployerRequest($uriParts){
                 // Directly access 'id' from $_POST
                 if (isset($_POST['id'])) {
                     $id = $_POST['id'];
+                    $livreur = isset($_POST['livreur']) ? $_POST['livreur'] : '';
 
                     // Call the controller method to update the command
-                    $response = $controller->updateCommands($id);
+                    $response = $controller->updateCommands($id, $livreur);
 
                     // Return a success response
                     http_response_code(200); // Set the HTTP status code to 200
