@@ -103,6 +103,16 @@ function routeEmployerRequest($uriParts){
             }
             break;
 
+        case 'get_reclamation':
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $response = $controller->getReclamation();
+
+                echo json_encode($response);
+            } else {
+                http_response_code(405);
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
 
         case 'del_menu':
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {

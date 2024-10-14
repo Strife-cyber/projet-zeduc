@@ -52,4 +52,8 @@ class EmployeeController{
     public function commandeLivrer(){
         return $this->employee->commandeLivrer();
     }
+
+    public function getReclamation(){
+        return $this->employee->get_reclamation();
+    }
 }

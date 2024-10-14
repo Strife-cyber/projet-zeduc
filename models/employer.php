@@ -42,6 +42,15 @@ class ModelEmployer {
         return 'Commande complétée';
     }
 
+    public function get_reclamation (){
+        $sql = "SELECT * FROM reclamation r JOIN utilisateur u ON r.id_client = u.id";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // Insérer un menu
     public function insererMenu($idPlat, $dateMenu) {
         $sql = "INSERT INTO menu (id_plat, date_menu) VALUES (:id_plat, :date_menu)";
