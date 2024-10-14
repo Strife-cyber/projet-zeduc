@@ -1,0 +1,33 @@
+.stats-container{
+    width: inherit;
+    margin: 0 10% 0 10%;
+    padding: 20px;
+    border: 2px solid #cfbd97;
+    background-color: white;
+    margin-bottom: 10%;
+}
+
+.div-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.color-1{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: #cfbd97;
+}
+
+.color-2{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: black;
+}
+
+.key{
+    display: flex;
+    flex-direction: column;
+}

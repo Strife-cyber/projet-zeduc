@@ -30,6 +30,8 @@ const useLogin = () => {
                 }
             });
 
+            console.log(response.data)
+
             if (response.data && response.data !== null) {
                 setUser(response.data);
                 setMessage('Login successful!'); // Set success message

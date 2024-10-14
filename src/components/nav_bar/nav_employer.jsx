@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import './nav_employer.css';
 import logo from '../../assets/zeduc.jpg'; // Replace with your logo path
 
-const NavEmployerComponent = ({switcher}) => {
+const NavEmployerComponent = ({switched}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    const switcher = (value) => {
+        switched(value)
+        setIsMenuOpen(false)
+    }
 
     const closeMenu = () => {
         setIsMenuOpen(false);
@@ -30,7 +35,7 @@ const NavEmployerComponent = ({switcher}) => {
                         <a className="menu-link" href="#" onClick={() => switcher('commandes')}>Commandes</a>
                     </li>
                     <li className="men-item">
-                        <a className="menu-link" href="#" onClick={() => switcher('menu')}>Menu du jour</a>
+                        <a className="menu-link" href="#" onClick={() => switcher('menu')}>Menu d'jour</a>
                     </li>
                     <li className="men-item">
                         <a className="menu-link" href="#" onClick={() => switcher('stats')}>Statistique</a>
@@ -51,7 +56,7 @@ const NavEmployerComponent = ({switcher}) => {
                             <a className="menu-link" href="#" onClick={() => switcher('commandes')}>Commandes</a>
                         </li>
                         <li className="men-item">
-                        <a className="menu-link" href="#" onClick={() => switcher('menu')}>Menu du jour</a>
+                        <a className="menu-link" href="#" onClick={() => switcher('menu')}>Menu d'jour</a>
                         </li>
                         <li className="men-item">
                             <a className="menu-link" href="#" onClick={() => switcher('stats')}>Statistique</a>

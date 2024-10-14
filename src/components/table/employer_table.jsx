@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import useEmployerCommandes from "../../utilities/employer/commandes";
 import TableComponent from "./table";
 import axios from "axios";
+import { useUser } from "../../contexts/user_context";
 
 const EmployerTableComponent = () => {
     const { fetchEmployerCommandes } = useEmployerCommandes();
     const [commandes, setCommandes] = useState([]); // Initialiser avec un tableau vide
+    const { user } = useUser();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,15 +30,19 @@ const EmployerTableComponent = () => {
 
     // Fonction pour changer le statut d'une commande
     const handleStatusChange = async (index, id) => {
-        console.log(id)
         const formData = new FormData();
         formData.append('id', id);
+        console.log(user)
+        console.log(user.id_employer)
+        formData.append('livreur', user.id_employer);
 
         const response = await axios.post('http://localhost/projet-zeduc/index.php/employee/update_commande', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         });
+
+        console.log(response.data)
 
         setCommandes(prevCommandes => {
             const updatedCommandes = [...prevCommandes];
@@ -55,8 +61,8 @@ const EmployerTableComponent = () => {
         <TableComponent 
             headers={["Nom", "Plat", "Status", "Prix"]}
             data={commandes.map((commande, index) => [
-                commande.nom,
-                commande.plat,
+                commande.client_nom,
+                commande.plat_nom,
                 <div 
                     style={{ display: 'flex', cursor: 'pointer', justifyContent: 'center', alignItems: 'center' }}
                     onClick={() => handleStatusChange(index, commande.id_commande)} // Ajoutez le gestionnaire de clic

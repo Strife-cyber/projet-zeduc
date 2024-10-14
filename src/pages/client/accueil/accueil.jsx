@@ -31,7 +31,6 @@ const AccueilPage = () => {
     return (
         <>
             {isMobile ? <AccueilMobilePage /> : <AccueilDesktopPage />}
-            <FooterComponent/>
         </>
     );
 };

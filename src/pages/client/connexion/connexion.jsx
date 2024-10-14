@@ -30,7 +30,6 @@ const ConnexionPage = () => {
     return (
         <>
             {isMobile? <ConnexionMobilePage/> : <ConnexionDesktopPage/>}
-            <FooterComponent/>
         </>
     );
 }

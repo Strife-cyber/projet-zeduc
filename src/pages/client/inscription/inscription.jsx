@@ -30,7 +30,6 @@ const InscriptionPage = () => {
     return (
         <>
             {isMobile ? <InscriptionMobilePage /> : <InscriptionDesktopPage />}
-            <FooterComponent />
         </>
     );
 };
