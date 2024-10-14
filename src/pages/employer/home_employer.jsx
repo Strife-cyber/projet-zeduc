@@ -23,10 +23,8 @@ const HomeEmployerPage = () => {
                         <FoodAdderComponent/>
                     ) : page === "stats" ? (
                         <StatsDashboard/>
-                    ) : page === "reclam" ? (
+                    ) : page === "reclam"(
                         <ReclamationDashBoard/>
-                    ) : (
-                        <></>
                     )
                 }
             </div>

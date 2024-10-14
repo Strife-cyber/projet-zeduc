@@ -41,9 +41,6 @@ const NavEmployerComponent = ({switched}) => {
                         <a className="menu-link" href="#" onClick={() => switcher('stats')}>Statistique</a>
                     </li>
                     <li className="men-item">
-                        <a className="menu-link" href="#" onClick={() => switcher('events')}>Événements</a>
-                    </li>
-                    <li className="men-item">
                         <a className="menu-link" href="#" onClick={() => switcher('reclam')}>Réclamation</a>
                     </li>
                 </ul>
@@ -60,9 +57,6 @@ const NavEmployerComponent = ({switched}) => {
                         </li>
                         <li className="men-item">
                             <a className="menu-link" href="#" onClick={() => switcher('stats')}>Statistique</a>
-                        </li>
-                        <li className="men-item">
-                            <a className="menu-link" href="#" onClick={() => switcher('events')}>Événements</a>
                         </li>
                         <li className="men-item">
                             <a className="menu-link" href="#" onClick={() => switcher('reclam')}>Réclamation</a>
