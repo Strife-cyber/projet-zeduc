@@ -31,7 +31,7 @@ const AllCardsComponent = () => {
         <div className="all-cards" style={{backgroundColor: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', columnGap: '20px', rowGap: '20px', minHeight: '100vh'}}>
             {menu.length > 0 ? (
                 menu.map((m, index) => (
-                    <MealCardComponent key={index} nom={m.nom} image={m.image} prix={m.prix} />
+                    <MealCardComponent key={index} nom={m.nom} image={m.image} prix={m.prix} id_plat={m.id_plat}/>
                 ))
             ) : (
                 <li style={{fontSize: '40px', listStyle: "none", color: 'white', fontFamily: 'pacifico'}}>Aucun élément</li>

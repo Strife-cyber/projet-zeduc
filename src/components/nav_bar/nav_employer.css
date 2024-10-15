@@ -37,9 +37,8 @@
     display: none; /* Hidden on desktop */
 }
 
-.spacer{
-    height: 1px;
-    width: 45%;
+.nav-container{
+    justify-content: space-between;
 }
 
 /* Desktop Menu */

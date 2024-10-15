@@ -4,11 +4,12 @@ import ButtonComponent from '../button/button';
 import './meal_card.css';
 import PaymentSheetComponent from '../payment_sheet/payment_sheet';
 
-const MealCardComponent = ({ image=image1, nom="Eru", prix="1000" }) => {
+const MealCardComponent = ({ id_plat='plat001', image=image1, nom="Eru", prix="1000" }) => {
     const [closed, setClosed] = useState(false);
 
     const onClose = () => {setClosed(true)}
     const onOpen = () => {setClosed(false)}; // Fonction pour ré-ouvrir si nécessaire
+    const product= {price: prix, description: nom, img: image}
 
     return (
         <>
@@ -30,7 +31,7 @@ const MealCardComponent = ({ image=image1, nom="Eru", prix="1000" }) => {
             {closed ? (
                 <div className="payment-sheet-overlay">
                     <div className="payment-sheet">
-                        <PaymentSheetComponent onClose={onOpen} />
+                        <PaymentSheetComponent onClose={onOpen} product={product} id_plat={id_plat}/>
                     </div>
                 </div>
             ) : null}

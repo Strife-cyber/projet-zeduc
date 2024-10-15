@@ -3,8 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './payment_sheet.css';
 import TextFieldComponent from '../text_field/text_field';
 import ButtonComponent from '../button/button';
+import PayWithPayPal from '../payments/pay_pal';
 
-const PaymentSheetComponent = ({ onClose }) => {
+const PaymentSheetComponent = ({ onClose, product, id_plat }) => {
     const [activeTab, setActiveTab] = useState('momo');
 
     return (
@@ -57,8 +58,11 @@ const PaymentSheetComponent = ({ onClose }) => {
                 )}
                 {activeTab === 'paypal' && (
                     <div className="tab-pane fade show active d-flex align-items-center justify-content-center">
-                        <h4 className='text-center'>Get ready to be wowed! Our upcoming features are going to be so cool, you’ll need a sweater! 😂</h4>
+                        <PayWithPayPal product={product} id_plat={id_plat}/>
                     </div>
+                )}
+                {activeTab === 'Fidelite' && (
+                    <div className='tab-pane fade show active'></div>
                 )}
             </div>
         </div>

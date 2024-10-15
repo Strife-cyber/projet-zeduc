@@ -45,11 +45,17 @@ const PromotionPage = ({onOpen}) => {
             )}
             <ul className="all-promotions">
                 {promotion.map((c, index) => (
-                    <li key={index}>
+                    <li key={index} style={{listStyle: 'none'}}>
                         <div className="promotion-container">
-                            <strong>Description:</strong> {c.description} <br />
-                            <strong>Date de début:</strong> {c.date_debut} <br />
-                            <strong>Date de fin:</strong> {c.date_fin}
+                            <h1 className="text-center" style={{margin: '20px', fontSize: '20px'}}>{c.description} </h1>
+                            <div style={{display: "flex", justifyContent: 'space-between'}}>
+                                <div style={{fontSize: '10px', fontFamily: 'Montaga'}}>
+                                    <strong>Date de début:</strong> {c.date_debut} <br />
+                                </div>
+                                <div style={{fontSize: '10px', fontFamily: 'Montaga'}}>
+                                    <strong>Date de fin:</strong> {c.date_fin}
+                                </div>
+                            </div>
                         </div>
                     </li>
                 ))}

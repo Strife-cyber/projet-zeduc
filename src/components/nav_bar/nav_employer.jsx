@@ -27,8 +27,6 @@ const NavEmployerComponent = ({switched}) => {
                 {/* Hamburger Icon for Mobile */}
                 <i className="fas fa-burger menu-toggle" onClick={toggleMenu}></i>
 
-                <div className='spacer'></div>
-
                 {/* Desktop Menu */}
                 <ul className="menu-content desktop-menu">
                     <li className="men-item">
