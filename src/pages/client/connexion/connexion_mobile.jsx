@@ -59,9 +59,8 @@ const ConnexionMobilePage = () => {
                 <div className="button-contain">
                     <ButtonComponent height='40px' placeholder="Connexion" onClickFunction={handleLogin} />
                 </div>
+                <p className="text-center" onClick={toInscription} style={{margin: '10', backgroundColor: 'white'}}>Vous n'avez pas de compte ? Inscrivez-vous dès maintenant</p>
             </div>
-            {message && <MessageComponent message={message} type={message.includes('successful') ? 'success' : 'error'} />} {/* Display feedback message */}
-            <p className="text-center" onClick={toInscription}>Vous n'avez pas de compte ? Inscrivez-vous dès maintenant</p>
         </>
     );
 }

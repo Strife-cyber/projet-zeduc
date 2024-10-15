@@ -4,9 +4,6 @@ import TextFieldComponent from '../../../components/text_field/text_field';
 import ButtonComponent from '../../../components/button/button';
 import useSignUp from '../../../utilities/client/signup_function'; // Import the signup hook
 import MessageComponent from '../../../components/message/message'; // Import the message component for feedback
-import '../accueil/accueil_mobile.css';
-import '../connexion/connexion_desktop.css';
-import '../connexion/connexion_mobile.css';
 import { useNavigate } from 'react-router';
 
 const InscriptionMobilePage = () => {
@@ -81,9 +78,8 @@ const InscriptionMobilePage = () => {
                 <div className="button-contain">
                     <ButtonComponent height='40px' placeholder="Inscription" onClickFunction={handleSignUp} />
                 </div>
+                <p className="text-center" onClick={toconnection} style={{margin: '10', backgroundColor: 'white'}}>Vous avez déjà un compte ? Connectez-vous ici</p>
             </div>
-            {message && <MessageComponent message={message} type={message.includes('successful') ? 'success' : 'error'} />} {/* Display feedback message */}
-            <p className="text-center" onClick={toconnection}>Vous avez déjà un compte ? Connectez-vous ici</p>
         </>
     );
 }
