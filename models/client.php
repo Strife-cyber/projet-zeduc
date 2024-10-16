@@ -69,6 +69,18 @@ class ModelClient {
                 return $employer;
             }
         }
+
+        $sql = "SELECT * FROM gerant g LEFT JOIN utilisateur u ON g.id_gerant = u.id";
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->execute();
+        $gerants = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($gerants as $gerant) {
+            if($gerant['email'] == $email && $gerant['secret'] == $password) {
+                return $gerant;
+            }
+        }
+
         return null;
     }
 

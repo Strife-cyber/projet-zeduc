@@ -6,7 +6,7 @@ require_once 'routes/routes_gerant.php';
 
 // Ajoutez les en-têtes CORS
 header("Access-Control-Allow-Origin: http://localhost:3000"); // Remplacez par l'origine de votre application React
-header("Access-Control-Allow-Methods: POST, PUT, OPTIONS"); // Méthodes autorisées
+header("Access-Control-Allow-Methods: POST, PUT, DELETE, OPTIONS"); // Méthodes autorisées
 header("Access-Control-Allow-Headers: Content-Type, Authorization"); // En-têtes autorisés
 
 // Gestion des requêtes OPTIONS
