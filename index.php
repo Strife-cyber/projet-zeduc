@@ -2,6 +2,7 @@
 
 require_once 'routes/routes.php';
 require_once 'routes/routes_employer.php';
+require_once 'routes/routes_gerant.php';
 
 // Ajoutez les en-têtes CORS
 header("Access-Control-Allow-Origin: http://localhost:3000"); // Remplacez par l'origine de votre application React
@@ -24,7 +25,9 @@ function respond_correctly() {
     $uriParts = explode('/', trim($uri, '/')); // Trim des slashes et division
 
     // Vérifier si "employee" est présent dans les segments
-    if (in_array('employee', $uriParts)) {
+    if (in_array('gerant', $uriParts)) {
+        routeGerantRequest($uriParts);
+    } else if (in_array('employee', $uriParts)) {
         routeEmployerRequest($uriParts); // Appeler la fonction pour les employés
     } else {
         routeRequest($uriParts); // Appeler la fonction par défaut

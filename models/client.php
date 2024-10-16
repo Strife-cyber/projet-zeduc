@@ -174,4 +174,19 @@ class ModelClient {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function insertCommande($id_commande, $id_client, $id_plat, $date_commande){
+        $sql = "INSERT INTO commande (id_commande, id_client, id_plat, date_commande, status) VALUES (:id_commande, :id_client, :id_plat, :date_commande, :status)";
+        $status = false;
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':id_commande', $id_commande);
+        $stmt->bindParam(':id_client', $id_client);
+        $stmt->bindParam(':id_plat', $id_plat);
+        $stmt->bindParam(':date_commande', $date_commande);
+        $stmt->bindParam(':status', $status, PDO::PARAM_BOOL);
+
+        $stmt->execute();
+        return 'Insertion reussi';
+    }
 }

@@ -48,4 +48,8 @@ class ClientController{
     public function getReclamation($id){
         return $this->client->getreclamation($id);
     }
+
+    public function insertCommande($id_commande, $id_client, $id_plat, $date_commande){
+        return $this->client->insertCommande($id_commande, $id_client, $id_plat, $date_commande);
+    }
 }
