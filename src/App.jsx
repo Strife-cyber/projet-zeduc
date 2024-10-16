@@ -10,13 +10,14 @@ import Manager from './pages/manager/manager';
 import HomeEmployerPage from './pages/employer/home_employer';
 import ToastComponent from './components/toast/toast';
 import HomeGerantPage from './pages/gerant/home_gerant';
+import GerantTableComponent from './components/table/gerant_table';
 
 function App() {
   const [showToast, setShowToast] = useState(true);
 
   return (
     <UserProvider>
-      {/*<Router>
+      <Router>
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
           <Route path='/login' element={<ConnexionPage/>} />
@@ -24,9 +25,9 @@ function App() {
           <Route path='/home' element={<HomePage/>}/>
           <Route path='/manager' element={<Manager/>}/>
           <Route path='/home_employer' element={<HomeEmployerPage/>}/>
+          <Route path='/home_gerant' element={<HomeGerantPage/>} />
         </Routes>
-      </Router>*/}
-      <HomeGerantPage/>
+      </Router>
     </UserProvider>
   );
 }

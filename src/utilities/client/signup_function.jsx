@@ -15,6 +15,7 @@ const useSignUp = () => {
         const id = uuidv4();
 
         try{
+            setUser(null);
             const hashedPassword = await hashString(password);
 
             const formData = new FormData();

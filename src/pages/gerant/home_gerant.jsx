@@ -5,6 +5,7 @@ import StatsDashboard from "../../components/stats_page/stats_page";
 import ReclamationDashBoard from "../../components/reclamation/reclamation";
 import NavGerantComponent from "../../components/nav_bar/nav_gerant";
 import FooterEmployerComponent from "../../components/footer/footer_employer";
+import GerantTableComponent from "../../components/table/gerant_table";
 
 const HomeGerantPage = () => {
     const [page, setPage] = useState("commandes");
@@ -26,7 +27,11 @@ const HomeGerantPage = () => {
                         <StatsDashboard/>
                     ) : page === "reclam" ? (
                         <ReclamationDashBoard/>
-                    ) : (<></>)
+                    ) : page === "employer" ? (
+                        <GerantTableComponent/>
+                    ) : (
+                        <></>
+                    )
                 }
             </div>
             <FooterEmployerComponent/>

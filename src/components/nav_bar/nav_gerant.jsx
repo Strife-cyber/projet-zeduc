@@ -32,14 +32,17 @@ const NavGerantComponent = ({switched}) => {
                     <li className="men-item">
                         <a className="menu-link" href="#" onClick={() => switcher('commandes')}>Commandes</a>
                     </li>
-                    {/*<li className="men-item">
+                    <li className="men-item">
                         <a className="menu-link" href="#" onClick={() => switcher('menu')}>Menu d'jour</a>
-                    </li>*/}
+                    </li>
                     <li className="men-item">
                         <a className="menu-link" href="#" onClick={() => switcher('stats')}>Statistique</a>
                     </li>
                     <li className="men-item">
                         <a className="menu-link" href="#" onClick={() => switcher('reclam')}>Réclamation</a>
+                    </li>
+                    <li className='men-item'>
+                        <a className='menu-link' href="#" onClick={() => switcher('employer')}>Gestion Employer</a>
                     </li>
                 </ul>
 
@@ -50,14 +53,17 @@ const NavGerantComponent = ({switched}) => {
                         <li className="men-item">
                             <a className="menu-link" href="#" onClick={() => switcher('commandes')}>Commandes</a>
                         </li>
-                        {/*<li className="men-item">
+                        <li className="men-item">
                             <a className="menu-link" href="#" onClick={() => switcher('menu')}>Menu d'jour</a>
-                        </li>*/}
+                        </li>
                         <li className="men-item">
                             <a className="menu-link" href="#" onClick={() => switcher('stats')}>Statistique</a>
                         </li>
                         <li className="men-item">
                             <a className="menu-link" href="#" onClick={() => switcher('reclam')}>Réclamation</a>
+                        </li>
+                        <li className='men-item'>
+                            <a className='menu-link' href="#" onClick={() => switcher('employer')}>Gestion Employer</a>
                         </li>
                     </ul>
                 </div>

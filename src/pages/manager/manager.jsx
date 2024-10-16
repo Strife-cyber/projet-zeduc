@@ -11,6 +11,8 @@ const Manager = () => {
             navigate('/home');
         } else if (user.id_employer != null){
             navigate('/home_employer')
+        } else {
+            navigate('/home_gerant')
         }
     }, []); // Exécute la navigation si user ou navigate change
 };
