@@ -5,7 +5,7 @@ class Database{
     private $host = 'localhost';
     private $db_name = 'zeduc';
     private $user_name = 'postgres';
-    private $password = 'admin';
+    private $password = 'telsy'; // ne jamais pousser sur github sans prevenir Dunamis
 
     private function __construct(){
         try {
