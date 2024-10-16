@@ -254,7 +254,7 @@ $$;
 -- Fonction pour l'admin
 -- historique de commande
 -- cette vue permet à un administrateur de consulter l'historique de toutes les commandes classées par date de commande.
-CREATE VIEW historique AS
+CREATE OR REPLACE VIEW historique AS
     SELECT * FROM commande ORDER BY (commande.date_commande);
 SELECT * FROM historique;
 
