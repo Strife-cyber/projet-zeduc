@@ -9,6 +9,21 @@ function routeRequest($uriParts) {
 
     // Simple routing logic
     switch ($lastPart) {
+        case 'commander':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $id_commande = $_POST['id_commande'];
+                $id_client = $_POST['id_client'];
+                $id_plat = $_POST['id_plat'];
+                $date_commande = $_POST['date_commande'];
+
+                $response = $controller->insertCommande($id_commande, $id_client, $id_plat, $date_commande);
+                echo json_encode($response);
+            } else {
+                http_response_code(405); // Method Not Allowed
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
         case 'login':  // Check for 'login' directly
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Get POST data
