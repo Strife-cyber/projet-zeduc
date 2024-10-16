@@ -1,4 +1,3 @@
-// src/components/FoodAdderComponent.js
 import React, { useState, useEffect } from 'react';
 import usePlat from '../../utilities/employer/plat';
 import MealCard from './meal_card_add';
@@ -8,6 +7,7 @@ import AddNewMealModal from './new_meal_modal';
 import { Tooltip } from 'react-tooltip';
 import './food_adder.css';
 import useMenuEmployer from '../../utilities/employer/menu_employer';
+import ToastComponent from '../toast/toast';
 
 const FoodAdderComponent = () => {
     const { fetchPlat, insererPlat } = usePlat();
@@ -17,6 +17,8 @@ const FoodAdderComponent = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAddingMeal, setIsAddingMeal] = useState(false);
     const [newMeal, setNewMeal] = useState({ nom: '', prix: '', image: null });
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
 
     // Fetch available meals from backend when modal is opened
     useEffect(() => {
@@ -42,12 +44,14 @@ const FoodAdderComponent = () => {
 
     const handleMealSelect = async (meal) => {
         const response = await insererMenu(meal.id_plat);
-        if (response.message != 'true') {
-            alert('Plat déjà ajouté');
-        } else {
+        if (response.message === 'true') {
             setSelectedMeals(prevSelectedMeals => [...prevSelectedMeals, meal]);
             setIsModalOpen(false);
+            setToastMessage("Plat ajouté avec succès");
+        } else {
+            setToastMessage("Erreur lors de l'ajout du plat");
         }
+        setShowToast(true);
     };
 
     const handleAddMeal = () => {
@@ -62,21 +66,24 @@ const FoodAdderComponent = () => {
             setIsAddingMeal(false);
             setNewMeal({ nom: '', prix: '', image: null });
             setIsModalOpen(true); // Reopen the modal to show the updated list
-            // Optionally, you could call fetchData() here again if you want to refresh the selected meals.
+            setToastMessage("Nouveau plat ajouté avec succès");
         } else {
-            alert('Erreur lors de l\'ajout du plat');
+            setToastMessage("Erreur lors de l'ajout du plat");
         }
+        setShowToast(true);
     };
 
     const handleMealDelete = async (idPlat) => {
         const response = await delMenu(idPlat);
         if (response.message) {
-            setSelectedMeals(prevSelectedMeals => 
+            setSelectedMeals(prevSelectedMeals =>
                 prevSelectedMeals.filter(meal => meal.id_plat !== idPlat)
             );
+            setToastMessage("Plat supprimé avec succès");
         } else {
-            alert('Erreur lors de la suppression du plat');
+            setToastMessage("Erreur lors de la suppression du plat");
         }
+        setShowToast(true);
     };
 
     return (
@@ -109,6 +116,9 @@ const FoodAdderComponent = () => {
                 <Modal isOpen={isModalOpen} title="Choisissez un plat" onClose={() => setIsModalOpen(false)}>
                     <MealSlider meals={availableMeals} handleMealSelect={handleMealSelect} handleAddMeal={handleAddMeal} />
                 </Modal>
+
+                {/* Toast message */}
+                {showToast && <ToastComponent message={toastMessage} activate={showToast} />}
 
                 {/* Modal to add a new meal */}
                 <AddNewMealModal

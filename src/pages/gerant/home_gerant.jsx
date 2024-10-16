@@ -1,12 +1,12 @@
-import { useState } from "react"
-import NavEmployerComponent from "../../components/nav_bar/nav_employer";
+import { useState } from "react";
 import EmployerTableComponent from "../../components/table/employer_table";
 import FoodAdderComponent from "../../components/food_adder/food_adder";
 import StatsDashboard from "../../components/stats_page/stats_page";
 import ReclamationDashBoard from "../../components/reclamation/reclamation";
+import NavGerantComponent from "../../components/nav_bar/nav_gerant";
 import FooterEmployerComponent from "../../components/footer/footer_employer";
 
-const HomeEmployerPage = () => {
+const HomeGerantPage = () => {
     const [page, setPage] = useState("commandes");
 
     const switcher = (pageName) => {
@@ -15,7 +15,7 @@ const HomeEmployerPage = () => {
 
     return (
         <>
-            <NavEmployerComponent switched={switcher}/>
+            <NavGerantComponent switched={switcher}/>
             <div className="home-employer" style={{minHeight: '100vh'}}>
                 {
                     page === "commandes" ? (
@@ -34,4 +34,4 @@ const HomeEmployerPage = () => {
     )
 }
 
-export default HomeEmployerPage;
+export default HomeGerantPage;

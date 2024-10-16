@@ -12,19 +12,21 @@ const InscriptionDesktopPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [reenterPassword, setReenterPassword] = useState('');
-    const { signUp, message } = useSignUp(); // Using the useSignUp hook
+    const [loading, setLoading] = useState(false); // State for loading
+    const { signUp, message, error } = useSignUp(); // Using the useSignUp hook
     const navigate = useNavigate();
 
-    const toconnection = () => {
+    const toConnection = () => {
         navigate('/login');
     }
 
     const handleSignUp = async () => {
         if (password !== reenterPassword) {
-            alert('Passwords do not match!');
+            setMessage('Les mots de passe ne correspondent pas.');
             return;
         }
 
+        setLoading(true); // Start loading
         try {
             await signUp(name, email, password); // Call the signUp function from the hook
             setName(''); // Clear name input
@@ -32,9 +34,10 @@ const InscriptionDesktopPage = () => {
             setPassword(''); // Clear password input
             setReenterPassword(''); // Clear re-enter password input
             navigate('/home');
-            alert(message)
         } catch (error) {
-            console.error("Signup error:", error); // Optional: Log the error for debugging
+            console.error("Signup error:", error); // Log the error for debugging
+        } finally {
+            setLoading(false); // Stop loading
         }
     };
 
@@ -74,15 +77,25 @@ const InscriptionDesktopPage = () => {
                         />
                     </div>
                     <div className="button-contain">
-                        <ButtonComponent placeholder="Inscription" onClickFunction={handleSignUp} />
+                        <ButtonComponent
+                            placeholder={loading ? 'Inscription en cours...' : 'Inscription'}
+                            onClickFunction={handleSignUp}
+                            disabled={loading} // Disable button while loading
+                        />
                     </div>
                     {message && (
                         <MessageComponent
                             message={message}
-                            type={message.includes('successful') ? 'success' : 'error'} // Determine message type
+                            type={message.includes('success') ? 'success' : 'error'} // Determine message type
                         />
                     )}
-                    <p className="text-center" onClick={toconnection}>Vous avez déjà un compte ? Connectez-vous ici</p>
+                    {error && (
+                        <MessageComponent
+                            message={error}
+                            type="error"
+                        />
+                    )}
+                    <p className="text-center" onClick={toConnection}>Vous avez déjà un compte ? Connectez-vous ici</p>
                 </div>
             </div>
             <CircleLogoComponent />

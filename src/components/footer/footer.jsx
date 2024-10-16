@@ -3,20 +3,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ButtonComponent from '../button/button';
 import useReclamation from '../../utilities/client/reclamation';
 import useMesReclamation from '../../utilities/client/mes_reclamation';
+import ToastComponent from '../toast/toast'; // Import the Toast component
 
 const FooterComponent = () => {
     const { reclamation, message } = useReclamation();
     const [description, setDescription] = useState('');
     const { fetchMesReclamation } = useMesReclamation();
     const [mesReclamation, setMesReclamation] = useState([]);
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
 
     const reclamer = async () => {
         if (description) {
             await reclamation(description);
-            alert(message);
+            setToastMessage(message || 'Réclamation soumise avec succès.');
+            setShowToast(true);
             setDescription('');  // Clear description after submission
         } else {
-            alert("Veuillez entrer une réclamation.");
+            setToastMessage('Veuillez entrer une réclamation.');
+            setShowToast(true);
         }
     };
 
@@ -87,13 +92,17 @@ const FooterComponent = () => {
                 </div>
             </div>
 
+            {/* Toast message */}
+            {showToast && <ToastComponent message={toastMessage} activate={showToast} />}
+
             <div className="text-center p-3 footer-bottom">
-                &copy; 2024 Gestion des Recettes. Tous droits réservés.
+                &copy; 2024 Mon bon miam miam. Tous droits réservés.
             </div>
         </footer>
     );
 };
 
+// Styles remain the same
 const styles = `
 .footer-container {
     margin-top: 30%;

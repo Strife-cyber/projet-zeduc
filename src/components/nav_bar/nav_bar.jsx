@@ -1,4 +1,3 @@
-// NavBarComponent.jsx
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../contexts/user_context";
 import './nav_bar.css';
@@ -8,25 +7,33 @@ import useParrain from "../../utilities/client/parrain_function";
 import Page1 from "./page_content_1";
 import Page2 from "./page_content_2";
 import useHistory from "../../utilities/client/history_function";
+import ToastComponent from '../toast/toast'; // Importing the ToastComponent
 
-const NavBarComponent = ({switchPage}) => {
+const NavBarComponent = ({ switchPage }) => {
     const { user } = useUser();
     const { fetchCommand } = useCommand();
     const { parrainage, message } = useParrain();
-    const [command, setCommand] = useState([]);
     const { fetchFiole } = useFiole();
+    const { fetchHistory } = useHistory();
+    
+    const [command, setCommand] = useState([]);
     const [fiole, setFiole] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [code, setCode] = useState('');
-    const { fetchHistory } = useHistory();
     const [history, setHistory] = useState([]);
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
 
     const parrainer = async () => {
         if (code) {
             await parrainage(code);
-            alert(message);
+            setToastMessage(message || 'Parrainage soumis avec succès.');
+            setShowToast(true);
+        } else {
+            setToastMessage('Veuillez entrer un code de parrainage.');
+            setShowToast(true);
         }
-    }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,7 +55,7 @@ const NavBarComponent = ({switchPage}) => {
                 setFiole(fioleData);
             }
 
-            if (Array.isArray(historyData)){
+            if (Array.isArray(historyData)) {
                 setHistory(historyData);
             }
         };
@@ -60,29 +67,33 @@ const NavBarComponent = ({switchPage}) => {
     const renderPageContent = () => {
         switch (currentPage) {
             case 1:
-                return <Page1 user={user} command={command} switchPage={switchPage}/>;
+                return <Page1 user={user} command={command} switchPage={switchPage} />;
             case 2:
-                return <Page2 fiole={fiole} code={code} setCode={setCode} parrainer={parrainer} history={history}/>;
+                return <Page2 fiole={fiole} code={code} setCode={setCode} parrainer={parrainer} history={history} />;
             default:
                 return <Page1 user={user} command={command} />;
-                
         }
     };
 
     return (
         <div className="nav-bar">
             {renderPageContent()}
+            {/* Toast message */}
+            {showToast && <ToastComponent message={toastMessage} activate={showToast} />}
+
             {/* Pagination circulaire */}
             <div className="pagination">
                 <button
                     className={`circle ${currentPage === 1 ? 'active' : ''}`}
                     onClick={() => setCurrentPage(1)}
+                    aria-label="Page 1"
                 >
                     1
                 </button>
                 <button
                     className={`circle ${currentPage === 2 ? 'active' : ''}`}
                     onClick={() => setCurrentPage(2)}
+                    aria-label="Page 2"
                 >
                     2
                 </button>

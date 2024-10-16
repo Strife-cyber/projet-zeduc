@@ -7,14 +7,15 @@ import MessageComponent from '../../../components/message/message'; // Import th
 import { useNavigate } from 'react-router';
 
 const InscriptionMobilePage = () => {
-    const { signUp, message } = useSignUp(); // Extract the signup function and message
+    const { signUp, message, error } = useSignUp(); // Extract the signup function, message, and error
     const [name, setName] = useState(''); // State for the name
     const [email, setEmail] = useState(''); // State for the email
     const [password, setPassword] = useState(''); // State for the password
     const [reenterPassword, setReenterPassword] = useState(''); // State for re-entering password
+    const [loading, setLoading] = useState(false); // Loading state to prevent multiple submissions
     const navigate = useNavigate();
 
-    const toconnection = () => {
+    const toConnection = () => {
         navigate('/login');
     }
 
@@ -24,6 +25,7 @@ const InscriptionMobilePage = () => {
             return;
         }
 
+        setLoading(true); // Set loading state to true during signup process
         try {
             await signUp(name, email, password); // Call the signup function with name, email, and password
             // Reset form fields
@@ -32,9 +34,10 @@ const InscriptionMobilePage = () => {
             setPassword('');
             setReenterPassword('');
             navigate('/home');
-            alert(message)
         } catch (error) {
             console.error('Signup failed:', error);
+        } finally {
+            setLoading(false); // Set loading state to false after completion
         }
     };
 
@@ -76,9 +79,28 @@ const InscriptionMobilePage = () => {
                     />
                 </div>
                 <div className="button-contain">
-                    <ButtonComponent height='40px' placeholder="Inscription" onClickFunction={handleSignUp} />
+                    <ButtonComponent
+                        height='40px'
+                        placeholder={loading ? 'Inscription en cours...' : 'Inscription'}
+                        onClickFunction={handleSignUp}
+                        disabled={loading} // Disable button while loading
+                    />
                 </div>
-                <p className="text-center" onClick={toconnection} style={{margin: '10', backgroundColor: 'white'}}>Vous avez déjà un compte ? Connectez-vous ici</p>
+                {message && (
+                    <MessageComponent
+                        message={message}
+                        type={message.includes('success') ? 'success' : 'error'} // Display message accordingly
+                    />
+                )}
+                {error && (
+                    <MessageComponent
+                        message={error}
+                        type='error'
+                    />
+                )}
+                <p className="text-center" onClick={toConnection} style={{ margin: '10', backgroundColor: 'white' }}>
+                    Vous avez déjà un compte ? Connectez-vous ici
+                </p>
             </div>
         </>
     );
