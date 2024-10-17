@@ -8,13 +8,9 @@ import InscriptionPage from './pages/client/inscription/inscription';
 import HomePage from './pages/client/home/home';
 import Manager from './pages/manager/manager';
 import HomeEmployerPage from './pages/employer/home_employer';
-import ToastComponent from './components/toast/toast';
 import HomeGerantPage from './pages/gerant/home_gerant';
-import GerantTableComponent from './components/table/gerant_table';
 
 function App() {
-  const [showToast, setShowToast] = useState(true);
-
   return (
     <UserProvider>
       <Router>
