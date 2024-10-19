@@ -151,5 +151,10 @@ function routeEmployerRequest($uriParts){
                 echo json_encode(['status' => 'error', 'message' => 'Invalid request method.']);
             }
             break;
+
+        default:
+            http_response_code(404);
+            echo json_encode(['error' => 'Not Found']);
+            break;
     }
 }
