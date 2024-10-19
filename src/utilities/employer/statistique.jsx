@@ -6,7 +6,6 @@ const useStats = () => {
             const request = 'http://localhost/projet-zeduc/index.php/employee/statistique';
 
             const response = await axios.get(request);
-            console.log(response.data);
 
             const statisticPlat = response.data.statisticPlat;
             const tempMoyen = response.data.tempMoyen;
@@ -15,7 +14,6 @@ const useStats = () => {
 
             return { statisticPlat, tempMoyen, detailsTemp, commandeLivrer };
         } catch (error) {
-            console.error(error.message); // Affiche le message d'erreur
             return []; // Retourner un tableau vide en cas d'erreur
         }
     };

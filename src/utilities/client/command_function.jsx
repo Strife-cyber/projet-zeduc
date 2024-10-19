@@ -7,16 +7,14 @@ const useCommand = () => {
 
     const fetchCommand = async () => {
         try {
-            const today = user?.id != null ? new Date().toLocaleDateString('en-CA') : '2024-09-01'; // Format ISO pour la date
+            const today = new Date().toLocaleDateString('en-CA'); // Format ISO pour la date
             const userId = user?.id || 'user001'; // Utilise l'ID utilisateur ou une valeur par défaut
             const request = `http://localhost/projet-zeduc/index.php/${userId}/${today}/commande`;
 
             const response = await axios.get(request);
-            console.log(response.data);
 
             return response.data; // Retourne les données de la commande
         } catch (error) {
-            console.error('Error fetching commands:', error.message); // Affiche le message d'erreur
             return []; // Retourner un tableau vide en cas d'erreur
         }
     };
@@ -33,13 +31,12 @@ const useCommand = () => {
             formData.append('id_plat', id_plat)
             formData.append('date_commande', today)
 
-            const response = await axios.post(`http://localhost/projet-zeduc/index.php/login`, formData, {
+            const response = await axios.post(`http://localhost/projet-zeduc/index.php/commander`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data' // Assurez-vous d'indiquer le type de contenu
                 }
             });
 
-            console.log(response.data)
             return response.data
         } catch (error) {
             throw error;

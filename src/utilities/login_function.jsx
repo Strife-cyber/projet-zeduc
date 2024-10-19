@@ -22,7 +22,7 @@ const useLogin = () => {
             formData.append('password', password);
 
             // Attendez 1 seconde
-            await delay(1000);
+            //await delay(1000);
             
             // Envoyez la requête avec FormData
             const response = await axios.post(`http://localhost/projet-zeduc/index.php/login`, formData, {
@@ -31,7 +31,6 @@ const useLogin = () => {
                 }
             });
 
-            console.log(response.data)
 
             if (response.data && response.data !== null) {
                 setUser(response.data);
@@ -42,7 +41,6 @@ const useLogin = () => {
             }
 
         } catch (error) {
-            console.error('Login failed:', error.response ? error.response.data : error.message);
             setMessage(`Login failed! ${error.response}`); // Set error message
             throw error;
         }

@@ -7,11 +7,9 @@ const useEmployer = () => {
         try{
             const request = 'http://localhost/projet-zeduc/index.php/gerant/get_employer';
             const response = await axios.get(request);
-            console.log(response.data);
 
             return response.data;
         } catch (e) {
-            console.error('Error fetching employer: ', e);
             return null;
         }
     }
@@ -35,11 +33,9 @@ const useEmployer = () => {
                 }
             })
 
-            console.log(response.data)
             return response.data
 
         } catch (error) {
-            console.error('error #%d', error)
             throw error
         }
     }
@@ -48,7 +44,6 @@ const useEmployer = () => {
         try {
             const response = await axios.delete(`http://localhost/projet-zeduc/index.php/gerant/${id}/delete_employer`)
 
-            console.log(response.data)
             return response.data
         } catch (error) {
             throw error

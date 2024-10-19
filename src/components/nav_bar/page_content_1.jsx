@@ -33,7 +33,7 @@ const Page1 = ({ user, command, switchPage }) => {
                             <li key={index}>
                                 <p>{c[0]}</p>
                                 <p>{c[1]} FCFA</p>
-                                {c[2] ? <p>Arrivé</p> : <p>En route</p>}
+                                {c[2] == 't' ? <p>Arrivé</p> : <p>En route</p>}
                             </li>
                         ))
                     ) : (

@@ -15,10 +15,8 @@ const useMenuEmployer = () => {
                 }
             })
 
-            console.log(response.data)
             return response.data
         } catch(error) {
-            console.error('Login failed:', error.response ? error.response.data : error.message);
             setMessage('Login failed! Please check your credentials.'); // Set error message
             throw error;
         }
@@ -36,10 +34,8 @@ const useMenuEmployer = () => {
                 }
             })
 
-            console.log(response.data)
             return response.data;
         } catch(error) {
-            console.error('Login failed:', error.response ? error.response.data : error.message);
             setMessage('Login failed! Please check your credentials.'); // Set error message
             throw error;
         }
@@ -49,11 +45,9 @@ const useMenuEmployer = () => {
         try{
             const request = `http://localhost/projet-zeduc/index.php/employee/${today}/get_menu`;
             const response = await axios.get(request);
-            console.log(response.data);
 
             return response.data;  // Return the response data
         } catch (e) {
-            console.error('Error fetching menu:', e);  // Proper error handling
             return null;  // Return a fallback value or null in case of error
         }
     }

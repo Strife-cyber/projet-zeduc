@@ -31,12 +31,10 @@ const useSignUp = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(response.data)
 
             setUser(response.data);
             setMessage('Connection Successful');
         } catch(error) {
-            console.error('Login failed:', error.response ? error.response.data : error.message);
             setMessage('Login failed! Please check your credentials.'); // Set error message
             throw error;
         }

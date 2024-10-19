@@ -26,7 +26,6 @@ const useParrain = () => {
                 setMessage('Code Taken into consideration');
             }
         } catch (error) {
-            console.error('An error occurred in parrain:', error); // Ajout d'une journalisation d'erreur plus précise
             setMessage('An error occurred while processing your request.'); // Ajout d'un message d'erreur à l'utilisateur
         }
     };

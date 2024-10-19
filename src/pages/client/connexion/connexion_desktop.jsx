@@ -29,11 +29,13 @@ const ConnexionDesktopPage = () => {
             setPassword(''); // Clear password input
             
             // If login is successful, show success toast and navigate
-            if (user) {
+            if (user != null) {
                 toast.success('Connexion réussie ! Bienvenue 😊', {
                     autoClose: 3000, // Auto close after 3 seconds
                 });
                 navigate('/manager');
+            } else {
+                toast.error('Err, Corrigez l\'email ou mot de passe')
             }
         } catch (error) {
             console.error("Login error:", error); // Log the error for debugging

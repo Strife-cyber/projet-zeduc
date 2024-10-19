@@ -34,13 +34,15 @@ const ConnexionMobilePage = () => {
 
         try {
             await login(email, password); // Call the login function with email and password
-            if (user) {
+            if (user != null) {
                 // Display success toast on successful login
                 toast.success('Connexion réussie ! Bienvenue 😊', {
                     autoClose: 3000 // Auto close after 3 seconds
                 });
 
                 navigate('/manager'); // Redirect if user is logged in
+            } else {
+                toast.error('Err, Corrigez l\'email ou mot de passe')
             }
         } catch (error) {
             console.error('Login failed:', error);

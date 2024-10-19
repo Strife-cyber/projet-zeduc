@@ -4,7 +4,7 @@ import ButtonComponent from '../button/button';
 import './meal_card.css';
 import PaymentSheetComponent from '../payment_sheet/payment_sheet';
 
-const MealCardComponent = ({ id_plat='plat001', image=image1, nom="Eru", prix="1000" }) => {
+const MealCardComponent = ({ id_plat="plat001", image=image1, nom="Eru", prix="1000" }) => {
     const [closed, setClosed] = useState(false);
 
     const onClose = () => {setClosed(true)}

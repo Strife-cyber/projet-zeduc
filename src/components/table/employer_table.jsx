@@ -26,14 +26,12 @@ const EmployerTableComponent = () => {
         };
 
         fetchData();
-    }, []);
+    }, [fetchEmployerCommandes]);
 
     // Fonction pour changer le statut d'une commande
     const handleStatusChange = async (index, id) => {
         const formData = new FormData();
         formData.append('id', id);
-        console.log(user)
-        console.log(user.id_employer)
         formData.append('livreur', user.id_employer);
 
         const response = await axios.post('http://localhost/projet-zeduc/index.php/employee/update_commande', formData, {
@@ -42,7 +40,7 @@ const EmployerTableComponent = () => {
             }
         });
 
-        console.log(response.data)
+        console.log(response.data);
 
         setCommandes(prevCommandes => {
             const updatedCommandes = [...prevCommandes];
@@ -58,24 +56,31 @@ const EmployerTableComponent = () => {
     };
 
     return (
-        <TableComponent 
-            headers={["Nom", "Plat", "Status", "Prix"]}
-            data={commandes.map((commande, index) => [
-                commande.client_nom,
-                commande.plat_nom,
-                <div 
-                    style={{ display: 'flex', cursor: 'pointer', justifyContent: 'center', alignItems: 'center' }}
-                    onClick={() => handleStatusChange(index, commande.id_commande)} // Ajoutez le gestionnaire de clic
-                >
-                    {commande.status ? (
-                        <i className="fas fa-check" style={{ color: 'green' }}></i> // Icône de tick
-                    ) : (
-                        <i className="fas fa-times" style={{ color: 'red' }}></i> // Icône de croix
-                    )}
-                </div>,
-                commande.prix
-            ])} // Utiliser directement commandes converties
-        />
+        commandes.length ? (
+            <TableComponent 
+                headers={["Nom", "Plat", "Status", "Prix"]}
+                data={commandes.map((commande, index) => [
+                    commande.client_nom,
+                    commande.plat_nom,
+                    <div 
+                        key={commande.id_commande}
+                        style={{ display: 'flex', cursor: 'pointer', justifyContent: 'center', alignItems: 'center' }}
+                        onClick={() => handleStatusChange(index, commande.id_commande)} // Ajoutez le gestionnaire de clic
+                    >
+                        {commande.status ? (
+                            <i className="fas fa-check" style={{ color: 'green' }}></i> // Icône de tick
+                        ) : (
+                            <i className="fas fa-times" style={{ color: 'red' }}></i> // Icône de croix
+                        )}
+                    </div>,
+                    commande.prix
+                ])} // Utiliser directement commandes converties
+            />
+        ) : (
+            <div className="d-flex align-items-center justify-content-center" style={{minHeight: '80vh'}}>
+                <h1 style={{color: 'white'}}>Pas de commandes</h1>
+            </div>
+        )
     );
 };
 

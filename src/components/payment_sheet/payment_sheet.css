@@ -7,6 +7,13 @@
     z-index: 1000;
 }
 
+.nav-item{
+    height: 30px;
+    margin-top: 10px;
+    width: 100px;
+    margin-right: 10px;
+}
+
 .nav-link {
     color: black !important; /* Inactive tab color */
     font-weight: bold;
@@ -22,7 +29,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
+    margin-top: 5px;
+    margin-right: 20px;
     cursor: pointer;
 }
 

@@ -8,11 +8,9 @@ const usePlat = () => {
             const request = 'http://localhost/projet-zeduc/index.php/employee/get_plat';
 
             const response = await axios.get(request);
-            console.log(response.data);
 
             return response.data;
         } catch (error) {
-            console.error('Erreur lors de la récupération des fioles:', error.message); // Affiche le message d'erreur
             return []; // Retourner un tableau vide en cas d'erreur
         }
     };
@@ -33,10 +31,8 @@ const usePlat = () => {
                 }
             })
 
-            console.log(response.data)
             return response.data
         } catch(error) {
-            console.error('Login failed:', error.response ? error.response.data : error.message);
             setMessage('Login failed! Please check your credentials.'); // Set error message
             throw error;
         }
