@@ -23,7 +23,7 @@ class Parameters {
     }
 }
 
-function getParametre(){
+function getParametre(): ?Parameters {
     $jsonFilePath = './parameters/data.json';
 
     if (file_exists($jsonFilePath)) {
