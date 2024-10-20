@@ -11,11 +11,15 @@ import HomeEmployerPage from './pages/employer/home_employer';
 import HomeGerantPage from './pages/gerant/home_gerant';
 import SecurityQuestions from './pages/client/security/security_questions';
 import ForgotPassword from './pages/client/security/forgot_password';
+import HomeAdminPage from './pages/admin/home_admin';
+import NavEmployerComponent from './components/nav_bar/nav_employer';
+import NavGerantComponent from './components/nav_bar/nav_gerant';
+import NavAdminComponent from './components/nav_bar/nav_admin';
 
 function App() {
   return (
     <UserProvider>
-      <Router>
+      {/*<Router>
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
           <Route path='/login' element={<ConnexionPage/>}/>
@@ -27,7 +31,8 @@ function App() {
           <Route path='/home_employer' element={<HomeEmployerPage/>}/>
           <Route path='/home_gerant' element={<HomeGerantPage/>} />
         </Routes>
-      </Router>
+      </Router>*/}
+      <NavAdminComponent/>
     </UserProvider>
   );
 }
