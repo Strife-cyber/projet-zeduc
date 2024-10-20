@@ -185,9 +185,35 @@ function routeRequest($uriParts) {
             break;
 
         case 'get_question':
-            $id = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null;
+            $email = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null;
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $response = $controller->getQuestion($id);
+                $response = $controller->getQuestion($email);
+
+                echo json_encode($response);
+            } else {
+                http_response_code(405);
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
+        case 'token':
+            $email = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null;
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $response = $controller->getToken($email);
+
+                echo json_encode($response);
+            } else {
+                http_response_code(405);
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
+        case 'reset':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $token = isset($_POST['token']) ? $_POST['token'] : '';
+                $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+                $response = $controller->reset($token, $password);
 
                 echo json_encode($response);
             } else {

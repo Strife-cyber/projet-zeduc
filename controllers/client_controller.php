@@ -57,7 +57,15 @@ class ClientController{
         return $this->client->insertQuestion($user_id, $question, $answer);
     }
 
-    public function getQuestion($id){
-        return $this->client->getQuestion($id);
+    public function getQuestion($email){
+        return $this->client->getQuestion($email);
+    }
+
+    public function getToken($email){
+        return $this->client->getToken($email);
+    }
+
+    public function reset($token, $password){
+        return $this->client->reset($token, $password);
     }
 }

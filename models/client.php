@@ -214,14 +214,53 @@ class ModelClient {
         return 'Insertion reussi';
     }
 
-    public function getQuestion($id){
-        $sql = "SELECT * FROM security_questions WHERE id = :id";
-
-        $stmt = $this->connexion->prepare($sql);
-
-        $stmt->bindParam(':id', $id);
+    public function getQuestion($email) {
+        // Prepare the first SQL query to get the user ID based on the provided email
+        $idQuery = "SELECT id FROM utilisateur WHERE email = :email";
+        $stmt = $this->connexion->prepare($idQuery);
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
 
+        // Fetch the user ID
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Check if user exists
+        if (!$user) {
+            return []; // Return an empty array if the user is not found
+        }
+
+        // Get the user ID
+        $userId = $user['id'];
+
+        // Prepare the second SQL query to get the security questions for the user
+        $sql = "SELECT * FROM security_questions WHERE user_id = :id";
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':id', $userId);
+        $stmt->execute();
+
+        // Fetch and return the security questions
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getToken($email){
+        $sql = "SELECT * FROM request_password_reset(:email)";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':email', $email);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function reset($token, $password){
+        $sql = "SELECT reset_password(:token, :password)";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':token', $token);
+        $stmt->bindParam(':password', $password);
+
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
