@@ -126,6 +126,7 @@ $$ LANGUAGE plpgsql;
 --l'associe à un utilisateur et enregistre la demande dans une table avec une expiration.
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+-- 8.2
 CREATE OR REPLACE FUNCTION request_password_reset(user_email VARCHAR)
 RETURNS TEXT LANGUAGE plpgsql
 AS $$

@@ -146,6 +146,13 @@ CREATE TABLE password_resets (
     PRIMARY KEY (user_id, token)
 );
 
+CREATE TABLE security_questions (
+    user_id VARCHAR(255) REFERENCES utilisateur(id) ON DELETE CASCADE ,
+    question TEXT NOT NULL ,
+    answer TEXT NOT NULL ,
+    PRIMARY KEY (user_id, question)
+);
+
 CREATE TABLE parametres (
     rate DECIMAL NOT NULL ,
     ouverture DATE NOT NULL ,
