@@ -1,8 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use PDO;
-use PDOStatement;
+
 
 class ModelMenuTest extends TestCase
 {
