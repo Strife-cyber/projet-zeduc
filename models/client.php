@@ -201,4 +201,27 @@ class ModelClient {
         $stmt->execute();
         return 'Insertion reussi';
     }
+
+    public function insertQuestion($user_id, $question, $answer) : string {
+        $sql = "INSERT INTO security_questions (user_id, question, answer) VALUES (:user_id, :question, :answer)";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':question', $question);
+        $stmt->bindParam(':answer', $answer);
+
+        $stmt->execute();
+        return 'Insertion reussi';
+    }
+
+    public function getQuestion($id){
+        $sql = "SELECT * FROM security_questions WHERE id = :id";
+
+        $stmt = $this->connexion->prepare($sql);
+
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

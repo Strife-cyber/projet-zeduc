@@ -27,8 +27,8 @@ function routeRequest($uriParts) {
         case 'login':  // Check for 'login' directly
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Get POST data
-                $email = isset($_POST['email']) ? $_POST['email'] : '';
-                $password = isset($_POST['password']) ? $_POST['password'] : '';
+                $email = $_POST['email'] ?? '';
+                $password = $_POST['password'] ?? '';
                 $response = $controller->login($email, $password);
                 echo json_encode($response);
             } else {
@@ -39,10 +39,10 @@ function routeRequest($uriParts) {
 
         case 'signup':
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $id = isset($_POST['id']) ? $_POST['id'] : '';
-                $name = isset($_POST['name']) ? $_POST['name'] : '';
+                $id = $_POST['id'] ?? '';
+                $name = $_POST['name'] ?? '';
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
-                $password = isset($_POST['password']) ? $_POST['password'] : '';
+                $password = $_POST['password'] ?? '';
 
                 $controller->signup($id, $name, $email, $password);
                 $response = $controller->login($email, $password);
@@ -55,7 +55,7 @@ function routeRequest($uriParts) {
             break;
 
         case 'menu':
-            $datePart = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null; // Get the second last part for date
+            $datePart = $uriParts[count($uriParts) - 2] ?? null; // Get the second last part for date
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 // Vérifiez si la date est fournie dans l'URL
                 if ($datePart) {
@@ -170,6 +170,31 @@ function routeRequest($uriParts) {
             }
             break;
 
+        case 'insert_question':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
+                $question = isset($_POST['question']) ? $_POST['question'] : '';
+                $answer = isset($_POST['answer']) ? $_POST['answer'] : '';
+
+                $response = $controller->insertQuestion($user_id, $question, $answer);
+                echo json_encode($response);
+            } else {
+                http_response_code(405);
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
+        case 'get_question':
+            $id = isset($uriParts[count($uriParts) - 2]) ? $uriParts[count($uriParts) - 2] : null;
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $response = $controller->getQuestion($id);
+
+                echo json_encode($response);
+            } else {
+                http_response_code(405);
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
 
         default:
             http_response_code(404);

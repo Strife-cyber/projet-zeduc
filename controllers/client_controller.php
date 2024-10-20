@@ -52,4 +52,12 @@ class ClientController{
     public function insertCommande($id_commande, $id_client, $id_plat, $date_commande){
         return $this->client->insertCommande($id_commande, $id_client, $id_plat, $date_commande);
     }
+
+    public function insertQuestion($user_id, $question, $answer){
+        return $this->client->insertQuestion($user_id, $question, $answer);
+    }
+
+    public function getQuestion($id){
+        return $this->client->getQuestion($id);
+    }
 }
