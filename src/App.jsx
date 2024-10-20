@@ -10,6 +10,7 @@ import Manager from './pages/manager/manager';
 import HomeEmployerPage from './pages/employer/home_employer';
 import HomeGerantPage from './pages/gerant/home_gerant';
 import SecurityQuestions from './pages/client/security/security_questions';
+import ForgotPassword from './pages/client/security/forgot_password';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<AccueilPage/>}/>
-          <Route path='/login' element={<ConnexionPage/>} />
+          <Route path='/login' element={<ConnexionPage/>}/>
+          <Route path='/forgot' element={<ForgotPassword/>}/>
           <Route path='/signup' element={<InscriptionPage/>}/>
           <Route path='/questions' element={<SecurityQuestions/>}/>
           <Route path='/home' element={<HomePage/>}/>

@@ -14,12 +14,12 @@ const useLogin = () => {
         try {
             setUser(null)
             // hash the password first
-            //const hashedPassword = await hashString(password);
+            const hashedPassword = await hashString(password);
 
             // Créez un objet FormData
             const formData = new FormData();
             formData.append('email', email);
-            formData.append('password', password);
+            formData.append('password', hashedPassword);
 
             // Attendez 1 seconde
             //await delay(1000);
