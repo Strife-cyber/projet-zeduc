@@ -9,6 +9,7 @@ import HomePage from './pages/client/home/home';
 import Manager from './pages/manager/manager';
 import HomeEmployerPage from './pages/employer/home_employer';
 import HomeGerantPage from './pages/gerant/home_gerant';
+import SecurityQuestions from './pages/client/security/security_questions';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<AccueilPage/>}/>
           <Route path='/login' element={<ConnexionPage/>} />
           <Route path='/signup' element={<InscriptionPage/>}/>
+          <Route path='/questions' element={<SecurityQuestions/>}/>
           <Route path='/home' element={<HomePage/>}/>
           <Route path='/manager' element={<Manager/>}/>
           <Route path='/home_employer' element={<HomeEmployerPage/>}/>

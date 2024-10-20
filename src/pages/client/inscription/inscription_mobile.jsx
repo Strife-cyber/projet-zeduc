@@ -33,7 +33,7 @@ const InscriptionMobilePage = () => {
             setEmail('');
             setPassword('');
             setReenterPassword('');
-            navigate('/home');
+            navigate('/questions');
         } catch (error) {
             console.error('Signup failed:', error);
         } finally {
