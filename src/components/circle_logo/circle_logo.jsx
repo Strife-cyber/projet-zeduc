@@ -2,7 +2,7 @@ import React from "react";
 import zeduc from '../../assets/zeduc.jpg';
 import './circle_logo.css';
 
-const CircleLogoComponent = ({ size = '750px', bgColor = 'black', direction = 'left' }) => {
+const CircleLogoComponent = ({ size = '1000px', bgColor = 'black', direction = 'left' }) => {
     const isLeft = direction === 'left';
     const width = isLeft ? `${parseInt(size) / 2}px` : size;
     const height = isLeft ? size : `${parseInt(size) / 2}px`;

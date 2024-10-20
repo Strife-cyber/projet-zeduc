@@ -5,7 +5,7 @@ body {
 }
 
 #white-part {
-    min-height: 100vh;
+    min-height: 80vh;
     width: 80%;
     margin: 10% auto;
     background-color: white;
