@@ -63,7 +63,7 @@ const ConnexionDesktopPage = () => {
                             onChange={(e) => setPassword(e.target.value)} // Handle password input change
                         />
                     </div>
-                    <p className="text-end">Mot de passe oublié ?</p>
+                    <p className="text-end" onClick={() => navigate('/forgot')}>Mot de passe oublié ?</p>
                     <div className="button-contain">
                         <ButtonComponent placeholder="Connexion" onClickFunction={handleLogin} />
                     </div>

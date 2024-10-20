@@ -89,7 +89,7 @@ const ConnexionMobilePage = () => {
                     />
                 )}
 
-                <p className="text-end">Mot de passe oublié ?</p>
+                <p className="text-end"  onClick={() => navigate('/forgot')}>Mot de passe oublié ?</p>
                 <div className="button-contain">
                     <ButtonComponent height='40px' placeholder="Connexion" onClickFunction={handleLogin} />
                 </div>
