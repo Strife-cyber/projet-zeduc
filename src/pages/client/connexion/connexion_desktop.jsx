@@ -35,7 +35,7 @@ const ConnexionDesktopPage = () => {
                 });
                 navigate('/manager');
             } else {
-                toast.error('Err, Corrigez l\'email ou mot de passe')
+                toast.error('Corrigez l\'email ou mot de passe')
             }
         } catch (error) {
             console.error("Login error:", error); // Log the error for debugging

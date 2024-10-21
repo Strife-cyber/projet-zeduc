@@ -38,7 +38,7 @@ const SecurityQuestions = () => {
   // Add a predefined or custom question to the list
   const addQuestion = async () => {
     if (selectedQuestion && answer) {
-      await insertQuestion(user.email, selectedQuestion, answer);
+      await insertQuestion(user.id, selectedQuestion, answer);
       setSecurityQuestions([...securityQuestions, { question: selectedQuestion, answer }]);
       setSelectedQuestion('');
       setAnswer('');
@@ -48,7 +48,7 @@ const SecurityQuestions = () => {
   // Add a custom question
   const addCustomQuestion = async () => {
     if (customQuestion && customAnswer) {
-      await insertQuestion(user.email, customQuestion, customAnswer);  
+      await insertQuestion(user.id, customQuestion, customAnswer);  
       setSecurityQuestions([...securityQuestions, { question: customQuestion, answer: customAnswer }]);
       setCustomQuestion('');
       setCustomAnswer('');

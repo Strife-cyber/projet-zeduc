@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import './nav_employer.css';
 import logo from '../../assets/zeduc.jpg';
 
@@ -24,7 +24,7 @@ const NavAdminComponent = ({switched}) => {
                 <a className="nav-logo" href="#">
                     <img src={logo} alt="ZeDuc Logo" className="zeduc-logo"/>
                 </a>
-                <i className="fas fa-burger menu-toogle" onClick={toggleMenu}></i>
+                <i className="fas fa-burger menu-toggle" onClick={toggleMenu}></i>
                 <ul className="menu-content desktop-menu">
                     <li className="men-item">
                         <a className="menu-link" href="#" onClick={() => switcher('commandes')}>Commandes</a>

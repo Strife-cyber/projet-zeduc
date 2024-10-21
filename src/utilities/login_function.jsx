@@ -12,7 +12,7 @@ const useLogin = () => {
 
     const login = async (email, password) => {
         try {
-            setUser(null)
+            await setUser(null)
             // hash the password first
             const hashedPassword = await hashString(password);
 
@@ -33,7 +33,7 @@ const useLogin = () => {
 
 
             if (response.data && response.data !== null) {
-                setUser(response.data);
+                await setUser(response.data);
                 setMessage('Login successful!'); // Set success message
                 return response.data;
             } else {

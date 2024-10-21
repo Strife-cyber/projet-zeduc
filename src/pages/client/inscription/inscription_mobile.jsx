@@ -19,9 +19,20 @@ const InscriptionMobilePage = () => {
         navigate('/login');
     }
 
+    const validatePassword = (password) => {
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasNumber = /\d/.test(password);
+        return hasUpperCase && hasNumber;
+    };
+
     const handleSignUp = async () => {
         if (password !== reenterPassword) {
             alert('Les mots de passe ne correspondent pas!');
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            alert('Le mot de passe doit contenir au moins une majuscule et un chiffre!');
             return;
         }
 

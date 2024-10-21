@@ -15,7 +15,7 @@ const useSignUp = () => {
         const id = uuidv4();
 
         try{
-            setUser(null);
+            await setUser(null);
             const hashedPassword = await hashString(password);
 
             const formData = new FormData();
@@ -32,7 +32,7 @@ const useSignUp = () => {
                 }
             });
 
-            setUser(response.data);
+            await setUser(response.data);
             setMessage('Connection Successful');
         } catch(error) {
             setMessage('Login failed! Please check your credentials.'); // Set error message

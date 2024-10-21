@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ButtonComponent from '../button/button';
 
 const Page1 = ({ user, command, switchPage }) => {
+    const [showCode, setShowCode] = useState(false);
+
     return (
         <>
             <div className="info-container">
                 <p>Nom: {user?.nom || "Invité"}</p>
-                <p>Code: {user?.code || "N/A"}</p>
                 <p>Points: {user?.points || "0"}</p>
+                {showCode ? (<p>Code: {user?.code || "N/A"}</p>) : (
+                    <ButtonComponent onClickFunction={() => setShowCode(true)} placeholder='Generer Code'/>
+                )}
             </div>
 
             <div className="bar-label home" onClick={() => switchPage("home")}>

@@ -42,7 +42,7 @@ const ConnexionMobilePage = () => {
 
                 navigate('/manager'); // Redirect if user is logged in
             } else {
-                toast.error('Err, Corrigez l\'email ou mot de passe')
+                toast.error('Corrigez l\'email ou mot de passe')
             }
         } catch (error) {
             console.error('Login failed:', error);

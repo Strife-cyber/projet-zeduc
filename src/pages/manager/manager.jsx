@@ -7,12 +7,16 @@ const Manager = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (user.id_client != null) {
-            navigate('/home');
-        } else if (user.id_employer != null){
-            navigate('/home_employer')
+        if (user != null){
+            if (user.id_client != null) {
+                navigate('/home');
+            } else if (user.id_employer != null){
+                navigate('/home_employer')
+            } else {
+                navigate('/home_gerant')
+            }
         } else {
-            navigate('/home_gerant')
+            navigate('/login')
         }
     }, []); // Exécute la navigation si user ou navigate change
 };
