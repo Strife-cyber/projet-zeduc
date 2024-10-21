@@ -126,6 +126,7 @@ $$ LANGUAGE plpgsql;
 --l'associe à un utilisateur et enregistre la demande dans une table avec une expiration.
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+-- 8.2
 CREATE OR REPLACE FUNCTION request_password_reset(user_email VARCHAR)
 RETURNS TEXT LANGUAGE plpgsql
 AS $$
@@ -254,7 +255,7 @@ $$;
 -- Fonction pour l'admin
 -- historique de commande
 -- cette vue permet à un administrateur de consulter l'historique de toutes les commandes classées par date de commande.
-CREATE VIEW historique AS
+CREATE OR REPLACE VIEW historique AS
     SELECT * FROM commande ORDER BY (commande.date_commande);
 SELECT * FROM historique;
 

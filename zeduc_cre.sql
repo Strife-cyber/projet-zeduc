@@ -57,12 +57,13 @@ CREATE TABLE gerant(
 */
     id_gerant VARCHAR(255) REFERENCES utilisateur(id) PRIMARY KEY NOT NULL
 );
+
 CREATE TABLE employer(
 /*
--- L'employer "id_employer" creer pqr l'admin "id_admin"
+-- L'employer "id_employer"
 */
-    id_employer VARCHAR(255) REFERENCES utilisateur(id) PRIMARY KEY NOT NULL ,
-    admin VARCHAR(255) REFERENCES admin(id_admin) NOT NULL
+    id_employer VARCHAR(255) REFERENCES utilisateur(id) PRIMARY KEY NOT NULL,
+    date_embauche DATE NOT NULL
 );
 
 CREATE TABLE parrainage(
@@ -143,6 +144,13 @@ CREATE TABLE password_resets (
     token VARCHAR(64) NOT NULL,
     expiry TIMESTAMP NOT NULL,
     PRIMARY KEY (user_id, token)
+);
+
+CREATE TABLE security_questions (
+    user_id VARCHAR(255) REFERENCES utilisateur(id) ON DELETE CASCADE ,
+    question TEXT NOT NULL ,
+    answer TEXT NOT NULL ,
+    PRIMARY KEY (user_id, question)
 );
 
 CREATE TABLE parametres (

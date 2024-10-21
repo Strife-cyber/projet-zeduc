@@ -25,7 +25,8 @@ INSERT INTO utilisateur (id, nom, email, secret) VALUES
 ('user001', 'Alice Dupont', 'alice.dupont@example.com', 'secret123'),
 ('user002', 'Bob Martin', 'bob.martin@example.com', 'password456'),
 ('user003', 'Charlie Dubois', 'charlie.dubois@example.com', 'pass789'),
-('user004', 'Daniel Leroy', 'daniel.leroy@example.com', 'password012');
+('user004', 'Daniel Leroy', 'daniel.leroy@example.com', 'password012'),
+('user005', 'Royce Dupont', 'royce.dupont@ppppp.com', 'royce');
 
 -- Insérer des clients
 INSERT INTO client (id_client, code, points) VALUES
@@ -37,11 +38,11 @@ INSERT INTO admin (id_admin) VALUES
 ('user003');
 
 INSERT INTO gerant(id_gerant) VALUES
-('user004');
+('user005');
 
 -- Insérer des employeurs
-INSERT INTO employer (id_employer, admin) VALUES
-('user004', 'user003');
+INSERT INTO employer (id_employer, date_embauche) VALUES
+('user004', '2023-10-01');
 
 -- Insérer des plats
 INSERT INTO plat (id_plat, image, nom, prix) VALUES
