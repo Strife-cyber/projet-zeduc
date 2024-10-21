@@ -9,7 +9,7 @@ import useCommand from '../../utilities/client/command_function';
 import usePolitique from '../../utilities/politique_function';
 
 const PaymentSheetComponent = ({ onClose, product, id_plat }) => {
-    const [activeTab, setActiveTab] = useState('momo');
+    const [activeTab, setActiveTab] = useState('points');
     const { user, setUser } = useUser();
     const { fetchPolitique, updatePoints } = usePolitique();
     const { insertCommande } = useCommand();
@@ -47,7 +47,7 @@ const PaymentSheetComponent = ({ onClose, product, id_plat }) => {
                 <li className="close-icon">
                     <i className="fas fa-times" id="close" onClick={onClose}></i>
                 </li>
-                <li className="nav-item">
+                {/*<li className="nav-item">
                     <button 
                         className={`nav-link ${activeTab === 'momo' ? 'active' : ''}`} 
                         onClick={() => setActiveTab('momo')}
@@ -62,7 +62,7 @@ const PaymentSheetComponent = ({ onClose, product, id_plat }) => {
                     >
                         Orange
                     </button>
-                </li>
+                </li>*/}
                 <li className="nav-item">
                     <button 
                         className={`nav-link ${activeTab === 'paypal' ? 'active' : ''}`} 

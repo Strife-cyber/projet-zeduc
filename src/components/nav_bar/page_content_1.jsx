@@ -10,7 +10,7 @@ const Page1 = ({ user, command, switchPage }) => {
                 <p>Nom: {user?.nom || "Invité"}</p>
                 <p>Points: {user?.points || "0"}</p>
                 {showCode ? (<p>Code: {user?.code || "N/A"}</p>) : (
-                    <ButtonComponent onClickFunction={() => setShowCode(true)} placeholder='Generer Code'/>
+                    <ButtonComponent width='120px' onClickFunction={() => setShowCode(true)} placeholder='Generer Code'/>
                 )}
             </div>
 

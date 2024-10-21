@@ -26,7 +26,7 @@ const EmployerTableComponent = () => {
         };
 
         fetchData();
-    }, [fetchEmployerCommandes]);
+    }, []);
 
     // Fonction pour changer le statut d'une commande
     const handleStatusChange = async (index, id) => {
