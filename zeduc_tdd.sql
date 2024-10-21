@@ -237,7 +237,7 @@ BEGIN
     WHERE token = reset_token AND expiry > NOW();
 
     IF NOT FOUND THEN
-        RAISE EXCEPTION 'Invalid or expired reset token';
+        RAISE NOTICE 'Token: %, Expiry: %', reset_password.reset_token, NOW() ;
     END IF;
 
     -- Mettre à jour le mot de passe de l'utilisateur

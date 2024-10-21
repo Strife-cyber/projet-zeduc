@@ -11,7 +11,7 @@ SELECT * FROM client LEFT JOIN utilisateur u on client.id_client = u.id;
 SELECT menu_du_jour('2024-10-01');
 
 -- 4. Teste mise a jour mot de passe
-SELECT reset_password(request_password_reset('dunamisjunior15@gmail.com'), 'hello world reset');
+SELECT reset_password(request_password_reset('alice.dupont@example.com'), 'hello world reset');
 SELECT * FROM password_resets;
 
 
