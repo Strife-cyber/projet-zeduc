@@ -13,6 +13,7 @@ import SecurityQuestions from './pages/client/security/security_questions';
 import ForgotPassword from './pages/client/security/forgot_password';
 import { PanierProvider } from './contexts/panier_context';
 import CartModal from './components/nav_modals/cart_modal';
+import HomeAdminPage from './pages/admin/home_admin';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path='/manager' element={<Manager/>}/>
             <Route path='/home_employer' element={<HomeEmployerPage/>}/>
             <Route path='/home_gerant' element={<HomeGerantPage/>} />
+            <Route path='/home_admin' element={<HomeAdminPage/>} />
           </Routes>
         </Router>
       </PanierProvider>
