@@ -2,7 +2,7 @@ import './game_card.css';
 
 const GameCard = ({ card, onClick, isFlipped }) => {
     return (
-        <div className={`card ${!isFlipped ? 'flipped' : ''}`} onClick={onClick}>
+        <div className={`card-my ${!isFlipped ? 'flipped' : ''}`} onClick={onClick}>
             <div className="card-inner">
                 <div className="card-front">
                     <img src={card.image} className='game-card-image' alt="Card" />

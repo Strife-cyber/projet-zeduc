@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import image1 from '../../../assets/img-1.jpg';
-import image2 from '../../../assets/img-2.jpg';
-import image3 from '../../../assets/img-3.jpg';
-import image4 from '../../../assets/img-4.jpg';
-import image5 from '../../../assets/img-5.jpg';
-import image6 from '../../../assets/img-6.jpg';
+import image1 from '../../assets/img-1.jpg';
+import image2 from '../../assets/img-2.jpg';
+import image3 from '../../assets/img-3.jpg';
+import image4 from '../../assets/img-4.jpg';
+import image5 from '../../assets/img-5.jpg';
+import image6 from '../../assets/img-6.jpg';
 import './memory_game.css';
 import GameCard from './game_card';
 
@@ -95,7 +95,7 @@ const MemoryGame = () => {
 
     return (
         <div className='game-container'>
-            <header className='game-header'>
+            <header className='game-header row'>
                 <h1>Memory Game</h1>
                 <p>Match all pairs to win!</p>
             </header>

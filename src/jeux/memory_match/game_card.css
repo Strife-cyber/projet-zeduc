@@ -1,4 +1,4 @@
-.card {
+.card-my {
     width: 100px;
     height: 100px;
     margin: 10px;
@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-.card.flipped .card-inner {
+.card-my.flipped .card-inner {
     transform: rotateY(180deg); /* Flip the card */
 }
 

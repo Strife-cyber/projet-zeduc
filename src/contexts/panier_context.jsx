@@ -47,6 +47,7 @@ const removePlatFromDB = async (id) => {
 
 export const PanierProvider = ({ children }) => {
     const [panier, setPanier] = useState([]);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const fetchPanier = async () => {
@@ -56,6 +57,18 @@ export const PanierProvider = ({ children }) => {
 
         fetchPanier();
     }, []);
+
+    const openPanierModal = () => {
+        setOpen(true)
+    }
+
+    const closePanierModal = () => {
+        setOpen(false)
+    }
+
+    const getPanierState = () => {
+        return open
+    }
 
     const ajouterAuPanier = async (plat) => {
         setPanier((prevPanier) => {
@@ -101,7 +114,7 @@ export const PanierProvider = ({ children }) => {
     };
 
     return (
-        <PanierContext.Provider value={{ panier, ajouterAuPanier, supprimerDuPanier }}>
+        <PanierContext.Provider value={{ panier, ajouterAuPanier, supprimerDuPanier, openPanierModal, closePanierModal, getPanierState }}>
             {children}
         </PanierContext.Provider>
     );

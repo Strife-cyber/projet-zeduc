@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { UserProvider } from './contexts/user_context';
 import ConnexionPage from './pages/client/connexion/connexion';
@@ -12,7 +12,6 @@ import HomeGerantPage from './pages/gerant/home_gerant';
 import SecurityQuestions from './pages/client/security/security_questions';
 import ForgotPassword from './pages/client/security/forgot_password';
 import { PanierProvider } from './contexts/panier_context';
-import CartModal from './components/nav_modals/cart_modal';
 import HomeAdminPage from './pages/admin/home_admin';
 
 function App() {

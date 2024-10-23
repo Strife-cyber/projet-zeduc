@@ -5,11 +5,15 @@ import FooterComponent from "../../../components/footer/footer";
 import PromotionPage from "./promotion";
 import NavBarComponent from "../../../components/nav_bar/nav_bar";
 import './home_desktop.css';
+import { usePanier } from "../../../contexts/panier_context";
+import CartModal from "../../../components/nav_modals/cart_modal";
+import EventsPage from "./evenement";
 
 const HomePage = () => {
     const [isMobile, setIsMobile] = useState(false);
     const [page, setPage] = useState("home");
     const [closed, setClosed] = useState(true); // Default state to closed
+    const { closePanierModal, getPanierState } = usePanier();
 
     // Check the screen size to switch between mobile and desktop views
     const checkScreenSize = () => {
@@ -52,6 +56,8 @@ const HomePage = () => {
                     isMobile ? <HomeMobilePage onOpen={onOpen} /> : <HomeDesktopPage />
                 ) : page === "promotion" ? (
                     <PromotionPage onOpen={onOpen} />
+                ) : page === "events" ? (
+                    <EventsPage/>
                 ) : (
                     <div style={{ minWidth: '100vh', minHeight: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <div style={{color: '#cfbd97', fontFamily: 'pacifico', fontSize: '30px'}}>Evenement page content here</div> // Add your "Evenement" content here
@@ -76,6 +82,12 @@ const HomePage = () => {
             </div>
 
             <FooterComponent />
+
+            {
+                getPanierState() ? (
+                    <CartModal closeModal={closePanierModal}/>
+                ) : null
+            }
         </>
     );
 };

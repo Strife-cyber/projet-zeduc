@@ -5,6 +5,7 @@ import FoodAdderComponent from "../../components/food_adder/food_adder";
 import StatsDashboard from "../../components/stats_page/stats_page";
 import ReclamationDashBoard from "../../components/reclamation/reclamation";
 import GerantTableComponent from "../../components/table/gerant_table";
+import AdminManagementPage from "./AdminManagementPage";
 
 const HomeAdminPage = () => {
     // Retrieve the page from localStorage or default to "commandes"
@@ -37,6 +38,8 @@ const HomeAdminPage = () => {
                         <ReclamationDashBoard />
                     ) : page === "employer" ? (
                         <GerantTableComponent />
+                    ) : page === "evenements" ? (
+                        <AdminManagementPage/>
                     ) : (
                         <></>
                     )

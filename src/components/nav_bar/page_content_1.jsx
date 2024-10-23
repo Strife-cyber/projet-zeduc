@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import ButtonComponent from '../button/button';
+import { usePanier } from '../../contexts/panier_context';
 
 const Page1 = ({ user, command, switchPage }) => {
     const [showCode, setShowCode] = useState(false);
+    const { openPanierModal } = usePanier();
 
     return (
         <>
@@ -22,12 +24,12 @@ const Page1 = ({ user, command, switchPage }) => {
                 <i className="fas fa-chevron-left text-center"></i>
                 <p className="text-center">Promotion</p>
             </div>
-            <div className="bar-label evenements" onClick={() => switchPage("Events")}>
+            <div className="bar-label evenements" onClick={() => switchPage("events")}>
                 <i className="fas fa-chevron-left text-center"></i>
                 <p className="text-center">Evenements</p>
             </div>
 
-            <div className="cart-items">
+            <div className="cart-items" onDoubleClick={openPanierModal}>
                 <div className="heading">
                     <i className="fas fa-shopping-cart text-center"></i>
                     <p className="text-center">Mes Commandes</p>
