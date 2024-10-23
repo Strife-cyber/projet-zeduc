@@ -18,7 +18,7 @@ function App() {
   return (
     <UserProvider>
       <PanierProvider>
-        {/*<Router>
+        <Router>
           <Routes>
             <Route path='/' element={<AccueilPage/>}/>
             <Route path='/login' element={<ConnexionPage/>}/>
@@ -30,8 +30,7 @@ function App() {
             <Route path='/home_employer' element={<HomeEmployerPage/>}/>
             <Route path='/home_gerant' element={<HomeGerantPage/>} />
           </Routes>
-        </Router>*/}
-        <CartModal/>
+        </Router>
       </PanierProvider>
     </UserProvider>
   );
