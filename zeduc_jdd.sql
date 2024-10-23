@@ -9,7 +9,7 @@ Responsables : dunamisjunior15@gmail.com, alfredkognoko3@gmail.com
 Version : 0.1.0
 Statut : travail en cours
 -- =========================================================================== A
-*/
+*
 
 /*
 -- =========================================================================== B

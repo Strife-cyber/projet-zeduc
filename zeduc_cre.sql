@@ -153,11 +153,12 @@ CREATE TABLE security_questions (
     PRIMARY KEY (user_id, question)
 );
 
-CREATE TABLE parametres (
-    rate DECIMAL NOT NULL ,
-    ouverture DATE NOT NULL ,
-    fermeture DATE NOT NULL
-)
+CREATE TABLE evenements (
+    id_evenement VARCHAR(255) NOT NULL PRIMARY KEY ,
+    title VARCHAR(255) NOT NULL ,
+    description TEXT NOT NULL ,
+    jeux INTEGER NOT NULL
+);
 
 
 

@@ -53,3 +53,4 @@ DROP TABLE parametres cascade ;
 
 DROP TABLE livreur cascade ;
 
+DROP TABLE evenements cascade ;
