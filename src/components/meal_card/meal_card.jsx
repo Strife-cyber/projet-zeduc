@@ -4,7 +4,7 @@ import ButtonComponent from '../button/button';
 import './meal_card.css';
 import PaymentSheetComponent from '../payment_sheet/payment_sheet';
 
-const MealCardComponent = ({ id_plat="plat001", image=image1, nom="Eru", prix="1000" }) => {
+const MealCardComponent = ({ id_plat="plat001", image=image1, nom="Eru", prix="1000", onDoubleClickFunction }) => {
     const [closed, setClosed] = useState(false);
 
     const onClose = () => {setClosed(true)}
@@ -13,7 +13,7 @@ const MealCardComponent = ({ id_plat="plat001", image=image1, nom="Eru", prix="1
 
     return (
         <>
-        <div className="card custom-card border shadow-lg" style={{ width: '18rem', position: 'relative' }}>
+        <div className="card custom-card border shadow-lg" onDoubleClick={onDoubleClickFunction} style={{ width: '18rem', position: 'relative' }}>
             <img src={image} className="card-img-top" alt={nom} />
             <div className="card-body">
                 <div className='row'>

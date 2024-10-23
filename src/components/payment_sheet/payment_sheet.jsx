@@ -44,7 +44,7 @@ const PaymentSheetComponent = ({ onClose, product, id_plat }) => {
     return (
         <div className="payment-container">
             <ul className="nav" style={{ display: 'flex', listStyle: 'none', justifyContent: 'space-between', overflowX: 'scroll' }}>
-                <li className="close-icon">
+                <li className="close-icon" style={{marginLeft: '10px'}}>
                     <i className="fas fa-times" id="close" onClick={onClose}></i>
                 </li>
                 {/*<li className="nav-item">

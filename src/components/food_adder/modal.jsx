@@ -1,6 +1,5 @@
 import React from 'react';
 import ButtonComponent from '../button/button';
-import { color } from 'chart.js/helpers';
 
 const Modal = ({ isOpen, title, children, onClose }) => {
     if (!isOpen) return null;

@@ -44,21 +44,27 @@ const PromotionPage = ({onOpen}) => {
                 </div>
             )}
             <ul className="all-promotions">
-                {promotion.map((c, index) => (
-                    <li key={index} style={{listStyle: 'none'}}>
-                        <div className="promotion-container">
-                            <h1 className="text-center" style={{margin: '20px', fontSize: '20px'}}>{c.description} </h1>
-                            <div style={{display: "flex", justifyContent: 'space-between'}}>
-                                <div style={{fontSize: '10px', fontFamily: 'Montaga'}}>
-                                    <strong>Date de début:</strong> {c.date_debut} <br />
-                                </div>
-                                <div style={{fontSize: '10px', fontFamily: 'Montaga'}}>
-                                    <strong>Date de fin:</strong> {c.date_fin}
+                {promotion.length <= 0 ? (
+                    <div className="text-center" style={{color: 'white', fontFamily: 'pacifico', fontSize: '40px'}}>
+                        Aucune Promotion pour le moment
+                    </div>
+                ) : (
+                    promotion.map((c, index) => (
+                        <li key={index} style={{listStyle: 'none'}}>
+                            <div className="promotion-container">
+                                <h1 className="text-center" style={{margin: '20px', fontSize: '20px'}}>{c.description} </h1>
+                                <div style={{display: "flex", justifyContent: 'space-between'}}>
+                                    <div style={{fontSize: '10px', fontFamily: 'Montaga'}}>
+                                        <strong>Date de début:</strong> {c.date_debut} <br />
+                                    </div>
+                                    <div style={{fontSize: '10px', fontFamily: 'Montaga'}}>
+                                        <strong>Date de fin:</strong> {c.date_fin}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                ))}
+                        </li>
+                    ))
+                )}
             </ul>
         </div>
     );
