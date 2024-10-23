@@ -4,6 +4,7 @@ require_once 'routes/routes.php';
 require_once 'routes/routes_employer.php';
 require_once 'routes/routes_gerant.php';
 require_once 'routes/route_politique.php';
+require_once 'routes/route_admin.php';
 
 // Ajoutez les en-têtes CORS
 header("Access-Control-Allow-Origin: http://localhost:3000"); // 192.168.1.150 Remplacez par l'origine de votre application React
@@ -28,6 +29,8 @@ function respond_correctly() {
     // Vérifier si "employee" est présent dans les segments
     if (in_array('pol', $uriParts)){
         route_politique($uriParts);
+    } else if (in_array('admin', $uriParts)){
+        routeAdminRequest($uriParts);
     } else if (in_array('gerant', $uriParts)) {
         routeGerantRequest($uriParts);
     } else if (in_array('employee', $uriParts)) {
