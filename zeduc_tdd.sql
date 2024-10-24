@@ -157,6 +157,33 @@ BEGIN
 END;
 $$;
 
+-- 9. Fonction pour les 10 meilleurs clients
+CREATE OR REPLACE FUNCTION get_top_10_clients()
+RETURNS TABLE (
+    id_client VARCHAR(255),
+    nom_client VARCHAR(60),
+    total_commandes BIGINT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        c.id_client,
+        u.nom AS nom_client,
+        COUNT(co.id_commande) AS total_commandes
+    FROM
+        client c
+    JOIN
+        utilisateur u ON c.id_client = u.id
+    JOIN
+        commande co ON c.id_client = co.id_client
+    GROUP BY
+        c.id_client, u.nom
+    ORDER BY
+        total_commandes DESC
+    LIMIT 10;
+END;
+$$ LANGUAGE plpgsql;
+
 -- fonction importante pour les employer
 -- fonction de statistique
 -- 1. Plat populaire
