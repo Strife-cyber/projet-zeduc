@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MemoryGame from '../../../jeux/memory_match/memory_game';
 import Quiz from '../../../jeux/quiz/quiz_game';
+import SnakeGame from '../../../jeux/snake_game/snake_game';
 
 const EventsPage = () => {
   const [evenements, setEvenements] = useState([]);
@@ -28,7 +29,7 @@ const EventsPage = () => {
       case 2:
         return <Quiz/>;
       case 3:
-        return 'Game: Basketball';
+        return <SnakeGame/>;
       default:
         return 'Game: Not Specified';
     }

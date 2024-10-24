@@ -12,8 +12,10 @@ const Manager = () => {
                 navigate('/home');
             } else if (user.id_employer != null){
                 navigate('/home_employer')
-            } else {
+            } else if (user.id_gerant != null) {
                 navigate('/home_gerant')
+            } else {
+                navigate('/home_admin')
             }
         } else {
             navigate('/login')
