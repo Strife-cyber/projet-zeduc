@@ -222,6 +222,16 @@ function routeRequest($uriParts) {
             }
             break;
 
+        case 'meilleur':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $response = $controller->meilleur();
+                echo json_encode($response);
+            } else {
+                http_response_code(405);
+                echo json_encode(['error' => 'Method Not Allowed']);
+            }
+            break;
+
         default:
             http_response_code(404);
             echo json_encode(['error' => 'Not Found']);

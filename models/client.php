@@ -81,6 +81,17 @@ class ModelClient {
             }
         }
 
+        $sql = "SELECT * FROM admin a LEFT JOIN utilisateur u ON a.id_admin = u.id";
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->execute();
+        $admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($admins as $admin) {
+            if($admin['email'] == $email && $admin['secret'] == $password) {
+                return $admin;
+            }
+        }
+
         return null;
     }
 
@@ -262,5 +273,14 @@ class ModelClient {
 
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function meilleur(){
+        $sql = "SELECT * FROM get_top_10_clients()";
+
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

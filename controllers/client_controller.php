@@ -68,4 +68,8 @@ class ClientController{
     public function reset($token, $password){
         return $this->client->reset($token, $password);
     }
+
+    public function meilleur(){
+        return $this->client->meilleur();
+    }
 }
