@@ -18,7 +18,7 @@ const useEmployer = () => {
         try {
             const today = new Date().toLocaleDateString('en-CA');
             const id = v4();
-            const hashedPassword = hashString(password);
+            const hashedPassword = await hashString(password);
 
             const formData = new FormData();
             formData.append('id', id)

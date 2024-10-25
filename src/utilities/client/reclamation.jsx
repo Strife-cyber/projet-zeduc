@@ -9,7 +9,7 @@ const useReclamation = () => {
 
     const reclamation = async (description) => {
         const id = v4();
-        const userId = user.id || 'user001';
+        const userId = user.id;
         const today = new Date().toLocaleDateString('en-CA');
 
         try{

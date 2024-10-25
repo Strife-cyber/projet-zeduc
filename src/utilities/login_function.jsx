@@ -12,7 +12,6 @@ const useLogin = () => {
 
     const login = async (email, password) => {
         try {
-            await setUser(null)
             // hash the password first
             const hashedPassword = await hashString(password);
 

@@ -7,7 +7,7 @@ const useMesReclamation = () => {
 
     const fetchMesReclamation = async () => {
         try{
-            const userId = user?.id || 'user002';
+            const userId = user.id;
             const request = `http://localhost/projet-zeduc/index.php/${userId}/mes_reclamation`;
             const response = await axios.get(request);
 

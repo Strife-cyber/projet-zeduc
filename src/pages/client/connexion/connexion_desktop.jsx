@@ -14,7 +14,8 @@ import { useUser } from '../../../contexts/user_context';
 const ConnexionDesktopPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { login, message } = useLogin(); // Using the useLogin hook
+    const { login } = useLogin(); // Using the useLogin hook
+    const [formError, setFormError] = useState(''); // State for form validation error
     const navigate = useNavigate();
     const { user } = useUser();
 
@@ -23,6 +24,13 @@ const ConnexionDesktopPage = () => {
     }
 
     const handleLogin = async () => {
+        if (!email || !password) {
+            setFormError('Tous les champs sont requis.'); // Set error message if fields are missing
+            return;
+        }
+
+        setFormError(''); // Clear the form error if validation passes
+
         try {
             await login(email, password); // Call the login function from the hook
             setEmail(''); // Clear email input
@@ -67,10 +75,11 @@ const ConnexionDesktopPage = () => {
                     <div className="button-contain">
                         <ButtonComponent placeholder="Connexion" onClickFunction={handleLogin} />
                     </div>
-                    {message && (
+                    {/* Display error message for form validation */}
+                    {formError && (
                         <MessageComponent
-                            message={message}
-                            type={message.includes('successful') ? 'success' : 'error'} // Determine message type
+                            message={formError}
+                            type="error"
                         />
                     )}
                     <p className="text-center" onClick={toInscription}>Vous n'avez pas de compte ? Inscrivez-vous dès maintenant</p>
