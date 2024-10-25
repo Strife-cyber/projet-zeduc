@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f2144d59-de58-4bf9-af1a-bb2ab49152da" name="Changes" comment="Terminer">
+      <change beforePath="$PROJECT_DIR$/zeduc_drop.sql" beforeDir="false" afterPath="$PROJECT_DIR$/zeduc_drop.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zeduc_jdd.sql" beforeDir="false" afterPath="$PROJECT_DIR$/zeduc_jdd.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2nTCVna9hHJcZnkdUZENFzAbPmC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;data&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Strife-Cyber/DataGripProjects/projet-zeduc&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Modified a few things" />
+    <MESSAGE value="Added some few methods to remember the security questions by adding a new table i think not to add this as a function" />
+    <MESSAGE value="Les teste ajouter" />
+    <MESSAGE value="Terminer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Terminer" />
+  </component>
+</project>

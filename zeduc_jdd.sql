@@ -9,7 +9,7 @@ Responsables : dunamisjunior15@gmail.com, alfredkognoko3@gmail.com
 Version : 0.1.0
 Statut : travail en cours
 -- =========================================================================== A
-*
+*/
 
 /*
 -- =========================================================================== B
@@ -19,14 +19,13 @@ Création du jeux de données .
 
 
 -- insertion des valeurs valides
-
 -- Insérer des utilisateurs
 INSERT INTO utilisateur (id, nom, email, secret) VALUES
-('user001', 'Alice Dupont', 'alice.dupont@example.com', 'secret123'),
-('user002', 'Bob Martin', 'bob.martin@example.com', 'password456'),
-('user003', 'Charlie Dubois', 'charlie.dubois@example.com', 'pass789'),
-('user004', 'Daniel Leroy', 'daniel.leroy@example.com', 'password012'),
-('user005', 'Royce Dupont', 'royce.dupont@ppppp.com', 'royce');
+('user001', 'Alice Dupont', 'alice.dupont@example.com', 'fcf730b6d95236ecd3c9fc2d92d7b6b2bb061514961aec041d6c7a7192f592e4'), -- secret123
+('user002', 'Bob Martin', 'bob.martin@example.com', 'c6ba91b90d922e159893f46c387e5dc1b3dc5c101a5a4522f03b987177a24a91'), -- password456
+('user003', 'Charlie Dubois', 'charlie.dubois@example.com', '9dbd5c893b5b573a1aa909c8cade58df194310e411c590d9fb0d63431841fd67'), -- pass789
+('user004', 'Daniel Leroy', 'daniel.leroy@example.com', 'cb28ca00e0fde85aeae3101ebbb701465181eb76241e75f77e3d54e60ed50c35'), -- password012
+('user005', 'Royce Dupont', 'royce.dupont@ppppp.com', 'bc5bee2cdbfd265f320bec92db947938b1cdbdb4854532afcd9d225cfa58cf77'); -- royce
 
 -- Insérer des clients
 INSERT INTO client (id_client, code, points) VALUES
@@ -46,9 +45,9 @@ INSERT INTO employer (id_employer, date_embauche) VALUES
 
 -- Insérer des plats
 INSERT INTO plat (id_plat, image, nom, prix) VALUES
-('plat001', 'uploads/image/default.jpg', 'Pizza Margherita', 1200),
-('plat002', 'uploads/image/default.jpg', 'Burger Classique', 1000),
-('plat003', 'uploads/image/default.jpg', 'Salade César', 900);
+('plat001', 'uploads/image/default.jpg', 'Eru', 1200),
+('plat002', 'uploads/image/img-4.jpg', 'Poulet Pane', 1000),
+('plat003', 'uploads/image/img-2.jpg', 'Pile', 900);
 
 
 -- Insérer des commandes

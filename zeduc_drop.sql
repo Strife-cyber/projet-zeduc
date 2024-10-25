@@ -49,8 +49,6 @@ DROP TABLE security_questions cascade ;
 
 DROP TABLE parrainage cascade ;
 
-DROP TABLE parametres cascade ;
-
 DROP TABLE livreur cascade ;
 
 DROP TABLE evenements cascade ;
