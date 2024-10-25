@@ -72,4 +72,8 @@ class ClientController{
     public function meilleur(){
         return $this->client->meilleur();
     }
+
+    public function getClients(){
+        return $this->client;
+    }
 }
